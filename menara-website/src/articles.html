@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Articles — Menara</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQGoQza8LQnAAA/company-logo_200_200/company-logo_200_200/0/1735085528263/oryx_think_tank_logo?e=2147483647&v=beta&t=YSQoeV-ypd6nrP51hYhzOGHY265NMai849LVG8IScAo" alt="Menara logo" />
+        <span class="brand-text">Menara</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li class="is-active"><a href="articles.html">Articles</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary" href="#subscribe">Subscribe</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Articles & Publications</h1>
+      <p class="lead">Policy briefs, commentaries, and research notes.</p>
+      <div class="filters">
+        <a class="chip is-active" href="#all">All</a>
+        <a class="chip" href="#macro" id="macro">Debt & Macro</a>
+        <a class="chip" href="#climate" id="climate">Climate & Energy</a>
+        <a class="chip" href="#governance" id="governance">Governance</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        <!-- Exemple de carte publication -->
+        <article class="card article-card">
+          <div class="card-tag">Policy Brief</div>
+          <div class="card-body">
+            <h3>Debt, Nature & Climate: A Roadmap for Resilient Growth</h3>
+            <p>Actionable steps to align debt relief and climate resilience.</p>
+            <div class="card-meta">
+              <span>April 2025</span>
+              <span>8 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card article-card">
+          <div class="card-tag">Commentary</div>
+          <div class="card-body">
+            <h3>Energy Transitions in MENA: Security, Pricing, Equity</h3>
+            <p>Policy trade‑offs for a just and secure transition.</p>
+            <div class="card-meta">
+              <span>March 2025</span>
+              <span>6 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card article-card">
+          <div class="card-tag">Research Note</div>
+          <div class="card-body">
+            <h3>State Capacity and Growth Volatility in Emerging Africa</h3>
+            <p>Administrative data and cross‑country insights.</p>
+            <div class="card-meta">
+              <span>February 2025</span>
+              <span>10 min read</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div id="subscribe" class="section">
+        <div class="cta-banner">
+          <div class="cta-text">
+            <h3>Subscribe to Menara</h3>
+            <p>Monthly digest with top analysis and events.</p>
+          </div>
+          <form class="cta-form" action="#" method="post">
+            <label class="sr-only" for="email2">Email address</label>
+            <input id="email2" name="email" type="email" placeholder="Email address" required />
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div class="footer-bottom-inner">
+        <p>© 2025 Menara. All rights reserved.</p>
+        <ul class="legal-links">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.main-nav');
+    const actions = document.querySelector('.header-actions');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+      actions.classList.toggle('menu-open');
+    });
+  </script>
+</body>
+</html>

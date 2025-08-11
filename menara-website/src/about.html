@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — Menara</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQGoQza8LQnAAA/company-logo_200_200/company-logo_200_200/0/1735085528263/oryx_think_tank_logo?e=2147483647&v=beta&t=YSQoeV-ypd6nrP51hYhzOGHY265NMai849LVG8IScAo" alt="Menara logo" />
+        <span class="brand-text">Menara</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li class="is-active"><a href="about.html">About Us</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary" href="contact.html">Get in touch</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>About Us</h1>
+      <p class="lead">
+        Menara is an independent, non‑partisan think tank focused on geopolitics and economics across Africa and the Middle East.
+      </p>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="container">
+      <div class="about-columns">
+        <div>
+          <h2>Mission</h2>
+          <p>We aim to strengthen policy with rigorous analysis and pragmatic proposals, addressing challenges at the intersection of debt, climate, energy and governance.</p>
+          <h2>Approach</h2>
+          <p>Our work programs combine applied research with policy engagement and partnerships with academic institutions and policy labs across the region.</p>
+        </div>
+        <div>
+          <div class="quote-card">
+            <p>“Clarity, evidence and constructive dialogue can illuminate better policy choices.”</p>
+            <span>— Menara</span>
+          </div>
+          <ul class="bullets">
+            <li>Independent and evidence‑based</li>
+            <li>Networked with Global South partners</li>
+            <li>Accessible writing, timely briefs</li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>What we do</h2>
+          <p>Applied research and policy proposals, organized around three pillars.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-body">
+              <h3>Debt sustainability & restructuring</h3>
+              <p>From architecture gaps to credit ratings and contingent risks.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h3>Access to liquidity & long‑term finance</h3>
+              <p>From SDRs to development finance reform and private capital leverage.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h3>Governance & China as an international financier</h3>
+              <p>State capacity and comparative insights on creditor institutions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="section-head">
+          <h2>Partners & Community</h2>
+          <p>We collaborate with universities, think tanks, and policy institutions to scale impact.</p>
+        </div>
+        <div class="logos">
+          <div class="logo-pill">University partners</div>
+          <div class="logo-pill">Policy labs</div>
+          <div class="logo-pill">Research networks</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div class="footer-bottom-inner">
+        <p>© 2025 Menara. All rights reserved.</p>
+        <ul class="legal-links">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.main-nav');
+    const actions = document.querySelector('.header-actions');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+      actions.classList.toggle('menu-open');
+    });
+  </script>
+</body>
+</html>
