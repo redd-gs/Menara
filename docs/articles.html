@@ -6,6 +6,8 @@
   <title>Articles — Menara</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/carousel.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
   <header class="site-header">
@@ -49,43 +51,32 @@
 
   <main class="section">
     <div class="container">
-      <div class="grid grid-3">
-        <!-- Exemple de carte publication -->
-        <article class="card article-card">
-          <div class="card-tag">Policy Brief</div>
-          <div class="card-body">
-            <h3>Debt, Nature & Climate: A Roadmap for Resilient Growth</h3>
-            <p>Actionable steps to align debt relief and climate resilience.</p>
-            <div class="card-meta">
-              <span>April 2025</span>
-              <span>8 min read</span>
-            </div>
+      <!-- Carousel des articles -->
+      <div class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-slide">
+            <div class="articles-grid grid-3"></div>
           </div>
-        </article>
-
-        <article class="card article-card">
-          <div class="card-tag">Commentary</div>
-          <div class="card-body">
-            <h3>Energy Transitions in MENA: Security, Pricing, Equity</h3>
-            <p>Policy trade‑offs for a just and secure transition.</p>
-            <div class="card-meta">
-              <span>March 2025</span>
-              <span>6 min read</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="card article-card">
-          <div class="card-tag">Research Note</div>
-          <div class="card-body">
-            <h3>State Capacity and Growth Volatility in Emerging Africa</h3>
-            <p>Administrative data and cross‑country insights.</p>
-            <div class="card-meta">
-              <span>February 2025</span>
-              <span>10 min read</span>
-            </div>
-          </div>
-        </article>
+        </div>
+        
+        <div class="carousel-controls">
+          <button class="carousel-nav prev" aria-label="Articles précédents">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <button class="carousel-nav next" aria-label="Articles suivants">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="carousel-indicators">
+          <button class="carousel-indicator active" aria-label="Slide 1"></button>
+          <button class="carousel-indicator" aria-label="Slide 2"></button>
+          <button class="carousel-indicator" aria-label="Slide 3"></button>
+        </div>
       </div>
 
       <div id="subscribe" class="section">
@@ -116,6 +107,7 @@
     </div>
   </footer>
 
+  <script src="js/carousel.js"></script>
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.main-nav');

@@ -6,13 +6,12 @@
   <title>Menara — Think tank indépendant</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Gabarit éditorial à la FinDevLab: serif pour titres, sans-serif pour texte[18][13] -->
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Polices orientales et modernes pour un style raffiné -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/carousel.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
-<script src="js/main.js"></script>
-</body>
-</html>
 <body>
   <!-- Annonce -->
   <div class="topbar" role="region" aria-label="Annonce">
@@ -124,47 +123,131 @@
       </div>
     </section>
 
-    <!-- Derniers articles -->
+    <!-- Articles en vedette avec carousel -->
     <section id="articles" class="section alt">
       <div class="container">
         <div class="section-head">
-          <h2>Derniers articles</h2>
-          <p>Analyses rapides et notes de politique rédigées dans un style clair et accessible.</p>
+          <h2>Articles en vedette</h2>
+          <p>Découvrez nos dernières analyses et recherches sur les enjeux du développement dans la région MENA.</p>
         </div>
-        <div class="grid grid-3">
-          <article class="card article-card">
-            <div class="card-tag">Note de politique</div>
-            <div class="card-body">
-              <h3>Dette, nature & climat : feuille de route pour une résilience durable</h3>
-              <p>Des propositions concrètes pour rompre le cycle dette‑vulnérabilité.</p>
-              <div class="card-meta">
-                <span>Avril 2025</span>
-                <span>8 min</span>
+        
+        <!-- Carousel des articles -->
+        <div class="carousel-container">
+          <div class="carousel-wrapper">
+            <div class="carousel-slide">
+              <div class="featured-articles">
+                <div class="articles-grid"></div>
               </div>
             </div>
-          </article>
-          <article class="card article-card">
-            <div class="card-tag">Tribune</div>
-            <div class="card-body">
-              <h3>Transitions énergétiques en MENA : sécurité, prix, équité</h3>
-              <p>Arbitrer entre priorités nationales et trajectoires de décarbonation.</p>
-              <div class="card-meta">
-                <span>Mars 2025</span>
-                <span>6 min</span>
+          </div>
+          
+          <div class="carousel-controls">
+            <button class="carousel-nav prev" aria-label="Article précédent">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </button>
+            <button class="carousel-nav next" aria-label="Article suivant">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="carousel-indicators">
+            <button class="carousel-indicator active" aria-label="Slide 1"></button>
+            <button class="carousel-indicator" aria-label="Slide 2"></button>
+            <button class="carousel-indicator" aria-label="Slide 3"></button>
+          </div>
+        </div>
+        
+        <div class="section-cta">
+          <a href="articles.html" class="btn btn-primary">Voir tous les articles</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Événements à venir avec carousel -->
+    <section id="events" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Événements à venir</h2>
+          <p>Conférences, webinaires et ateliers pour approfondir nos recherches avec la communauté.</p>
+        </div>
+        
+        <!-- Carousel des événements -->
+        <div class="carousel-container">
+          <div class="carousel-wrapper">
+            <div class="carousel-slide">
+              <div class="events-grid grid-2">
+                <article class="event-card animate-slide-up">
+                  <div class="event-date-big">
+                    <div class="event-date-circle">
+                      <span class="event-date-day">15</span>
+                      <span class="event-date-month">Avr</span>
+                    </div>
+                    <div>
+                      <h3 class="event-title">Conférence dette souveraine</h3>
+                      <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                        </svg>
+                        Paris, France
+                      </div>
+                    </div>
+                  </div>
+                  <p class="event-description">Trois jours de discussions avec les plus grands experts mondiaux sur les enjeux de la dette.</p>
+                  <a href="news-events.html" class="btn btn-outline">En savoir plus</a>
+                </article>
+                
+                <article class="event-card animate-slide-up">
+                  <div class="event-date-big">
+                    <div class="event-date-circle">
+                      <span class="event-date-day">22</span>
+                      <span class="event-date-month">Avr</span>
+                    </div>
+                    <div>
+                      <h3 class="event-title">Webinaire financement vert</h3>
+                      <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                        </svg>
+                        En ligne
+                      </div>
+                    </div>
+                  </div>
+                  <p class="event-description">Comment mobiliser les capitaux privés pour financer la transition écologique en Afrique.</p>
+                  <a href="news-events.html" class="btn btn-outline">S'inscrire</a>
+                </article>
               </div>
             </div>
-          </article>
-          <article class="card article-card">
-            <div class="card-tag">Note de recherche</div>
-            <div class="card-body">
-              <h3>Capacité de l’État et volatilité de la croissance en Afrique émergente</h3>
-              <p>Évidence issue de données administratives et comparaisons croisées.</p>
-              <div class="card-meta">
-                <span>Février 2025</span>
-                <span>10 min</span>
-              </div>
-            </div>
-          </article>
+          </div>
+          
+          <div class="carousel-controls">
+            <button class="carousel-nav prev" aria-label="Événement précédent">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </button>
+            <button class="carousel-nav next" aria-label="Événement suivant">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="carousel-indicators">
+            <button class="carousel-indicator active" aria-label="Slide 1"></button>
+            <button class="carousel-indicator" aria-label="Slide 2"></button>
+          </div>
+        </div>
+        
+        <div class="section-cta">
+          <a href="news-events.html" class="btn btn-primary">Voir tous les événements</a>
+        </div>
+      </div>
+    </section>
+                    <!-- À propos (teaser) -->
         </div>
         <div class="section-cta">
           <a class="btn btn-outline" href="articles.html">Tout voir</a>
@@ -261,6 +344,7 @@
     </div>
   </footer>
 
+  <script src="js/carousel.js"></script>
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.main-nav');
