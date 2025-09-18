@@ -1,86 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact — Menara</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-  <header class="site-header">
+  <!-- En-tête -->
+  <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img class="brand-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQGoQza8LQnAAA/company-logo_200_200/company-logo_200_200/0/1735085528263/oryx_think_tank_logo?e=2147483647&v=beta&t=YSQoeV-ypd6nrP51hYhzOGHY265NMai849LVG8IScAo" alt="Menara logo" />
+      <a class="brand" href="index.html" aria-label="Accueil Menara">
+        <img class="brand-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQGoQza8LQnAAA/company-logo_200_200/company-logo_200_200/0/1735085528263/oryx_think_tank_logo?e=2147483647&v=beta&t=YSQoeV-ypd6nrP51hYhzOGHY265NMai849LVG8IScAo" alt="Logo Menara" />
         <span class="brand-text">Menara</span>
       </a>
-      <nav class="main-nav" aria-label="Primary">
+      <nav class="main-nav" role="navigation" aria-label="Navigation principale">
         <ul>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">À propos</a></li>
           <li><a href="articles.html">Articles</a></li>
-          <li><a href="news-events.html">News & Events</a></li>
-          <li><a href="contributions.html">External Contributions</a></li>
+          <li><a href="news-events.html">Nouvelles et Événements</a></li>
+          <li><a href="contributions.html">Contributions externes</a></li>
           <li><a href="podcasts.html">Podcasts</a></li>
-          <li><a href="follow.html">Follow Us</a></li>
+          <li><a href="follow.html">Nous Suivre</a></li>
           <li class="is-active"><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
       <div class="header-actions">
-        <a class="btn btn-primary" href="articles.html#subscribe">Subscribe</a>
-        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <a class="btn btn-ghost" href="articles.html#inscription">S'abonner</a>
+        <a class="btn btn-primary" href="contact.html">Nous écrire</a>
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
           <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <section class="page-hero">
+  <!-- Hero section -->
+  <section class="page-hero contact-hero">
     <div class="container">
-      <h1>Contact</h1>
-      <p class="lead">For media, partnerships, and research enquiries.</p>
+      <div class="hero-content">
+        <h1>Entrons en contact</h1>
+        <p class="hero-subtitle">
+          Vous avez une question, une proposition de collaboration ou souhaitez en savoir plus sur nos travaux ? 
+          Notre équipe est à votre écoute.
+        </p>
+      </div>
     </div>
   </section>
 
-  <main class="section">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3>General enquiries</h3>
-          <p><strong>Email</strong><br/>contact@menara.org</p>
-          <p><strong>Locations</strong><br/>Paris • Rabat • Abu Dhabi</p>
-        </div>
-        <form class="contact-form" action="#" method="post">
-          <div class="form-grid">
-            <div class="form-field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required />
+  <main>
+    <!-- Section contact moderne -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Informations de contact -->
+          <div class="contact-info">
+            <h2>Nos coordonnées</h2>
+            <p>N'hésitez pas à nous contacter par les moyens suivants :</p>
+            
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="method-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                </div>
+                <div class="method-details">
+                  <h3>Email général</h3>
+                  <p>contact@menara-thinktank.org</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="method-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div class="method-details">
+                  <h3>Siège social</h3>
+                  <p>Paris, France<br>Région MENA</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="method-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+                <div class="method-details">
+                  <h3>Rendez-vous</h3>
+                  <p>Sur demande uniquement</p>
+                </div>
+              </div>
             </div>
-            <div class="form-field">
-              <label for="email3">Email</label>
-              <input id="email3" name="email" type="email" required />
+
+            <div class="response-time">
+              <h3>⏱️ Temps de réponse</h3>
+              <p>Nous nous efforçons de répondre dans les <strong>48 heures</strong> suivant la réception de votre message.</p>
             </div>
-            <div class="form-field">
-              <label for="org">Organization</label>
-              <input id="org" name="org" type="text" />
-            </div>
-            <div class="form-field">
-              <label for="topic">Topic</label>
-              <select id="topic" name="topic">
-                <option>Media</option>
-                <option>Partnership</option>
-                <option>Research</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-field form-span">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="6" required></textarea>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Envoyer le message</button>
-            </div>
-          </form>
+          </div>
+          
+          <!-- Formulaire de contact -->
+          <div class="contact-form-wrapper">
+            <form class="contact-form" action="#" method="post" aria-label="Formulaire de contact">
+              <h2>Envoyez-nous un message</h2>
+              
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="firstname">Prénom *</label>
+                  <input type="text" id="firstname" name="firstname" required />
+                </div>
+                <div class="form-field">
+                  <label for="lastname">Nom *</label>
+                  <input type="text" id="lastname" name="lastname" required />
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="email">Email *</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-field">
+                  <label for="organization">Organisation</label>
+                  <input type="text" id="organization" name="organization" />
+                </div>
+              </div>
+              
+              <div class="form-field">
+                <label for="subject">Sujet *</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Sélectionnez un sujet</option>
+                  <option value="collaboration">Proposition de collaboration</option>
+                  <option value="research">Question de recherche</option>
+                  <option value="media">Demande média</option>
+                  <option value="partnership">Partenariat</option>
+                  <option value="event">Invitation événement</option>
+                  <option value="other">Autre</option>
+                </select>
+              </div>
+              
+              <div class="form-field">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Décrivez votre demande en détail..."></textarea>
+              </div>
+              
+              <div class="form-field checkbox-field">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="newsletter" />
+                  <span class="checkmark"></span>
+                  Je souhaite recevoir la newsletter mensuelle de Menara
+                </label>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  <span>Envoyer le message</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+              
+              <p class="form-disclaimer">
+                * Champs obligatoires. Vos données sont traitées conformément à notre politique de confidentialité.
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     </section>
