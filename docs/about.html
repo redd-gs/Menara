@@ -1,132 +1,333 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Us — Menara</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>À propos — Menara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- Polices orientales et modernes pour un style raffiné -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
 </head>
 <body>
-  <header class="site-header">
+  <!-- En-tête -->
+  <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img class="brand-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQGoQza8LQnAAA/company-logo_200_200/company-logo_200_200/0/1735085528263/oryx_think_tank_logo?e=2147483647&v=beta&t=YSQoeV-ypd6nrP51hYhzOGHY265NMai849LVG8IScAo" alt="Menara logo" />
+      <a class="brand" href="index.html" aria-label="Accueil Menara">
+        <img class="brand-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQGoQza8LQnAAA/company-logo_200_200/company-logo_200_200/0/1735085528263/oryx_think_tank_logo?e=2147483647&v=beta&t=YSQoeV-ypd6nrP51hYhzOGHY265NMai849LVG8IScAo" alt="Logo Menara" />
         <span class="brand-text">Menara</span>
       </a>
-      <nav class="main-nav" aria-label="Primary">
+      <nav class="main-nav" role="navigation" aria-label="Navigation principale">
         <ul>
-          <li class="is-active"><a href="about.html">About Us</a></li>
+          <li class="is-active"><a href="about.html">À propos</a></li>
           <li><a href="articles.html">Articles</a></li>
-          <li><a href="news-events.html">News & Events</a></li>
-          <li><a href="contributions.html">External Contributions</a></li>
+          <li><a href="news-events.html">Nouvelles et Événements</a></li>
+          <li><a href="contributions.html">Contributions externes</a></li>
           <li><a href="podcasts.html">Podcasts</a></li>
           <li><a href="follow.html">Nous Suivre</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
       <div class="header-actions">
-        <div class="social-icons">
-          <a href="https://instagram.com/menara_thinktank" target="_blank" aria-label="Instagram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-          </a>
-          <a href="https://twitter.com/menara_think" target="_blank" aria-label="Twitter">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-            </svg>
-          </a>
-        </div>
-        <a class="btn btn-ghost" href="follow.html#inscription">S'abonner</a>
-        <a class="btn btn-primary" href="contact.html">Nous contacter</a>
+        <a class="btn btn-ghost" href="articles.html#inscription">S’abonner</a>
+        <a class="btn btn-primary" href="contact.html">Nous écrire</a>
         <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
-          <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+          <span class="nav-bar"></span>
+          <span class="nav-bar"></span>
+          <span class="nav-bar"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <section class="page-hero">
-    <div class="container">
-      <h1>About Us</h1>
-      <p class="lead">
-        Menara is an independent, non‑partisan think tank focused on geopolitics and economics across Africa and the Middle East.
-      </p>
+  <!-- Hero de page -->
+  <section class="page-hero" role="region" aria-label="Introduction">
+    <div class="container hero-content">
+      <h1>À propos de Menara</h1>
+      <p class="hero-subtitle">Un regard ancré entre rivages et déserts — une pensée claire, indépendante et utile aux politiques publiques en Afrique et au Moyen‑Orient.</p>
+      <div class="quote-highlight">
+        <p>« De la patience naît la clarté. »</p>
+        <span>Notre boussole pour l’analyse et l’action</span>
+      </div>
     </div>
   </section>
 
-  <main class="section">
-    <div class="container">
-      <div class="about-columns">
+  <main>
+    <!-- Qui nous sommes / Approche -->
+    <section class="section">
+      <div class="container about-grid">
         <div>
-          <h2>Mission</h2>
-          <p>We aim to strengthen policy with rigorous analysis and pragmatic proposals, addressing challenges at the intersection of debt, climate, energy and governance.</p>
-          <h2>Approach</h2>
-          <p>Our work programs combine applied research with policy engagement and partnerships with academic institutions and policy labs across the region.</p>
-        </div>
-        <div>
-          <div class="quote-card">
-            <p>“Clarity, evidence and constructive dialogue can illuminate better policy choices.”</p>
-            <span>— Menara</span>
+          <div class="content-block">
+            <h2>Qui nous sommes</h2>
+            <p>Menara est un laboratoire d’idées indépendant et non‑partisan. Nous produisons des analyses rigoureuses et des propositions pragmatiques sur la dette, le climat, l’énergie et la gouvernance, afin d’éclairer des choix publics souvent prises sous incertitude.</p>
+            <p>Notre démarche mêle exigence académique et sens du terrain, avec des partenariats à travers l’Afrique et le Moyen‑Orient.</p>
           </div>
-          <ul class="bullets">
-            <li>Independent and evidence‑based</li>
-            <li>Networked with Global South partners</li>
-            <li>Accessible writing, timely briefs</li>
-          </ul>
+
+          <div class="content-block">
+            <h2>Notre approche</h2>
+            <ul class="approach-list">
+              <li>Recherche appliquée, ouverte et réplicable</li>
+              <li>Comparaisons internationales et retours d’expérience</li>
+              <li>Dialogue confiant avec décideurs, praticiens et société civile</li>
+              <li>Indépendance de jugement et transparence méthodologique</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="mission-card" aria-label="Mission">
+          <div class="mission-icon" aria-hidden="true">🔆</div>
+          <h3>Notre mission</h3>
+          <p>Éclairer l’action publique par la preuve, dans un esprit de mesure et de service.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Domaines d’expertise -->
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Domaines d’expertise</h2>
+          <p>Trois piliers structurent nos travaux.</p>
+        </div>
+        <div class="expertise-grid">
+          <div class="expertise-card">
+            <div class="card-icon" aria-hidden="true">⚖️</div>
+            <h3>Dette & macroéconomie</h3>
+            <p>Architecture de la dette souveraine, espace budgétaire, croissance sous incertitude.</p>
+          </div>
+          <div class="expertise-card">
+            <div class="card-icon" aria-hidden="true">🌿</div>
+            <h3>Climat, énergie & nature</h3>
+            <p>Risques de transition, finance climat, marchés carbone, sécurité énergétique.</p>
+          </div>
+          <div class="expertise-card">
+            <div class="card-icon" aria-hidden="true">🏛️</div>
+            <h3>Gouvernance & institutions</h3>
+            <p>Capacités de l’État, réforme du secteur public, État de droit.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <section class="section">
+    <!-- Notre Équipe -->
+    <section id="equipe" class="section team-section">
+      <div class="container">
         <div class="section-head">
-          <h2>What we do</h2>
-          <p>Applied research and policy proposals, organized around three pillars.</p>
+          <h2>Notre équipe</h2>
+          <p>Dix voix réunies — 4 co‑fondateurs et 6 contributeurs — au service d’une même exigence.</p>
         </div>
-        <div class="grid grid-3">
-          <div class="card">
-            <div class="card-body">
-              <h3>Debt sustainability & restructuring</h3>
-              <p>From architecture gaps to credit ratings and contingent risks.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h3>Access to liquidity & long‑term finance</h3>
-              <p>From SDRs to development finance reform and private capital leverage.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h3>Governance & China as an international financier</h3>
-              <p>State capacity and comparative insights on creditor institutions.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="section alt">
+        <!-- Co‑fondateurs (4) -->
+        <div class="team-category">
+          <h3>Co‑fondateurs</h3>
+          <div class="team-grid">
+            <!-- 1 -->
+            <article class="team-member" aria-label="Co‑fondateur 1">
+              <div class="member-photo placeholder-photo" aria-hidden="true">أ</div>
+              <h4>Dr. [Nom Co‑fondateur 1]</h4>
+              <p class="member-title">Directeur exécutif</p>
+              <p class="member-expertise">Économie politique, dette souveraine, gouvernance.</p>
+              <div class="member-logos" aria-label="Affiliations ou logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
+                <img src="assets/logos/placeholder.svg" alt="Logo 3" />
+              </div>
+            </article>
+            <!-- 2 -->
+            <article class="team-member" aria-label="Co‑fondateur 2">
+              <div class="member-photo placeholder-photo" aria-hidden="true">ب</div>
+              <h4>Pr. [Nom Co‑fondateur 2]</h4>
+              <p class="member-title">Directeur de la recherche</p>
+              <p class="member-expertise">Financement du développement, climat, énergie.</p>
+              <div class="member-logos" aria-label="Affiliations ou logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
+              </div>
+            </article>
+            <!-- 3 -->
+            <article class="team-member" aria-label="Co‑fondateur 3">
+              <div class="member-photo placeholder-photo" aria-hidden="true">ج</div>
+              <h4>[Nom Co‑fondateur 3]</h4>
+              <p class="member-title">Co‑fondateur</p>
+              <p class="member-expertise">Politiques publiques, négociation internationale.</p>
+              <div class="member-logos" aria-label="Affiliations ou logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+              </div>
+            </article>
+            <!-- 4 -->
+            <article class="team-member" aria-label="Co‑fondateur 4">
+              <div class="member-photo placeholder-photo" aria-hidden="true">د</div>
+              <h4>[Nom Co‑fondateur 4]</h4>
+              <p class="member-title">Co‑fondateur</p>
+              <p class="member-expertise">Énergie, marchés et infrastructures.</p>
+              <div class="member-logos" aria-label="Affiliations ou logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Contributeurs (6) -->
+        <div class="team-category">
+          <h3>Contributeurs</h3>
+          <div class="team-grid">
+            <!-- 1 -->
+            <article class="team-member" aria-label="Contributeur 1">
+              <div class="member-photo placeholder-photo" aria-hidden="true">ن</div>
+              <h4>Dr. [Nom Contributeur 1]</h4>
+              <p class="member-title">Chercheur senior</p>
+              <p class="member-expertise">Macroéconomie, politiques monétaires MENA.</p>
+              <div class="member-logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+              </div>
+            </article>
+            <!-- 2 -->
+            <article class="team-member" aria-label="Contributeur 2">
+              <div class="member-photo placeholder-photo" aria-hidden="true">س</div>
+              <h4>[Nom Contributeur 2]</h4>
+              <p class="member-title">Analyste politique</p>
+              <p class="member-expertise">Institutions financières, risque pays.</p>
+              <div class="member-logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
+              </div>
+            </article>
+            <!-- 3 -->
+            <article class="team-member" aria-label="Contributeur 3">
+              <div class="member-photo placeholder-photo" aria-hidden="true">ط</div>
+              <h4>[Nom Contributeur 3]</h4>
+              <p class="member-title">Chercheur associé</p>
+              <p class="member-expertise">Transition énergétique, développement durable.</p>
+              <div class="member-logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+              </div>
+            </article>
+            <!-- 4 -->
+            <article class="team-member" aria-label="Contributeur 4">
+              <div class="member-photo placeholder-photo" aria-hidden="true">ر</div>
+              <h4>[Nom Contributeur 4]</h4>
+              <p class="member-title">Data analyst</p>
+              <p class="member-expertise">Données ouvertes, visualisation, reproductibilité.</p>
+              <div class="member-logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+              </div>
+            </article>
+            <!-- 5 -->
+            <article class="team-member" aria-label="Contributeur 5">
+              <div class="member-photo placeholder-photo" aria-hidden="true">ز</div>
+              <h4>[Nom Contributeur 5]</h4>
+              <p class="member-title">Coordination de programme</p>
+              <p class="member-expertise">Partenariats, diffusion, événements.</p>
+              <div class="member-logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
+              </div>
+            </article>
+            <!-- 6 -->
+            <article class="team-member" aria-label="Contributeur 6">
+              <div class="member-photo placeholder-photo" aria-hidden="true">م</div>
+              <h4>[Nom Contributeur 6]</h4>
+              <p class="member-title">Assistant de recherche</p>
+              <p class="member-expertise">Collecte, revue de littérature, appui quantitatif.</p>
+              <div class="member-logos">
+                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partenaires -->
+    <section class="section">
+      <div class="container">
         <div class="section-head">
-          <h2>Partners & Community</h2>
-          <p>We collaborate with universities, think tanks, and policy institutions to scale impact.</p>
+          <h2>Partenaires et collaborations</h2>
+          <p>Universités, think tanks et institutions publiques — pour amplifier l’impact des travaux.</p>
         </div>
-        <div class="logos">
-          <div class="logo-pill">University partners</div>
-          <div class="logo-pill">Policy labs</div>
-          <div class="logo-pill">Research networks</div>
+        <div class="partners-categories">
+          <div class="partner-category">
+            <h3>Académique</h3>
+            <div class="partner-tags">
+              <span class="partner-tag">Universités régionales</span>
+              <span class="partner-tag">Centres de recherche</span>
+              <span class="partner-tag">Programmes doctoraux</span>
+            </div>
+          </div>
+          <div class="partner-category">
+            <h3>Politiques publiques</h3>
+            <div class="partner-tags">
+              <span class="partner-tag">Think tanks internationaux</span>
+              <span class="partner-tag">Laboratoires de politiques</span>
+              <span class="partner-tag">Forums économiques</span>
+            </div>
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="inscription" class="section alt">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-text">
+            <h3>Rester informé</h3>
+            <p>Recevoir nos analyses, événements et briefings.</p>
+          </div>
+          <form class="cta-form" action="#" method="post" aria-label="Formulaire d’abonnement">
+            <label class="sr-only" for="email">Adresse e‑mail</label>
+            <input id="email" name="email" type="email" placeholder="Adresse e‑mail" required />
+            <button class="btn btn-primary" type="submit">S’abonner</button>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-bottom">
-      <div class="footer-bottom-inner">
-        <p>© 2025 Menara. All rights reserved.</p>
+  <!-- Pied de page -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="brand-mini">
+          <img class="brand-logo" src="assets/menara-lighthouse.svg" alt="" />
+          <span class="brand-text">Menara</span>
+        </div>
+        <p class="footer-blurb">Analyses indépendantes sur les enjeux géopolitiques et économiques en Afrique et au Moyen‑Orient.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explorer</h4>
+        <ul>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Programmes</h4>
+        <ul>
+          <li><a href="articles.html#macro">Dette & macro</a></li>
+          <li><a href="articles.html#climat">Climat & énergie</a></li>
+          <li><a href="articles.html#gouvernance">Gouvernance</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Newsletter</h4>
+        <form action="#" method="post">
+          <label class="sr-only" for="f-email">Email</label>
+          <input id="f-email" type="email" placeholder="Adresse e‑mail" required />
+          <button class="btn btn-outline" type="submit">S’inscrire</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2025 Menara. Tous droits réservés.</p>
         <ul class="legal-links">
-          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Confidentialité</a></li>
           <li><a href="#">Cookies</a></li>
+          <li><a href="#">Mentions légales</a></li>
         </ul>
       </div>
     </div>
@@ -137,12 +338,14 @@
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.main-nav');
     const actions = document.querySelector('.header-actions');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-      actions.classList.toggle('menu-open');
-    });
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+        actions.classList.toggle('menu-open');
+      });
+    }
   </script>
 </body>
 </html>
