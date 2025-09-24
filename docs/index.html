@@ -9,13 +9,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
+  <!-- Favicons -->
+  <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
+  <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
+  <link rel="shortcut icon" href="assets/images/logo-onglet.png" type="image/png" />
+  <meta name="theme-color" content="#0a0a0a" />
 </head>
 <body>
   <!-- En-tête -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil Menara">
-        <img class="brand-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQGoQza8LQnAAA/company-logo_200_200/company-logo_200_200/0/1735085528263/oryx_think_tank_logo?e=2147483647&v=beta&t=YSQoeV-ypd6nrP51hYhzOGHY265NMai849LVG8IScAo" alt="Logo Menara" />
+        <img class="brand-logo" src="assets/images/logo.png" alt="Logo Menara" />
         <span class="brand-text">Menara</span>
       </a>
       <nav class="main-nav" role="navigation" aria-label="Navigation principale">
@@ -41,7 +46,6 @@
     </div>
   </header>
 
-  <!-- Hero phare -->
   <section class="hero hero-lighthouse" role="region" aria-label="Introduction">
     <div class="container hero-inner">
       <div class="hero-content">
@@ -49,7 +53,7 @@
           Analyses indépendantes pour l’Afrique et le Moyen‑Orient
         </h1>
         <p class="hero-subtitle">
-          Menara produit une recherche rigoureuse et utile aux politiques publiques sur la dette, le climat, l’énergie et la gouvernance — pour éclairer les choix complexes.
+          MENARA donne la parole à une nouvelle génération pour analyser, avec rigueur et liberté, les défis de l’Afrique et du Moyen-Orient.
         </p>
         <div class="hero-ctas">
           <a class="btn btn-primary btn-lg" href="articles.html">Explorer les articles</a>
@@ -89,77 +93,30 @@
     <div class="hero-gradient" aria-hidden="true"></div>
   </section>
 
-  <!-- Domaines -->
   <main>
-    <section id="domaines" class="section">
+  <!-- Domaines -->
+    <section class="section alt">
       <div class="container">
         <div class="section-head">
           <h2>Domaines d’intérêt</h2>
-          <p>Programmes structurés autour du macroéconomique, du climat & de l’énergie, et des institutions — au service du débat public.</p>
+          <p>Les défis de l’Afrique et du Moyen-Orient ne peuvent se comprendre qu’en croisant trois dimensions essentielles</p>
         </div>
-        <div class="grid grid-3">
-          <a class="card focus-card" href="articles.html#macro">
-            <div class="card-body">
-              <h3>Dette & macroéconomie</h3>
-              <p>Architecture de la dette souveraine, espace budgétaire, croissance sous incertitude.</p>
-            </div>
-          </a>
-          <a class="card focus-card" href="articles.html#climat">
-            <div class="card-body">
-              <h3>Climat, énergie & nature</h3>
-              <p>Risques de transition, finance climat, marchés carbone, sécurité énergétique.</p>
-            </div>
-          </a>
-          <a class="card focus-card" href="articles.html#gouvernance">
-            <div class="card-body">
-              <h3>Gouvernance & institutions</h3>
-              <p>Capacités de l’État, réforme du secteur public, État de droit.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Articles en vedette avec carousel -->
-    <section id="articles" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Articles en vedette</h2>
-          <p>Découvrez nos dernières analyses et recherches sur les enjeux du développement dans la région MENA.</p>
-        </div>
-        
-        <!-- Carousel des articles -->
-        <div class="carousel-container">
-          <div class="carousel-wrapper">
-            <div class="carousel-slide">
-              <div class="featured-articles">
-                <div class="articles-grid"></div>
-              </div>
-            </div>
+        <div class="expertise-grid">
+          <div class="expertise-card">
+            <div class="card-icon" aria-hidden="true">⚖️</div>
+            <h3>Macroéconomie et finance</h3>
+            <p>Nous analysons l’architecture de la dette souveraine, les dynamiques de croissance en contexte d’incertitude et le rôle des marchés financiers. L’objectif : comprendre les marges de manœuvre économiques des États et les conditions de leur financement.</p>
           </div>
-          
-          <div class="carousel-controls">
-            <button class="carousel-nav prev" aria-label="Article précédent">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-              </svg>
-            </button>
-            <button class="carousel-nav next" aria-label="Article suivant">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-              </svg>
-            </button>
+          <div class="expertise-card">
+            <div class="card-icon" aria-hidden="true">🌿</div>
+            <h3>Géopolitique et sécurité</h3>
+            <p>Nous étudions les rivalités de puissance, les recompositions régionales et les enjeux de sécurité - qu’ils soient militaires, énergétiques ou liés aux ressources. MENARA cherche à éclairer les interactions entre politiques internes et dynamiques internationales.</p>
           </div>
-          
-          <div class="carousel-indicators">
-            <button class="carousel-indicator active" aria-label="Slide 1"></button>
-            <button class="carousel-indicator" aria-label="Slide 2"></button>
-            <button class="carousel-indicator" aria-label="Slide 3"></button>
+          <div class="expertise-card">
+            <div class="card-icon" aria-hidden="true">🏛️</div>
+            <h3>Gouvernance & institutions</h3>
+            <p>Nous nous intéressons aux capacités de l’État, aux réformes du secteur public et à la consolidation de l’État de droit. Nous explorons aussi le rôle des sociétés civiles et des acteurs non-étatiques dans la production de nouvelles formes de gouvernance.</p>
           </div>
-        </div>
-        
-        <div class="section-cta">
-          <a href="articles.html" class="btn btn-primary">Voir tous les articles</a>
         </div>
       </div>
     </section>
@@ -243,51 +200,16 @@
           <a href="news-events.html" class="btn btn-primary">Voir tous les événements</a>
         </div>
       </div>
-    </section>
-                    <!-- À propos (teaser) -->
-        </div>
-        <div class="section-cta">
-          <a class="btn btn-outline" href="articles.html">Tout voir</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- À propos (teaser) -->
-    <section id="apropos" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>À propos</h2>
-          <p>Menara est un think tank indépendant et non partisan, dédié à une analyse de haute qualité et à un dialogue constructif.</p>
-        </div>
-        <div class="about-grid">
-          <div class="about-panel">
-            <h3>Mission</h3>
-            <p>Produire des idées, rassembler les acteurs et éclairer l’action publique par la preuve.</p>
-          </div>
-          <div class="about-panel">
-            <h3>Démarche</h3>
-            <p>Programmes interdisciplinaires et partenariats à travers l’Afrique et le Moyen‑Orient.</p>
-          </div>
-          <div class="about-panel">
-            <h3>Réseau</h3>
-            <p>Universités, laboratoires et institutions engagées pour des solutions pragmatiques.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+  
     <!-- Newsletter -->
-    <section id="inscription" class="section alt">
+    <section class="section">
       <div class="container">
-        <div class="cta-banner">
-          <div class="cta-text">
-            <h3>Rester informé</h3>
-            <p>Recevoir nos analyses, événements et briefings.</p>
-          </div>
-          <form class="cta-form" action="#" method="post" aria-label="Formulaire d’abonnement">
-            <label class="sr-only" for="email">Adresse e‑mail</label>
-            <input id="email" name="email" type="email" placeholder="Adresse e‑mail" required />
-            <button class="btn btn-primary" type="submit">S’abonner</button>
+        <div class="newsletter-signup">
+          <h2>Restez informé</h2>
+          <p>Abonnez-vous à notre newsletter pour recevoir nos dernières actualités et invitations aux événements.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Votre adresse email" required>
+            <button type="submit" class="btn btn-primary">S'abonner</button>
           </form>
         </div>
       </div>
@@ -299,34 +221,10 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <div class="brand-mini">
-          <img class="brand-logo" src="assets/menara-lighthouse.svg" alt="" />
+          <img class="brand-logo" src="assets/images/logo.png" alt="" />
           <span class="brand-text">Menara</span>
         </div>
         <p class="footer-blurb">Analyses indépendantes sur les enjeux géopolitiques et économiques en Afrique et au Moyen‑Orient.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Explorer</h4>
-        <ul>
-          <li><a href="about.html">À propos</a></li>
-          <li><a href="articles.html">Articles</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Programmes</h4>
-        <ul>
-          <li><a href="articles.html#macro">Dette & macro</a></li>
-          <li><a href="articles.html#climat">Climat & énergie</a></li>
-          <li><a href="articles.html#gouvernance">Gouvernance</a></li>
-        </ul>
-      </div>
-      <div class="footer-newsletter">
-        <h4>Newsletter</h4>
-        <form action="#" method="post">
-          <label class="sr-only" for="f-email">Email</label>
-          <input id="f-email" type="email" placeholder="Adresse e‑mail" required />
-          <button class="btn btn-outline" type="submit">S’inscrire</button>
-        </form>
       </div>
     </div>
     <div class="footer-bottom">

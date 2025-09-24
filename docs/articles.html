@@ -4,23 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Articles — Menara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <!-- Favicons -->
+  <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
+  <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
+  <link rel="shortcut icon" href="assets/images/logo-onglet.png" type="image/png" />
+  <meta name="theme-color" content="#0a0a0a" />
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html">
-        <img class="brand-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQGoQza8LQnAAA/company-logo_200_200/company-logo_200_200/0/1735085528263/oryx_think_tank_logo?e=2147483647&v=beta&t=YSQoeV-ypd6nrP51hYhzOGHY265NMai849LVG8IScAo" alt="Menara logo" />
+        <img class="brand-logo" src="assets/images/logo.png" alt="Menara logo" />
         <span class="brand-text">Menara</span>
       </a>
       <nav class="main-nav" aria-label="Primary">
         <ul>
           <li><a href="about.html">À propos</a></li>
-          <li class="is-active"><a href="articles.html">Articles</a></li>
-          <li><a href="news-events.html">Nouvelles & Événements</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="news-events.html">Nouvelles et Événements</a></li>
           <li><a href="contributions.html">Contributions externes</a></li>
           <li><a href="podcasts.html">Podcasts</a></li>
           <li><a href="follow.html">Nous Suivre</a></li>
@@ -49,48 +56,57 @@
     </div>
   </header>
 
-  <section class="page-hero">
+  <section class="hero-page follow-hero">
     <div class="container">
       <h1>Articles et Publications</h1>
       <p class="lead">Briefings politiques, commentaires et notes de recherche.</p>
-      <div class="filters">
-        <a class="chip is-active" href="#all">Tous</a>
-        <a class="chip" href="#macro" id="macro">Dette et Macro</a>
-        <a class="chip" href="#climate" id="climat">Climat et Énergie</a>
-        <a class="chip" href="#governance" id="gouvernance">Gouvernance</a>
-      </div>
     </div>
   </section>
 
   <main class="section">
     <div class="container">
-      <!-- Carousel des articles -->
-      <div class="carousel-container">
-        <div class="carousel-wrapper">
-          <div class="carousel-slide">
-            <div class="articles-grid grid-3"></div>
+      <!-- Articles détaillés -->
+      <section id="detailles" class="section" aria-label="Articles détaillés">
+        <div class="section-head">
+          <h2>Articles détaillés</h2>
+          <p>Analyses complètes, notes de recherche, commentaires prolongés.</p>
+        </div>
+        <div class="detailed-articles-grid" data-populate="detailed"></div>
+      </section>
+
+      <!-- Carrousels d’articles -->
+      <section id="carrousels" class="section alt" aria-label="Carrousels d’articles">
+        <div class="section-head">
+          <h2>Carrousels</h2>
+          <p>Sélections visuelles et brèves en rotation.</p>
+        </div>
+        <div class="carousel-container">
+          <div class="carousel-wrapper">
+            <div class="carousel-slide">
+              <div class="articles-grid grid-3" data-populate="carousel"></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="articles-grid grid-3" data-populate="carousel"></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="articles-grid grid-3" data-populate="carousel"></div>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-nav prev" aria-label="Articles précédents">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </button>
+            <button class="carousel-nav next" aria-label="Articles suivants">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </button>
+          </div>
+          <div class="carousel-indicators">
+            <button class="carousel-indicator active" aria-label="Slide 1"></button>
+            <button class="carousel-indicator" aria-label="Slide 2"></button>
+            <button class="carousel-indicator" aria-label="Slide 3"></button>
           </div>
         </div>
-        
-        <div class="carousel-controls">
-          <button class="carousel-nav prev" aria-label="Articles précédents">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-            </svg>
-          </button>
-          <button class="carousel-nav next" aria-label="Articles suivants">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-            </svg>
-          </button>
-        </div>
-        
-        <div class="carousel-indicators">
-          <button class="carousel-indicator active" aria-label="Slide 1"></button>
-          <button class="carousel-indicator" aria-label="Slide 2"></button>
-          <button class="carousel-indicator" aria-label="Slide 3"></button>
-        </div>
-      </div>
+      </section>
     </div>
   </main>
 
@@ -106,6 +122,7 @@
     </div>
   </footer>
 
+  <script src="js/articles-data.js"></script>
   <script src="js/carousel.js"></script>
   <script>
     const toggle = document.querySelector('.nav-toggle');

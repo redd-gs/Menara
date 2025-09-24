@@ -197,6 +197,7 @@ body{
   flex-wrap: nowrap;
   white-space: nowrap;
 }
+.main-nav li{position:relative}
 .main-nav a{
   color: var(--text-secondary); 
   text-decoration:none; 
@@ -386,6 +387,40 @@ body{
   .main-nav ul{flex-direction:column; padding:20px}
   .main-nav a{padding:12px 16px}
 }
+
+/* Dropdown sous "Articles" */
+.has-dropdown > a{display:inline-flex; align-items:center; gap:6px}
+.has-dropdown .dropdown{
+  position:absolute; top:100%; left:0;
+  background: var(--white);
+  border:1px solid var(--sand-200);
+  box-shadow: var(--shadow-lg);
+  border-radius: 10px;
+  padding:8px;
+  display:none; min-width: 220px;
+  z-index: 200;
+}
+.has-dropdown:hover .dropdown{display:block}
+.dropdown a{
+  display:block; padding:10px 12px; margin:2px 0; border-radius:8px;
+  color: var(--text-primary);
+}
+.dropdown a:hover{background: var(--sand-100)}
+
+/* Articles détaillés grid */
+.detailed-articles-grid{
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+}
+.article-card{cursor:pointer}
+.article-card a{color:inherit; text-decoration:none}
+.article-card-image{position:relative; height: 180px; overflow:hidden; border-radius: 12px}
+.article-card-image img{width:100%; height:100%; object-fit:cover; transition: transform .3s ease}
+.article-card:hover .article-card-image img{transform: scale(1.04)}
+.article-card-category{position:absolute; top:10px; left:10px; background: var(--accent); color: var(--black); font-weight:600; padding:4px 10px; border-radius:999px; font-size:12px}
+.article-card-content{padding-top:10px}
+.article-card-title{font-family:'Playfair Display', serif; font-size:1.1rem; margin:6px 0 8px}
+.article-card-excerpt{color: var(--text-secondary); font-size:.95rem; margin:0 0 8px}
+.article-card-meta{display:flex; gap:8px; color: var(--text-muted); font-size:.85rem}
 
 /* Nouvelles pages - Styles supplémentaires */
 .events-grid, .news-grid, .contributions-grid {
@@ -2061,6 +2096,29 @@ body{
 /* ========================================
    PLATEFOMES PODCASTS
 ======================================== */
+
+/* ========================================
+   ARTICLE PDF CARD
+======================================== */
+.pdf-card{
+  display:flex; align-items:center; gap:16px;
+  background: var(--white);
+  border:1px solid var(--sand-200);
+  border-radius: var(--radius-lg);
+  padding:16px 20px; margin: 8px 0 20px;
+  box-shadow: var(--shadow-sm);
+}
+.pdf-icon{
+  width:48px; height:48px; border-radius:12px;
+  background: var(--sand-100); color: var(--accent);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; flex-shrink:0;
+}
+.pdf-content h3{margin:0 0 4px; font-family:'Playfair Display', serif; font-size:1.1rem}
+.pdf-content p{margin:0 0 10px; color: var(--text-secondary)}
+.pdf-actions{display:flex; gap:8px; flex-wrap:wrap}
+.pdf-embed{margin:12px 0 20px}
+.pdf-embed iframe{width:100%; height: 700px; border:1px solid var(--sand-200); border-radius: 12px; background: var(--white)}
 
 .platforms {
   text-align: center;

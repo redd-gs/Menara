@@ -246,22 +246,24 @@ class ScrollAnimations {
 // Générateur de contenu dynamique
 class ContentGenerator {
   static createArticleCard(article) {
-    const imageUrl = ImageGenerator.getArticleImage(article.category, article.title);
-    
+    const imageUrl = article.cover || ImageGenerator.getArticleImage(article.category, article.title);
+    const href = article.slug ? `article.html?slug=${encodeURIComponent(article.slug)}` : '#';
     return `
       <article class="article-card animate-slide-up" data-category="${article.category}">
-        <div class="article-card-image">
-          <img src="${imageUrl}" alt="${article.title}" loading="lazy">
-          <div class="article-card-category">${article.categoryLabel}</div>
-        </div>
-        <div class="article-card-content">
-          <h3 class="article-card-title">${article.title}</h3>
-          <p class="article-card-excerpt">${article.excerpt}</p>
-          <div class="article-card-meta">
-            <span class="article-card-date">${article.date}</span>
-            <span class="article-card-author">${article.author}</span>
+        <a href="${href}" aria-label="Lire: ${article.title}">
+          <div class="article-card-image">
+            <img src="${imageUrl}" alt="${article.title}" loading="lazy">
+            <div class="article-card-category">${article.categoryLabel}</div>
           </div>
-        </div>
+          <div class="article-card-content">
+            <h3 class="article-card-title">${article.title}</h3>
+            <p class="article-card-excerpt">${article.excerpt}</p>
+            <div class="article-card-meta">
+              <span class="article-card-date">${article.date}</span>
+              <span class="article-card-author">${article.author}</span>
+            </div>
+          </div>
+        </a>
       </article>
     `;
   }
@@ -472,12 +474,19 @@ function generateDynamicContent() {
   
   // Page des articles
   if (currentPage === 'articles.html') {
-    const articlesContainer = document.querySelector('.articles-grid');
-    if (articlesContainer) {
-      articlesContainer.innerHTML = sampleData.articles.map(article => 
-        ContentGenerator.createArticleCard(article)
-      ).join('');
-    }
+    // Prefer external data if provided
+    const data = (window.MENARA_ARTICLES || sampleData.articles).map(a => ({
+      ...a,
+      // Normalize fields for existing card component
+      categoryLabel: a.categoryLabel || a.category,
+      excerpt: a.excerpt || '',
+      author: a.author || '',
+      date: a.date || ''
+    }));
+
+    // Populate any legacy grid if present
+    const legacy = document.querySelector('.articles-grid:not([data-populate])');
+    if (legacy) legacy.innerHTML = data.map(article => ContentGenerator.createArticleCard(article)).join('');
   }
 }
 
