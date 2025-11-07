@@ -30,10 +30,10 @@
               <a href="articles.html#carrousels">Carrousels</a>
             </div>
           </li>
-          <li><a href="news-events.html">Nouvelles et Événements</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="articles.html">Publications</a></li>
+          <li><a href="news-events.html">Événements</a></li>
           <li><a href="contributions.html">Contributions externes</a></li>
-          <li><a href="podcasts.html">Podcasts</a></li>
-          <li><a href="follow.html">Nous Suivre</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -48,16 +48,16 @@
   </header>
 
   <main>
-    <section class="hero-page" id="article-hero">
+    <section class="hero-page" id="article-hero" style="padding-bottom: 20px;">
       <div class="container hero-content">
-        <h1 id="article-title">Titre de l’article</h1>
+        <h1 id="article-title" style="font-size: 2rem;">Titre de l'article</h1>
         <p id="article-meta" class="hero-subtitle">Auteur — Date — Catégorie</p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="padding-top: 0;">
       <div class="container">
-        <figure id="article-cover" style="margin:0 0 24px 0; text-align:center"></figure>
+        <figure id="article-cover" style="margin:0 0 0 0; text-align:center"></figure>
         <div id="article-pdf"></div>
         <article id="article-body" class="content-block"></article>
       </div>
@@ -68,10 +68,6 @@
     <div class="container footer-bottom">
       <div class="footer-bottom-inner">
         <p>© 2025 Menara. Tous droits réservés.</p>
-        <ul class="legal-links">
-          <li><a href="#">Confidentialité</a></li>
-          <li><a href="#">Cookies</a></li>
-        </ul>
       </div>
     </div>
   </footer>
@@ -88,44 +84,66 @@
       if (!art) return;
       document.title = art.title + ' — Menara';
       document.getElementById('article-title').textContent = art.title;
-      const meta = [art.author, art.date, (art.categoryLabel||art.category)].filter(Boolean).join(' — ');
+      const meta = [art.author, art.date].filter(Boolean).join(' — ');
       document.getElementById('article-meta').textContent = meta;
 
       const cover = document.getElementById('article-cover');
       if (art.cover){
-        cover.innerHTML = `<img src="${art.cover}" alt="${art.title}" style="max-width:100%; border-radius:12px; box-shadow: var(--shadow-lg);"/>`;
+        cover.innerHTML = `<img src="${art.cover}" alt="${art.title}" style="max-width:100%; border-radius:0; box-shadow: var(--shadow-lg);"/>`;
       }
 
-      // PDF card (download + view)
+      // PDF card (download only)
       const pdfMount = document.getElementById('article-pdf');
       if (art.pdf){
         const fileName = art.pdf.split('/').pop();
         pdfMount.innerHTML = `
           <div class="pdf-card">
-            <div class="pdf-icon" aria-hidden="true">📄</div>
             <div class="pdf-content">
-              <h3>Version complète (PDF)</h3>
-              <p>Téléchargez ou visualisez l’article intégral.</p>
+              <h3>Version complète</h3>
               <div class="pdf-actions">
-                <a class="btn btn-primary" href="${art.pdf}" target="_blank" rel="noopener">Ouvrir le PDF</a>
-                <a class="btn btn-ghost" href="${art.pdf}" download>Télécharger (${fileName})</a>
+                <a class="btn btn-primary" href="${art.pdf}" download>Télécharger l'article</a>
               </div>
             </div>
-          </div>
-          <div class="pdf-embed">
-            <iframe src="${art.pdf}" title="${art.title} — PDF" aria-label="Visionneuse PDF"></iframe>
           </div>`;
       }
 
-      // Load body from partial file docs/articles/<slug>.html
+            // Load body from partial file docs/articles/<slug>.html
       fetch(`articles/${art.slug}.html`).then(r=> r.ok ? r.text() : Promise.resolve('<p>Contenu à venir…</p>')).then(html=>{
         document.getElementById('article-body').innerHTML = html;
+        
+        // Add scroll animation
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, observerOptions);
+        
+        // Observe all paragraphs, headings, and sections
+        const elements = document.querySelectorAll('#article-body p, #article-body h2, #article-body h3, #article-body ul, #article-body ol, #article-body li, #article-body .executive-summary, #article-body div, #article-body img');
+        elements.forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+          observer.observe(el);
+        });
       }).catch(()=>{
         document.getElementById('article-body').innerHTML = '<p>Contenu à venir…</p>';
       });
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render); else render();
+  </script>
+</body>
+</html>
+```
   </script>
 </body>
 </html>

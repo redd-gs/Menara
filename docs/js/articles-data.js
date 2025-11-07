@@ -15,7 +15,7 @@ window.MENARA_ARTICLES = [
     category: 'debt',
     categoryLabel: 'Dette',
     author: 'Yasmine Guemmaz',
-    date: 'Avril 2025',
+    date: 'Mars 2025',
     cover: 'assets/articles/too-big-to-fail.jpg',
     pdf: 'assets/pdf/too-big-to-fail.pdf',
     featured: true
@@ -107,7 +107,6 @@ window.MENARA_ARTICLES = [
         <a href="${link}" aria-label="Lire: ${a.title}">
           <div class="article-card-image">
             <img src="${img}" alt="${a.title}" loading="lazy" />
-            <div class="article-card-category">${a.categoryLabel || a.category}</div>
           </div>
           <div class="article-card-content">
             <h3 class="article-card-title">${a.title}</h3>
