@@ -22,8 +22,8 @@ window.MENARA_ARTICLES = [
   },
   {
     id: 2,
-    slug: 'retour-du-protectionnisme',
-    title: 'Retour du protectionnisme : quelles perspectives pour l’Afrique ?',
+    slug: 'protectionnisme-afrique',
+    title: 'Retour du protectionnisme : quelles perspectives pour l\'Afrique ?',
     excerpt: 'Défis des économies africaines.',
     category: 'Economie',
     categoryLabel: 'Economie',
@@ -84,12 +84,12 @@ window.MENARA_ARTICLES = [
   {
     id: 7,
     slug: 'entretien-daher',
-    title: 'Entretien avec Daher : enjeux et perspectives pour l\'Afrique',
+    title: 'La Syrie: sur le chemin de la reconstruction économique, dans l\'impasse de la transition politique',
     excerpt: '',
     category: 'Gouvernance',
     categoryLabel: 'Gouvernance',
     author: 'Vincent Plantevin',
-    date: '12 mai 2025',
+    date: 'Juin 2025',
     cover: 'assets/articles/entretien-daher.png',
     pdf: 'assets/pdf/entretien-daher.pdf'
   }

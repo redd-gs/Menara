@@ -7,8 +7,8 @@
 .carousel-container {
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  border-radius: 0;
+  border: 1px solid #e5e7eb;
   background: var(--background-card);
 }
 
@@ -59,23 +59,19 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(242, 184, 68, 0.9);
+  background: none;
   border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0.5rem;
+  color: #d1d5db;
   transition: all 0.3s ease;
   z-index: 10;
+  border-radius: 0;
 }
 
 .carousel-nav:hover {
-  background: var(--accent);
+  color: #9ca3af;
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 8px 25px rgba(242, 184, 68, 0.4);
 }
 
 .carousel-nav.prev {
@@ -87,9 +83,19 @@
 }
 
 .carousel-nav svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--black);
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease;
+}
+
+.carousel-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: translateY(-50%);
 }
 
 /* Indicateurs du carousel */
@@ -133,9 +139,9 @@
 /* Cartes d'articles dynamiques */
 .article-card {
   background: var(--background-card);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  
   transition: all 0.3s ease;
   position: relative;
   height: 450px;
@@ -143,7 +149,7 @@
 
 .article-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  
 }
 
 .article-card-image {
@@ -170,7 +176,7 @@
   background: var(--accent);
   color: var(--black);
   padding: 6px 12px;
-  border-radius: 20px;
+  border-radius: 0;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -206,7 +212,7 @@
   justify-content: space-between;
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #e5e7eb;
 }
 
 .article-card-date {
@@ -223,10 +229,10 @@
 /* Carousel d'événements */
 .events-carousel .event-card {
   background: var(--background-card);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   padding: 32px;
   margin: 16px;
-  box-shadow: var(--shadow);
+  
   transition: all 0.3s ease;
   min-height: 300px;
   display: flex;
@@ -247,7 +253,7 @@
 
 .events-carousel .event-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  
 }
 
 .event-date-big {
@@ -318,16 +324,16 @@
 
 .podcast-card {
   background: var(--background-card);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  
   transition: all 0.3s ease;
   position: relative;
 }
 
 .podcast-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  
 }
 
 .podcast-artwork {
@@ -438,8 +444,12 @@
 /* Responsive */
 @media (max-width: 768px) {
   .carousel-nav {
-    width: 40px;
-    height: 40px;
+    padding: 0.25rem;
+  }
+  
+  .carousel-nav svg {
+    width: 28px;
+    height: 28px;
   }
   
   .carousel-nav.prev {

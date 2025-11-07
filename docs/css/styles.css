@@ -90,11 +90,9 @@ body{
 .btn-primary{
   background: #FFF9C4;
   color: var(--black); 
-  box-shadow: var(--shadow-sm);
 }
 .btn-primary:hover{
   background: #FFF59D; 
-  box-shadow: var(--shadow);
   transform: translateY(-1px);
 }
 .btn-ghost{
@@ -134,7 +132,7 @@ body{
   background: rgba(255, 255, 255, 0.97); 
   backdrop-filter:blur(12px);
   border-bottom:1px solid var(--gray-200);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* Ombre supprimée */
   transition: all 0.3s ease;
 }
 
@@ -367,15 +365,13 @@ body{
 /* Cards */
 .card{
   background: var(--white); 
-  border:1px solid var(--border); 
+  border: 1px solid #e5e7eb; 
   border-radius:0; 
   padding:24px; 
-  box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
 }
 .card:hover{
-  box-shadow: var(--shadow);
-  border-color: var(--gray-300);
+  border-color: #d1d5db;
 }
 
 /* Navigation mobile */
@@ -399,7 +395,7 @@ body{
   position:absolute; top:100%; left:0;
   background: var(--white);
   border:1px solid var(--sand-200);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid #e5e7eb;
   border-radius: 0;
   padding:8px;
   display:none; min-width: 220px;
@@ -416,7 +412,17 @@ body{
 .detailed-articles-grid{
   display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
 }
-.article-card{cursor:pointer}
+.article-card{
+  cursor:pointer;
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: 0;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+.article-card:hover {
+  border-color: #d1d5db;
+}
 .article-card a{color:inherit; text-decoration:none}
 .article-card-image{position:relative; height: 180px; overflow:hidden; border-radius: 0}
 .article-card-image img{width:100%; height:100%; object-fit:cover; transition: transform .3s ease}
@@ -427,6 +433,11 @@ body{
 .article-card-excerpt{color: var(--text-secondary); font-size:.95rem; margin:0 0 8px}
 .article-card-meta{display:flex; gap:8px; color: var(--text-muted); font-size:.85rem}
 
+/* Notes Focus section spacing */
+#carrousels {
+  margin-top: 40px;
+}
+
 /* Nouvelles pages - Styles supplémentaires */
 .events-grid, .news-grid, .contributions-grid {
   display: grid;
@@ -436,16 +447,14 @@ body{
 
 .event-card, .news-item, .contribution-card {
   background: var(--white);
-  border: 1px solid var(--border);
+  border: 1px solid #e5e7eb;
   border-radius: 0;
   padding: 24px;
-  box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
 }
 
 .event-card:hover, .contribution-card:hover {
-  box-shadow: var(--shadow);
-  border-color: var(--gray-300);
+  border-color: #d1d5db;
 }
 
 .event-date {
@@ -467,7 +476,7 @@ body{
   padding: 40px;
   background: var(--white);
   border-radius: 0;
-  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
 }
 
 .newsletter-form {
@@ -497,16 +506,15 @@ body{
   gap: 16px;
   padding: 24px;
   background: var(--white);
-  border: 1px solid var(--border);
+  border: 1px solid #e5e7eb;
   border-radius: 0;
   text-decoration: none;
   color: var(--text-primary);
-  box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
 }
 
 .social-card:hover {
-  box-shadow: var(--shadow);
+  border-color: #d1d5db;
   transform: translateY(-2px);
 }
 
@@ -530,7 +538,7 @@ body{
   background: var(--white);
   border-radius: 0;
   padding: 40px;
-  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
   margin-bottom: 40px;
 }
 
@@ -564,7 +572,7 @@ body{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
 }
 
 .episodes-list {
@@ -674,7 +682,7 @@ body{
 
 .featured-article-card {
   background: var(--white);
-  border: 1px solid var(--gray-200);
+  border: 1px solid #e5e7eb;
   border-radius: 0;
   padding: 0;
   transition: all 0.3s ease;
@@ -684,9 +692,8 @@ body{
 }
 
 .featured-article-card:hover {
-  box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
-  border-color: var(--gray-300);
+  border-color: #d1d5db;
 }
 
 .article-image-link {
@@ -787,8 +794,8 @@ body{
 
 /* Footer */
 .site-footer {
-  background: var(--gray-900);
-  color: var(--white);
+  background: var(--gray-200);
+  color: var(--gray-800);
   padding: 30px 0 15px;
 }
 
@@ -799,9 +806,16 @@ body{
   margin-bottom: 40px;
 }
 
+.footer-brand .brand-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
 .footer-brand img {
   width: 40px;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .footer-links {
@@ -882,8 +896,7 @@ body{
   background: var(--white);
   border-radius: 0;
   padding: 3rem;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--sand-200);
+  border: 1px solid #e5e7eb;
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
@@ -1115,7 +1128,7 @@ body{
   background: var(--white);
   border-radius: 0;
   padding: 2.5rem;
-  box-shadow: var(--shadow-lg);
+  border: 1px solid #e5e7eb;
   border: 1px solid var(--sand-200);
 }
 
@@ -1328,12 +1341,12 @@ body{
   border-radius: 0;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid #e5e7eb;
 }
 
 .social-platform:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid #e5e7eb;
   border-color: var(--sand-400);
 }
 
@@ -1411,7 +1424,7 @@ body{
   background: var(--white);
   border-radius: 0;
   padding: 3rem;
-  box-shadow: var(--shadow-lg);
+  border: 1px solid #e5e7eb;
   border: 1px solid var(--sand-200);
   max-width: 900px;
   margin: 0 auto;
@@ -1543,7 +1556,7 @@ body{
   padding: 2rem 1rem;
   background: var(--white);
   border-radius: 0;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid #e5e7eb;
   border: 1px solid var(--sand-200);
   transition: transform 0.3s ease;
 }
@@ -1615,16 +1628,14 @@ body{
   background: white;
   border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border: 1px solid var(--sand-200);
+  border: 1px solid #e5e7eb;
   position: relative;
 }
 
 .findevlab-article-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-  border-color: var(--primary-200);
+  border-color: #d1d5db;
 }
 
 .article-image {
@@ -1657,7 +1668,7 @@ body{
   text-transform: uppercase;
   letter-spacing: 0.025em;
   backdrop-filter: blur(8px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  /* Ombre supprimée */
 }
 
 .article-content {
@@ -1738,7 +1749,7 @@ body{
   color: var(--primary-600);
   background: var(--primary-50);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* Ombre supprimée */
 }
 
 .carousel-btn:active {
@@ -1778,14 +1789,85 @@ body{
   transform: scale(1.1);
 }
 
+/* Styles pour les indicateurs de carrousel (Notes Focus) */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.carousel-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  opacity: 0.6;
+}
+
+.carousel-indicator.active {
+  background: #9ca3af;
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+.carousel-indicator:hover {
+  background: #9ca3af;
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* Styles pour les contrôles de navigation du carousel */
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.carousel-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #d1d5db;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.carousel-nav svg {
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease;
+}
+
+.carousel-nav:hover {
+  color: #9ca3af;
+  transform: scale(1.1);
+}
+
+.carousel-nav:active {
+  transform: scale(0.95);
+}
+
+.carousel-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* Styles pour preview d'articles dans hero */
 .hero-articles-preview {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 0;
   padding: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #e5e7eb;
   max-width: 280px;
 }
 
@@ -1896,7 +1978,7 @@ body{
   background: var(--white);
   border-radius: 0;
   border-left: 4px solid var(--accent);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  /* Ombre supprimée */
 }
 
 .quote-highlight p {
@@ -2017,8 +2099,7 @@ body{
   padding: 2.5rem 2rem;
   border-radius: 0;
   text-align: center;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  border: 1px solid var(--sand-200);
+  border: 1px solid #e5e7eb;
 }
 
 .mission-icon {
@@ -2058,13 +2139,12 @@ body{
   background: var(--white);
   padding: 2rem;
   border-radius: 0;
-  border: 1px solid var(--sand-200);
+  border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
 }
 
 .expertise-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
 .card-icon {
@@ -2123,13 +2203,13 @@ body{
   padding: 2rem;
   border-radius: 0;
   text-align: center;
-  border: 1px solid var(--sand-200);
+  border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
 }
 
 .team-member:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
 }
 
 .member-photo {
@@ -2184,11 +2264,11 @@ body{
   border:1px solid var(--sand-200);
   border-radius:0;
   padding:4px;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid #e5e7eb;
 }
 .member-logos img:hover{
   transform: translateY(-1px);
-  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
 }
 
 /* Partners Section */
@@ -2283,7 +2363,7 @@ body{
   border:1px solid var(--sand-200);
   border-radius: 0;
   padding:16px 20px; margin: 8px 0 20px;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid #e5e7eb;
 }
 .pdf-icon{
   width:48px; height:48px; border-radius:0;
@@ -2338,12 +2418,12 @@ body{
   border-radius: 0;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* Ombre supprimée */
 }
 
 .platform-link:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  /* Ombre supprimée */
   border-color: var(--accent-300);
 }
 
