@@ -10,6 +10,271 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/search.css" />
+  <style>
+    /* Styles pour la bande de navigation */
+    .nav-button {
+      background-color: white;
+      color: #0f172a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      color: #0a1328;
+      text-decoration: none;
+    }
+    
+    /* Styles pour les boutons bleus - harmonisés avec le header */
+    .blue-button-1, .blue-button-2, .blue-button-3 {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 1.1rem !important;
+      font-weight: 500 !important;
+      padding: 1rem 1.5rem !important;
+      border-radius: 8px !important;
+      min-height: 48px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: all 0.3s ease !important;
+      text-decoration: none !important;
+      margin-top: 1.5rem;
+    }
+    
+    .blue-button-1 {
+      background: rgba(254, 243, 199, 0.9) !important;
+      color: #000000 !important;
+      border: 1px solid rgba(254, 243, 199, 0.9) !important;
+    }
+    
+    .blue-button-1:hover {
+      background: rgba(254, 243, 199, 1) !important;
+      color: #000000 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.4) !important;
+      text-decoration: none !important;
+    }
+    
+    .blue-button-2 {
+      background: rgba(254, 243, 199, 0.9) !important;
+      color: #000000 !important;
+      border: 1px solid rgba(254, 243, 199, 0.9) !important;
+    }
+    
+    .blue-button-2:hover {
+      background: rgba(254, 243, 199, 1) !important;
+      color: #000000 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.4) !important;
+      text-decoration: none !important;
+    }
+    
+    .blue-button-3 {
+      background: rgba(254, 243, 199, 0.9) !important;
+      color: #000000 !important;
+      border: 1px solid rgba(254, 243, 199, 0.9) !important;
+    }
+    
+    .blue-button-3:hover {
+      background: rgba(254, 243, 199, 1) !important;
+      color: #000000 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.4) !important;
+      text-decoration: none !important;
+    }
+    
+    /* Styles améliorés pour le header et la navigation */
+    .main-nav ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem !important;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .main-nav li {
+      position: relative;
+    }
+    
+    .main-nav a {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #374151;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid transparent;
+      min-height: 48px;
+      justify-content: center;
+    }
+    
+    .main-nav a:hover {
+      background: rgba(254, 243, 199, 0.3);
+      color: #92400e;
+      border-color: rgba(254, 243, 199, 0.5);
+      transform: translateY(-1px);
+    }
+    
+    /* Styles pour le dropdown des articles */
+    .has-dropdown {
+      position: relative;
+    }
+    
+    .has-dropdown > a {
+      display: flex;
+      align-items: center;
+    }
+    
+    .has-dropdown:hover > a svg {
+      transform: rotate(180deg);
+    }
+    
+    .has-dropdown .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(254, 243, 199, 0.9);
+      border: 1px solid rgba(254, 243, 199, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      min-width: 380px;
+      max-width: 450px;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      margin-top: 8px;
+      min-height: 60px;
+    }
+    
+    .has-dropdown:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .dropdown-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #e1e5e9;
+      background: #f8f9fa;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .dropdown-header span {
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .articles-scroll-container {
+      max-height: 300px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #d1d5db #f9fafb;
+    }
+    
+    .articles-scroll-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .articles-scroll-container::-webkit-scrollbar-track {
+      background: #f9fafb;
+    }
+    
+    .articles-scroll-container::-webkit-scrollbar-thumb {
+      background-color: #d1d5db;
+      border-radius: 3px;
+    }
+    
+    .article-dropdown-item {
+      display: block;
+      padding: 0.75rem 1.25rem;
+      text-decoration: none;
+      color: #374151;
+      border-bottom: 1px solid #f3f4f6;
+      transition: background-color 0.2s ease;
+    }
+    
+    .article-dropdown-item:hover {
+      background-color: #f9fafb;
+      color: #0a276a;
+    }
+    
+    .article-dropdown-item:last-child {
+      border-bottom: none;
+    }
+    
+    .article-title {
+      font-weight: 500;
+      font-size: 0.875rem;
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .article-meta {
+      font-size: 0.75rem;
+      color: #6b7280;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .dropdown-footer {
+      padding: 0.75rem 1.25rem;
+      border-top: 1px solid #e1e5e9;
+      background: #f8f9fa;
+      border-radius: 0 0 8px 8px;
+    }
+    
+    .view-all-link {
+      color: #0a276a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.2s ease;
+    }
+    
+    .view-all-link:hover {
+      color: #1e40af;
+    }
+    
+    /* Styles pour le bouton "Nous écrire" dans le header */
+    .header-actions .btn-primary {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 1.1rem !important;
+      font-weight: 500 !important;
+      padding: 1rem 1.5rem !important;
+      border-radius: 8px !important;
+      min-height: 48px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: all 0.3s ease !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(10, 39, 106, 0.3) !important;
+      color: #374151 !important;
+    }
+    
+    .header-actions .btn-primary:hover {
+      background: rgba(254, 243, 199, 0.3) !important;
+      color: #92400e !important;
+      border-color: rgba(254, 243, 199, 0.5) !important;
+      transform: translateY(-1px) !important;
+    }
+  </style>
   <!-- Favicons -->
   <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
   <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
@@ -26,9 +291,22 @@
       <nav class="main-nav" role="navigation" aria-label="Navigation principale">
         <ul>
           <li><a href="about.html">À propos</a></li>
-          <li><a href="articles.html">Publications</a></li>
+          <li class="has-dropdown">
+            <a href="articles.html">
+              Publications
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 0.5rem; transition: transform 0.3s ease;">
+                <path d="M7 10l5 5 5-5z"/>
+              </svg>
+            </a>
+            <div class="dropdown articles-dropdown" role="menu" aria-label="Articles disponibles">
+              <div class="dropdown-content">
+                <p style="color: #92400e; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500; margin: 0; padding: 1.5rem 2rem; text-align: center;">
+                  Liens de publications à venir...
+                </p>
+              </div>
+            </div>
+          </li>
           <li><a href="news-events.html">Événements</a></li>
-          <li><a href="contributions.html">Contributions externes</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -55,193 +333,312 @@
     </div>
   </header>
 
-  <section class="page-hero" role="region" aria-label="Introduction">
-    <div class="container hero-content">
-      <h1>À propos de Menara</h1>
-      <p class="hero-subtitle">Menara incarne une nouvelle génération de regards sur l’Afrique et le Moyen-Orient : indépendants, curieux et déterminés à éclairer le débat public.</p>
-    </div>
-  </section>
-
   <main>
-    <!-- Qui nous sommes / Approche -->
-    <section class="section">
-      <div class="container about-grid">
-        <div>
-          <div class="content-block">
-            <h2>Qui nous sommes</h2>
-            <p>MENARA est un think tank étudiant indépendant et non-partisan, animé par une nouvelle génération de chercheurs et praticiens.
-                Nous produisons des analyses rigoureuses et accessibles sur la dette, l’économie, le climat, l’énergie, la géopolitique et la gouvernance, afin d’éclairer des choix publics souvent pris dans l’incertitude.
-                Nous cherchons à éclairer des choix publics souvent pris dans l’incertitude.</p>
-            <p>Notre démarche conjugue exigence académique, sens du terrain et liberté intellectuelle. Nous travaillons en partenariat avec des enseignants-chercheurs, professionnels du secteur public et privé, experts de terrain et entreprises engagées, afin de croiser les regards et d’ancrer nos travaux dans les réalités concrètes de l’Afrique et du Moyen-Orient.</p>
-          </div>
-
-          <div class="content-block">
-            <h2>Notre approche</h2>
-            <ul class="approach-list">
-              <li>Recherche appliquée, ouverte et réplicable</li>
-              <li>Comparaisons internationales et retours d’expérience</li>
-              <li>Dialogue confiant avec décideurs, praticiens et société civile</li>
-              <li>Indépendance de jugement et transparence méthodologique</li>
-            </ul>
+    <!-- Box "Qu'est-ce que Menara" -->
+    <section class="section" style="background-color: #bcccdf; padding: 0; min-height: fit-content;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 450px; margin-left: 0; position: relative;">
+          <img src="assets/images/Screenshot 2025-11-07 at 18.34.31.png" alt="Screenshot Menara" style="width: 100%; height: auto; display: block; opacity: 0.5; filter: grayscale(100%);" />
+          <div style="position: absolute; top: 40%; left: 0; padding-left: 1rem; transform: translateY(-50%); color: #ffffff; font-weight: 600; font-size: 3rem; text-align: left; z-index: 10; font-family: 'Inter', sans-serif;">
+            Qu'est-ce que Menara
           </div>
         </div>
-
-        <aside class="mission-card" aria-label="Mission">
-          <div class="mission-icon" aria-hidden="true"></div>
-          <h3>Notre mission</h3>
-          <p>Éclairer l'action publique par la preuve, dans un esprit de mesure et de service.</p>
-        </aside>
+        <div style="flex: 1; text-align: left; padding: 2rem 3rem; display: flex; flex-direction: column; justify-content: center;">
+          <p style="color: #fffdfd; font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; font-style: italic; font-family: 'Inter', sans-serif; font-weight: 300;">
+            <em><strong style="font-weight: 500;">Menara</strong> (منارة) : mot arabe qui désigne un phare, qui sert à guider la navigation maritime pendant la nuit.</em>
+          </p>
+          <p style="color: #ffffff; font-size: 1.2rem; line-height: 1.7; margin-bottom: 1.5rem; font-family: 'Inter', sans-serif; font-weight: 300;">
+            <strong style="font-weight: 500;">Fondé en 2025, Menara est un think tank étudiant et non-partisan.</strong> Notre but est de penser les enjeux économiques, financiers et politiques dans les pays émergents, surtout en Afrique et au Moyen-Orient.
+          </p>
+          <p style="color: #ffffff; font-size: 1.2rem; line-height: 1.7; font-family: 'Inter', sans-serif; font-weight: 300;">
+            <strong style="font-weight: 500;">Nous utilisons l'analyse économique pour expliquer les tensions, enjeux et opportunités dans ces régions.</strong>
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Domaines d’expertise -->
-    <section class="section alt">
+    <!-- Bande de navigation -->
+    <section style="background-color: #0a276a; padding: 1.5rem 0;">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 2rem;">
+        <a href="#demarche" class="nav-button">
+          Notre démarche
+        </a>
+        <a href="#formats" class="nav-button">
+          Nos formats
+        </a>
+        <a href="#equipe" class="nav-button">
+          Notre équipe
+        </a>
+        <a href="#communaute" class="nav-button" style="background-color: white; color: #000000; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid white;">
+          Nous rejoindre
+        </a>
+      </div>
+    </section>
+
+    <!-- Qui nous sommes / Approche -->
+          </div>
+    </section>
+
+    <!-- Notre démarche -->
+    <section id="demarche" class="section alt" style="margin-top: 8rem;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;">
+        <h2 style="margin: 0; white-space: nowrap; padding-left: 1rem;">Notre démarche</h2>
+        <div style="flex: 1; height: 1px; background-color: #000000; margin-right: 1rem;"></div>
+      </div>
       <div class="container">
-        <div class="section-head">
-          <h2>Domaines d’intérêt</h2>
-          <p>Les défis de l’Afrique et du Moyen-Orient ne peuvent se comprendre qu’en croisant trois dimensions essentielles</p>
+        
+        <!-- Démarche 1 -->
+        <div style="display: flex; align-items: center; margin-bottom: 3rem; gap: 2rem;">
+          <div style="background-color: #10095c; color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 600; flex-shrink: 0;">
+            1
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 1.8rem; color: #000000; margin-bottom: 0.5rem; font-family: 'Inter', sans-serif; text-transform: uppercase; font-weight: 600;">Éclairer</h3>
+            <p style="color: #333; font-size: 1.1rem; line-height: 1.6; margin: 0; font-family: 'Inter', sans-serif;">Notre objectif est de mettre en lumière les dynamiques, l'actualité et les tensions dans les régions d'Afrique et Moyen-Orient.</p>
+          </div>
         </div>
+        
+        <!-- Démarche 2 -->
+        <div style="display: flex; align-items: center; margin-bottom: 3rem; gap: 2rem;">
+          <div style="background-color: #10095c; color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 600; flex-shrink: 0;">
+            2
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 1.8rem; color: #000000; margin-bottom: 0.5rem; font-family: 'Inter', sans-serif; text-transform: uppercase; font-weight: 600;">Analyser</h3>
+            <p style="color: #333; font-size: 1.1rem; line-height: 1.6; margin: 0; font-family: 'Inter', sans-serif;">Notre méthode est d'utiliser l'analyse économique et financière et les mettre en lien avec les dynamiques culturelles, historiques et géographiques dans ces pays.</p>
+          </div>
+        </div>
+        
+        <!-- Démarche 3 -->
+        <div style="display: flex; align-items: center; margin-bottom: 3rem; gap: 2rem;">
+          <div style="background-color: #10095c; color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 600; flex-shrink: 0;">
+            3
+          </div>
+
+          <div style="flex: 1;">
+            <h3 style="font-size: 1.8rem; color: #000000; margin-bottom: 0.5rem; font-family: 'Inter', sans-serif; text-transform: uppercase; font-weight: 600;">Échanger</h3>
+            <p style="color: #333; font-size: 1.1rem; line-height: 1.6; margin: 0; font-family: 'Inter', sans-serif;">Nous souhaitons rassembler une communauté de personnes intéressées, engagées et curieuses pour échanger, débattre, et s'instruire ensemble.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nos formats -->
+    <section id="formats" class="section" style="margin-top: 6rem; background-color: #374151; padding: 4rem 0;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;">
+        <h2 style="color: white; margin: 0; white-space: nowrap; padding-left: 1rem;">Nos formats</h2>
+        <div style="flex: 1; height: 1px; background-color: #ffffff; margin-right: 1rem;"></div>
+      </div>
+      <div class="container">
         <div class="expertise-grid">
           <div class="expertise-card">
-            <div class="card-icon" aria-hidden="true"></div>
-            <h3>Macroéconomie et finance</h3>
-            <p>Nous analysons l'architecture de la dette souveraine, les dynamiques de croissance en contexte d'incertitude et le rôle des marchés financiers. L'objectif : comprendre les marges de manœuvre économiques des États et les conditions de leur financement.</p>
+            <h3 style="font-size: 1.8rem; text-align: center; color: #000000; margin-bottom: 1.5rem; margin-top: 0;">Articles</h3>
+            <p style="text-align: center;">Nos articles sont des analyses détaillées qui visent à comprendre les fondamentaux et proposer des opportunités et des recommandations</p>
+            <div style="text-align: center;">
+              <a href="articles.html" class="blue-button-1">Voir nos articles</a>
+            </div>
           </div>
           <div class="expertise-card">
-            <div class="card-icon" aria-hidden="true"></div>
-            <h3>Géopolitique et sécurité</h3>
-            <p>Nous étudions les rivalités de puissance, les recompositions régionales et les enjeux de sécurité - qu'ils soient militaires, énergétiques ou liés aux ressources. MENARA cherche à éclairer les interactions entre politiques internes et dynamiques internationales.</p>
+            <h3 style="font-size: 1.8rem; text-align: center; color: #000000; margin-bottom: 1.5rem; margin-top: 0;">Notes focus</h3>
+            <p style="text-align: center;">Des synthèses courtes et réactives pour décrypter l'actualité et les développements récents en Afrique et au Moyen-Orient.</p>
+            <div style="text-align: center;">
+              <a href="articles.html#notes-focus" class="blue-button-2">Voir nos notes focus</a>
+            </div>
+          </div>
+          <div class="expertise-card">
+            <h3 style="font-size: 1.8rem; text-align: center; color: #000000; margin-bottom: 1.5rem; margin-top: 0;">Rencontres</h3>
+            <p style="text-align: center;">Nous organisons des rencontres avec des professionnels, des praticiens, des chercheurs et des penseurs, pour favoriser l'échange et le débat.</p>
+            <div style="text-align: center;">
+              <a href="news-events.html" class="blue-button-3">Voir nos événements</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-
     <!-- Notre Équipe -->
-    <section id="equipe" class="section team-section">
+    <section id="equipe" class="section team-section" style="margin-top: 8rem; background-color: #f8f9fa; padding: 4rem 0;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;">
+        <h2 style="margin: 0; white-space: nowrap; padding-left: 1rem;">Notre équipe</h2>
+        <div style="flex: 1; height: 1px; background-color: #000000; margin-right: 1rem;"></div>
+      </div>
       <div class="container">
-        <div class="section-head">
-          <h2>Notre équipe</h2>
-        </div>
 
-        <!-- Co‑fondateurs (4) -->
-        <div class="team-category">
-          <h3>Co‑fondateurs</h3>
-          <div class="team-grid">
-            <!-- 1 -->
-            <article class="team-member" aria-label="Co‑fondateur 1">
-              <div class="member-photo placeholder-photo" aria-hidden="true">أ</div>
-              <h4>Adnane Belfatmi</h4>
-              <p class="member-title">Co-fondateur</p>
-              <p class="member-expertise">Économie politique, dette souveraine, gouvernance.</p>
-              <div class="member-logos" aria-label="Affiliations ou logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
-                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
-                <img src="assets/logos/placeholder.svg" alt="Logo 3" />
+        <!-- Co‑fondateurs -->
+        <div style="margin-bottom: 4rem;">
+          <h3 style="font-size: 1.5rem; color: #4b5563; margin-bottom: 2rem; font-family: 'Inter', sans-serif; text-transform: uppercase; font-weight: 600;">Co‑fondateurs</h3>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 3rem;">
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Adnane.jpeg" alt="Adnane Belfatmi" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Adnane Belfatmi</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Co-fondateur</p>
+                <a href="https://www.linkedin.com/in/adnane-belfatmi/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
-            <!-- 2 -->
-            <article class="team-member" aria-label="Co‑fondateur 2">
-              <div class="member-photo placeholder-photo" aria-hidden="true">ب</div>
-              <h4>Yasmine Guemmaz</h4>
-              <p class="member-title">Co-fondatrice</p>
-              <p class="member-expertise">Financement du développement, climat, énergie.</p>
-              <div class="member-logos" aria-label="Affiliations ou logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
-                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
+            </div>
+            
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Yasmine.jpeg" alt="Yasmine Guemmaz" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Yasmine Guemmaz</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Co-fondatrice</p>
+                <a href="https://www.linkedin.com/in/yasmine-g-b5b0a5219/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
-            <!-- 3 -->
-            <article class="team-member" aria-label="Co‑fondateur 3">
-              <div class="member-photo placeholder-photo" aria-hidden="true">ج</div>
-              <h4>Vincent Plantevin</h4>
-              <p class="member-title">Co‑fondateur</p>
-              <p class="member-expertise">Politiques publiques, négociation internationale.</p>
-              <div class="member-logos" aria-label="Affiliations ou logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+            </div>
+          </div>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 3rem;">
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Vincent.jpeg" alt="Vincent Plantevin" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Vincent Plantevin</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Co-fondateur</p>
+                <a href="https://www.linkedin.com/in/vincent-plantevin-966ab3196/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
-            <!-- 4 -->
-            <article class="team-member" aria-label="Co‑fondateur 4">
-              <div class="member-photo placeholder-photo" aria-hidden="true">د</div>
-              <h4>Grégoire Descamps</h4>
-              <p class="member-title">Co‑fondateur</p>
-              <p class="member-expertise">Énergie, marchés et infrastructures.</p>
-              <div class="member-logos" aria-label="Affiliations ou logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
-                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
+            </div>
+            
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Grégoire.jpeg" alt="Grégoire Descamps" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Grégoire Descamps</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Co-fondateur</p>
+                <a href="https://www.linkedin.com/in/gregoiredescamps/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
+            </div>
           </div>
         </div>
 
-        <!-- Contributeurs (6) -->
-        <div class="team-category">
-          <h3>Contributeurs</h3>
-          <div class="team-grid">
-            <!-- 1 -->
-            <article class="team-member" aria-label="Contributeur 1">
-              <div class="member-photo placeholder-photo" aria-hidden="true">ن</div>
-              <h4>Raiana Doltabaeva</h4>
-              <p class="member-title">Auteur et membre</p>
-              <p class="member-expertise">Macroéconomie, politiques monétaires MENA.</p>
-              <div class="member-logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+        <!-- Contributeurs -->
+        <div>
+          <h3 style="font-size: 1.5rem; color: #4b5563; margin-bottom: 2rem; font-family: 'Inter', sans-serif; text-transform: uppercase; font-weight: 600;">Contributeurs</h3>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 3rem;">
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Raiana.jpeg" alt="Raiana Doltabaeva" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Raiana Doltabaeva</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Autrice</p>
+                <a href="https://www.linkedin.com/in/raianadoltabaeva-926136203/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
-            <!-- 2 -->
-            <article class="team-member" aria-label="Contributeur 2">
-              <div class="member-photo placeholder-photo" aria-hidden="true">س</div>
-              <h4>Marc-Antoine Estaben</h4>
-              <p class="member-title">Analyste politique</p>
-              <p class="member-expertise">Institutions financières, risque pays.</p>
-              <div class="member-logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
-                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
+            </div>
+            
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Marc-Antoine.jpeg" alt="Marc-Antoine Estaben" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Marc-Antoine Estaben</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
+                <a href="https://www.linkedin.com/in/marc-antoine-estaben-9350b41b4/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
-            <!-- 3 -->
-            <article class="team-member" aria-label="Contributeur 3">
-              <div class="member-photo placeholder-photo" aria-hidden="true">ط</div>
-              <h4>Alexandre Gars</h4>
-              <p class="member-title">Chercheur associé</p>
-              <p class="member-expertise">Transition énergétique, développement durable.</p>
-              <div class="member-logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+            </div>
+          </div>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 3rem;">
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Alexandre.jpeg" alt="Alexandre Gars" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Alexandre Gars</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
+                <a href="https://www.linkedin.com/in/alexandre-gars-76b815151/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
-            <!-- 4 -->
-            <article class="team-member" aria-label="Contributeur 4">
-              <div class="member-photo placeholder-photo" aria-hidden="true">ر</div>
-              <h4>Idris Hamdani</h4>
-              <p class="member-title">Data analyst</p>
-              <p class="member-expertise">Données ouvertes, visualisation, reproductibilité.</p>
-              <div class="member-logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+            </div>
+            
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Idris.jpeg" alt="Idris Hamdani" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Idris Hamdani</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
+                <a href="https://www.linkedin.com/in/idris-hamdani/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
-            <!-- 5 -->
-            <article class="team-member" aria-label="Contributeur 5">
-              <div class="member-photo placeholder-photo" aria-hidden="true">ز</div>
-              <h4>Romain Pretto</h4>
-              <p class="member-title">Coordination de programme</p>
-              <p class="member-expertise">Partenariats, diffusion, événements.</p>
-              <div class="member-logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
-                <img src="assets/logos/placeholder.svg" alt="Logo 2" />
+            </div>
+          </div>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 3rem;">
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Amine.jpeg" alt="Amine Wadhi" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Amine Wadhi</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
+                <a href="https://www.linkedin.com/in/amine-wadih/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
-            <!-- 6 -->
-            <article class="team-member" aria-label="Contributeur 6">
-              <div class="member-photo placeholder-photo" aria-hidden="true">م</div>
-              <h4>Amine Wadih</h4>
-              <p class="member-title">Assistant de recherche</p>
-              <p class="member-expertise">Collecte, revue de littérature, appui quantitatif.</p>
-              <div class="member-logos">
-                <img src="assets/logos/placeholder.svg" alt="Logo 1" />
+            </div>
+            
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img src="assets/images/Romain.jpeg" alt="Romain Pretto" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Romain Pretto</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
+                <a href="https://www.linkedin.com/in/romain-pretto-236163294/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-            </article>
-                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rejoindre la communauté -->
+    <section id="communaute" class="section" style="margin-top: 8rem; padding: 4rem 0;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;">
+        <h2 style="margin: 0; white-space: nowrap; padding-left: 1rem;">Rejoindre la communauté Menara</h2>
+        <div style="flex: 1; height: 1px; background-color: #000000; margin-right: 1rem;"></div>
+      </div>
+      <div class="container">
+        
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+          <!-- Description -->
+          <p style="color: #4b5563; font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem; font-family: 'Inter', sans-serif;">
+            Rejoins notre communauté Menara, un espace d'échange et de débats
+          </p>
+          
+          <!-- QR Code WhatsApp -->
+          <div style="margin-bottom: 2rem; text-align: center;">
+            <img src="assets/images/Screenshot 2025-11-07 at 22.08.05.png" alt="QR Code WhatsApp Menara" style="width: 160px; height: 160px; margin: 0 auto; display: block; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); object-fit: contain; object-position: 60% center; padding: 10px; background-color: white;">
+          </div>
+          
+          <!-- Bouton -->
+          <a href="https://chat.whatsapp.com/HC7aYJUA9w36GMLF4KRjbl" target="_blank" style="display: inline-block; background-color: #0a276a; color: white; padding: 1rem 2rem; font-size: 1.1rem; font-family: 'Inter', sans-serif; font-weight: 600; text-decoration: none; border-radius: 0; transition: background-color 0.3s ease; box-shadow: 0 4px 12px rgba(10, 39, 106, 0.3);">
+            Rejoindre la communauté
+          </a>
         </div>
       </div>
     </section>
@@ -283,6 +680,31 @@
         actions.classList.toggle('menu-open');
       });
     }
+  </script>
+  <script src="js/search.js"></script>
+  <script src="js/articles-data.js"></script>
+  
+  <!-- Script pour charger les articles dans le dropdown -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Charger les articles depuis articles-data.js
+      if (typeof window.MENARA_ARTICLES !== 'undefined') {
+        const articlesContainer = document.getElementById('articlesDropdownList');
+        if (articlesContainer) {
+          // Trier tous les articles par ordre alphabétique du titre
+          const sortedArticles = [...window.MENARA_ARTICLES].sort((a, b) => {
+            return a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' });
+          });
+          
+          articlesContainer.innerHTML = sortedArticles.map(article => `
+            <a href="article.html?slug=${article.slug}" class="article-dropdown-item">
+              <div class="article-title">${article.title}</div>
+              <div class="article-meta">${article.author} • ${article.date}</div>
+            </a>
+          `).join('');
+        }
+      }
+    });
   </script>
 </body>
 </html>

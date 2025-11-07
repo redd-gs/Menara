@@ -26,6 +26,79 @@
     .executive-summary p {
       margin-top: 0.35rem;
     }
+
+    /* Fond uni pour toute la page */
+    body {
+      background: var(--color-bg) !important;
+    }
+    
+    .hero-page,
+    .section,
+    .section.alt {
+      background: var(--color-bg) !important;
+    }
+    
+    /* Styles améliorés pour le header et la navigation */
+    .main-nav ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem !important;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .main-nav li {
+      position: relative;
+    }
+    
+    .main-nav a {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #374151;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid transparent;
+      min-height: 48px;
+      justify-content: center;
+    }
+    
+    .main-nav a:hover {
+      background: rgba(254, 243, 199, 0.3);
+      color: #92400e;
+      border-color: rgba(254, 243, 199, 0.5);
+      transform: translateY(-1px);
+    }
+    
+    /* Styles pour le bouton "Nous écrire" dans le header */
+    .header-actions .btn-primary {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 1.1rem !important;
+      font-weight: 500 !important;
+      padding: 1rem 1.5rem !important;
+      border-radius: 8px !important;
+      min-height: 48px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: all 0.3s ease !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(10, 39, 106, 0.3) !important;
+      color: #374151 !important;
+    }
+    
+    .header-actions .btn-primary:hover {
+      background: rgba(254, 243, 199, 0.3) !important;
+      color: #92400e !important;
+      border-color: rgba(254, 243, 199, 0.5) !important;
+      transform: translateY(-1px) !important;
+    }
   </style>
   <!-- Favicons -->
   <link rel="icon" href="assets/images/logo.png" type="image/png" sizes="any" />
@@ -53,7 +126,6 @@
           <li><a href="about.html">À propos</a></li>
           <li><a href="articles.html">Publications</a></li>
           <li><a href="news-events.html">Événements</a></li>
-          <li><a href="contributions.html">Contributions externes</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>

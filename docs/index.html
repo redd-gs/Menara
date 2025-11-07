@@ -9,6 +9,249 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
+  <link rel="stylesheet" href="css/search.css" />
+  
+  <style>
+    /* Styles améliorés pour le header et la navigation */
+    .main-nav ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem !important;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .main-nav li {
+      position: relative;
+    }
+    
+    .main-nav a {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #374151;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid transparent;
+      min-height: 48px;
+      justify-content: center;
+    }
+    
+    .main-nav a:hover {
+      background: rgba(254, 243, 199, 0.3);
+      color: #92400e;
+      border-color: rgba(254, 243, 199, 0.5);
+      transform: translateY(-1px);
+    }
+    
+    /* Styles pour le dropdown des articles */
+    .has-dropdown {
+      position: relative;
+    }
+    
+    .has-dropdown > a {
+      display: flex;
+      align-items: center;
+    }
+    
+    .has-dropdown:hover > a svg {
+      transform: rotate(180deg);
+    }
+    
+    .has-dropdown .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(254, 243, 199, 0.95);
+      border: 1px solid rgba(254, 243, 199, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      min-width: 300px;
+      max-width: 400px;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      margin-top: 8px;
+    }    .has-dropdown:hover .dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+    }
+    
+    .dropdown-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #e1e5e9;
+      background: #f8f9fa;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .dropdown-header span {
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .articles-scroll-container {
+      max-height: 400px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #d1d5db #f9fafb;
+    }
+    
+    .articles-scroll-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .articles-scroll-container::-webkit-scrollbar-track {
+      background: #f9fafb;
+    }
+    
+    .articles-scroll-container::-webkit-scrollbar-thumb {
+      background-color: #d1d5db;
+      border-radius: 3px;
+    }
+    
+    .article-dropdown-item {
+      display: block;
+      padding: 0.75rem 1.25rem;
+      text-decoration: none;
+      color: #374151;
+      border-bottom: 1px solid #f3f4f6;
+      transition: background-color 0.2s ease;
+    }
+    
+    .article-dropdown-item:hover {
+      background-color: #f9fafb;
+      color: #0a276a;
+    }
+    
+    .article-dropdown-item:last-child {
+      border-bottom: none;
+    }
+    
+    .article-title {
+      font-weight: 500;
+      font-size: 0.875rem;
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .article-meta {
+      font-size: 0.75rem;
+      color: #6b7280;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .dropdown-footer {
+      padding: 0.75rem 1.25rem;
+      border-top: 1px solid #e1e5e9;
+      background: #f8f9fa;
+      border-radius: 0 0 8px 8px;
+    }
+    
+    .view-all-link {
+      color: #0a276a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.2s ease;
+    }
+    
+    .view-all-link:hover {
+      color: #1e40af;
+    }
+    
+    /* Styles pour le bouton "Nous écrire" dans le header */
+    .header-actions .btn-primary {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 1.1rem !important;
+      font-weight: 500 !important;
+      padding: 1rem 1.5rem !important;
+      border-radius: 8px !important;
+      min-height: 48px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: all 0.3s ease !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(10, 39, 106, 0.3) !important;
+      color: #374151 !important;
+    }
+    
+    .header-actions .btn-primary:hover {
+      background: rgba(254, 243, 199, 0.3) !important;
+      color: #92400e !important;
+      border-color: rgba(254, 243, 199, 0.5) !important;
+      transform: translateY(-1px) !important;
+    }
+    
+    /* Styles pour harmoniser tous les boutons de la page avec le header */
+    .btn {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 1.1rem !important;
+      font-weight: 500 !important;
+      padding: 1rem 1.5rem !important;
+      border-radius: 8px !important;
+      min-height: 48px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: all 0.3s ease !important;
+      text-decoration: none !important;
+    }
+    
+    /* Boutons primaires */
+    .btn-primary {
+      background: rgba(254, 243, 199, 0.9) !important;
+      color: #000000 !important;
+      border: 1px solid rgba(254, 243, 199, 0.9) !important;
+    }
+    
+    .btn-primary:hover {
+      background: rgba(254, 243, 199, 1) !important;
+      color: #000000 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.4) !important;
+    }
+    
+    /* Boutons outline */
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: #374151 !important;
+      border: 1px solid rgba(10, 39, 106, 0.3) !important;
+    }
+    
+    .btn-outline:hover {
+      background: rgba(254, 243, 199, 0.3) !important;
+      color: #92400e !important;
+      border-color: rgba(254, 243, 199, 0.5) !important;
+      transform: translateY(-1px) !important;
+    }
+    
+    /* Police Inter pour la section événements */
+    #events {
+      font-family: 'Inter', sans-serif !important;
+    }
+    
+    #events * {
+      font-family: 'Inter', sans-serif !important;
+    }
+    
+    #events h2, #events h3, #events p, #events span, #events div {
+      font-family: 'Inter', sans-serif !important;
+    }
+  </style>
   <!-- Favicons -->
   <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
   <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
@@ -26,9 +269,23 @@
       <nav class="main-nav" role="navigation" aria-label="Navigation principale">
         <ul>
           <li><a href="about.html">À propos</a></li>
-          <li><a href="articles.html">Publications</a></li>
+          <li class="has-dropdown">
+            <a href="articles.html">
+              Publications
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 0.5rem; transition: transform 0.3s ease;">
+                <path d="M7 10l5 5 5-5z"/>
+              </svg>
+            </a>
+            <div class="dropdown articles-dropdown" role="menu" aria-label="Articles disponibles">
+              <div class="dropdown-content">
+                <p style="color: #92400e; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0; padding: 2rem; text-align: center; line-height: 1.6;">
+                  🔗 Bande jaune pâle<br>
+                  <span style="font-size: 0.9rem; font-weight: 500;">Les liens des publications seront ajoutés ici</span>
+                </p>
+              </div>
+            </div>
+          </li>
           <li><a href="news-events.html">Événements</a></li>
-          <li><a href="contributions.html">Contributions externes</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -109,18 +366,17 @@
             </div>
           </article>
         </div>
-        <div class="section-cta" style="margin-bottom: 4rem;">
+        <div class="section-cta" style="margin-bottom: 2rem;">
           <a href="articles.html" class="btn btn-primary">Voir tous les articles</a>
         </div>
       </div>
     </section>
 
     <!-- Événements à venir avec carousel -->
-    <section id="events" class="section">
+    <section id="events" class="section" style="margin-top: 3rem;">
       <div class="container">
         <div class="section-head">
           <h2>Événements à venir</h2>
-          <p>Conférences, webinaires et ateliers pour approfondir nos recherches avec la communauté.</p>
         </div>
         
         <!-- Carousel des événements -->
@@ -190,10 +446,11 @@
           </div>
         </div>
         
-        <div class="section-cta" style="margin-top: -1rem; margin-bottom: 0;">
+        <div class="section-cta" style="margin-top: 2rem; margin-bottom: 0;">
           <a href="news-events.html" class="btn btn-primary">Voir tous les événements</a>
         </div>
       </div>
+    </section>
   </main>
 
   <!-- Pied de page -->
@@ -224,6 +481,26 @@
       toggle.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('open');
       actions.classList.toggle('menu-open');
+    });
+  </script>
+  <script src="js/search.js"></script>
+  <script src="js/articles-data.js"></script>
+  
+  <!-- Script pour le dropdown temporaire -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('✅ Dropdown Publications initialisé - Bande jaune pâle prête');
+      
+      // Log de test pour vérifier que le hover fonctionne
+      const dropdown = document.querySelector('.has-dropdown');
+      if (dropdown) {
+        dropdown.addEventListener('mouseenter', function() {
+          console.log('🔥 Survol Publications - Dropdown affiché');
+        });
+        dropdown.addEventListener('mouseleave', function() {
+          console.log('📤 Fin survol Publications - Dropdown caché');
+        });
+      }
     });
   </script>
 </body>

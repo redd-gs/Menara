@@ -1,0 +1,219 @@
+/* Styles pour l'outil de recherche */
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    color: var(--text-color, #333);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.search-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.search-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-box {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    max-height: 70vh;
+    overflow: hidden;
+    transform: translateY(-20px) scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.search-overlay.active .search-box {
+    transform: translateY(0) scale(1);
+}
+
+.search-input-container {
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 24px 60px 24px 24px;
+    font-size: 18px;
+    font-family: inherit;
+    color: #333;
+    background: transparent;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.search-close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    color: #666;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.search-close:hover {
+    color: #333;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.search-results {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.search-result-item {
+    display: block;
+    padding: 16px 24px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:hover {
+    background-color: #f8f9fa;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.search-result-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.search-result-type {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.search-result-item[data-type="article"] .search-result-type {
+    color: #854d0e;
+}
+
+.search-result-item[data-type="page"] .search-result-type {
+    color: #065f46;
+}
+
+.search-no-results {
+    padding: 48px 24px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-overlay {
+        padding-top: 5vh;
+    }
+    
+    .search-box {
+        width: 95%;
+        margin: 0 auto;
+    }
+    
+    .search-input {
+        padding: 20px 50px 20px 20px;
+        font-size: 16px;
+    }
+    
+    .search-results {
+        max-height: 50vh;
+    }
+    
+    .search-result-item {
+        padding: 12px 20px;
+    }
+}
+
+/* Intégration dans le header */
+.header-actions .search-container {
+    margin-right: 1rem;
+}
+
+/* Animation du focus */
+.search-input:focus {
+    background-color: rgba(134, 77, 14, 0.02);
+}
+
+/* Scrollbar pour les résultats */
+.search-results::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
