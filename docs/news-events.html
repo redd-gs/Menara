@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nouvelles et Événements — Menara</title>
+  <title>Menara — Think tank indépendant</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Polices orientales et modernes pour un style raffiné -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/search.css" />
   
   <style>
@@ -69,24 +68,22 @@
       position: absolute;
       top: 100%;
       left: 0;
-      background: white;
-      border: 1px solid #e1e5e9;
+      background: rgba(254, 243, 199, 0.95);
+      border: 1px solid rgba(254, 243, 199, 0.8);
       border-radius: 8px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      min-width: 380px;
-      max-width: 450px;
+      min-width: 300px;
+      max-width: 400px;
       z-index: 1000;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-10px);
       transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
       margin-top: 8px;
-    }
-    
-    .has-dropdown:hover .dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+    }    .has-dropdown:hover .dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
     }
     
     .dropdown-header {
@@ -198,6 +195,62 @@
       border-color: rgba(254, 243, 199, 0.5) !important;
       transform: translateY(-1px) !important;
     }
+    
+    /* Styles pour harmoniser tous les boutons de la page avec le header */
+    .btn {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 1.1rem !important;
+      font-weight: 500 !important;
+      padding: 1rem 1.5rem !important;
+      border-radius: 8px !important;
+      min-height: 48px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: all 0.3s ease !important;
+      text-decoration: none !important;
+    }
+    
+    /* Boutons primaires */
+    .btn-primary {
+      background: rgba(254, 243, 199, 0.9) !important;
+      color: #000000 !important;
+      border: 1px solid rgba(254, 243, 199, 0.9) !important;
+    }
+    
+    .btn-primary:hover {
+      background: rgba(254, 243, 199, 1) !important;
+      color: #000000 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.4) !important;
+    }
+    
+    /* Boutons outline */
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: #374151 !important;
+      border: 1px solid rgba(10, 39, 106, 0.3) !important;
+    }
+    
+    .btn-outline:hover {
+      background: rgba(254, 243, 199, 0.3) !important;
+      color: #92400e !important;
+      border-color: rgba(254, 243, 199, 0.5) !important;
+      transform: translateY(-1px) !important;
+    }
+    
+    /* Police Inter pour la section événements */
+    #events {
+      font-family: 'Inter', sans-serif !important;
+    }
+    
+    #events * {
+      font-family: 'Inter', sans-serif !important;
+    }
+    
+    #events h2, #events h3, #events p, #events span, #events div {
+      font-family: 'Inter', sans-serif !important;
+    }
   </style>
   <!-- Favicons -->
   <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
@@ -224,16 +277,11 @@
               </svg>
             </a>
             <div class="dropdown articles-dropdown" role="menu" aria-label="Articles disponibles">
-              <div class="dropdown-header">
-                <span>Nos dernières publications</span>
-              </div>
-              <div class="articles-scroll-container">
-                <div class="articles-scroll-list" id="articlesDropdownList">
-                  <!-- Les articles seront chargés ici dynamiquement -->
-                </div>
-              </div>
-              <div class="dropdown-footer">
-                <a href="articles.html" class="view-all-link">Voir toutes les publications →</a>
+              <div class="dropdown-content">
+                <p style="color: #92400e; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0; padding: 2rem; text-align: center; line-height: 1.6;">
+                  🔗 Bande jaune pâle<br>
+                  <span style="font-size: 0.9rem; font-weight: 500;">Les liens des publications seront ajoutés ici</span>
+                </p>
               </div>
             </div>
           </li>
@@ -264,167 +312,194 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero-page follow-hero">
-    <div class="container">
-      <h1>Nouvelles et Événements</h1>
-      <p>Restez informé de nos dernières actualités, conférences et événements à venir.</p>
-    </div>
-  </section>
-
-  <!-- Contenu principal -->
   <main>
-    <!-- Événements à venir -->
-    <section class="section">
+  <!-- Articles à la une -->
+    <section class="section featured-articles-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Publications récentes</h2>
+        </div>
+        <div class="featured-articles-grid">
+          <article class="featured-article-card">
+            <a href="article.html?slug=too-big-to-fail" class="article-image-link">
+              <img src="assets/articles/too-big-to-fail.jpg" alt="L'Egypte, que reste-t-il du too big to fail ?" class="article-image">
+            </a>
+            <div class="article-content">
+              <div class="article-meta-top">
+                <span class="article-date">Mars 2025</span>
+              </div>
+              <h3 class="article-title">
+                <a href="article.html?slug=too-big-to-fail">L'Égypte, que reste-t-il du "too big to fail" ?</a>
+              </h3>
+              <p class="article-author">Yasmine Guemmaz</p>
+              <p class="article-excerpt">Une analyse de la crise égyptienne de 2024 et ses conséquences.</p>
+            </div>
+          </article>
+
+          <article class="featured-article-card">
+            <a href="article.html?slug=reconstruction-syrie" class="article-image-link">
+              <img src="assets/articles/reconstruction-syrie.jpg" alt="La Syrie, sur le chemin de la reconstruction ?" class="article-image">
+            </a>
+            <div class="article-content">
+              <div class="article-meta-top">
+                <span class="article-date">Mai 2025</span>
+              </div>
+              <h3 class="article-title">
+                <a href="article.html?slug=reconstruction-syrie">La Syrie, sur le chemin de la reconstruction ?</a>
+              </h3>
+              <p class="article-author">Grégoire Descamps</p>
+              <p class="article-excerpt">Les enjeux et les défis de la Syrie, après une décennie de guerre.</p>
+            </div>
+          </article>
+
+          <article class="featured-article-card">
+            <a href="article.html?slug=entretien-daher" class="article-image-link">
+              <img src="assets/articles/entretien-daher.png" alt="Entretien avec Daher : enjeux et perspectives pour l'Afrique" class="article-image article-image-adjust">
+            </a>
+            <div class="article-content">
+              <div class="article-meta-top">
+                <span class="article-date">Juin 2025</span>
+              </div>
+              <h3 class="article-title">
+                <a href="article.html?slug=entretien-daher">Entretien avec Joseph Daher - La Syrie : sur le chemin de la reconstruction économique, dans l'impasse de la transition politique.</a>
+              </h3>
+            </div>
+          </article>
+        </div>
+        <div class="section-cta" style="margin-bottom: 2rem;">
+          <a href="articles.html" class="btn btn-primary">Voir tous les articles</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Événements à venir avec carousel -->
+    <section id="events" class="section" style="margin-top: 3rem;">
       <div class="container">
         <div class="section-head">
           <h2>Événements à venir</h2>
-          <p>Découvrez nos prochaines conférences, webinaires et ateliers.</p>
         </div>
         
-        <div class="events-grid">
-          <article class="event-card">
-            <div class="event-date">
-              <span class="day">25</span>
-              <span class="month">Mar</span>
-              <span class="year">2025</span>
-            </div>
-            <div class="event-content">
-              <h3>Conférence sur la Dette Souveraine</h3>
-              <p>Une analyse approfondie des défis de la dette dans la région MENA.</p>
-              <div class="event-meta">
-                <span class="location">Paris</span>
-                <span class="type">Hybride</span>
+        <!-- Carousel des événements -->
+        <div class="carousel-container">
+          <div class="carousel-wrapper">
+            <div class="carousel-slide">
+              <div class="events-grid grid-2">
+                <article class="event-card animate-slide-up">
+                  <div class="event-date-big">
+                    <div class="event-date-circle">
+                      <span class="event-date-day">15</span>
+                      <span class="event-date-month">Avr</span>
+                    </div>
+                    <div>
+                      <h3 class="event-title">Conférence dette souveraine</h3>
+                      <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                        </svg>
+                        Paris, France
+                      </div>
+                    </div>
+                  </div>
+                  <p class="event-description">Trois jours de discussions avec les plus grands experts mondiaux sur les enjeux de la dette.</p>
+                  <a href="news-events.html" class="btn btn-outline">En savoir plus</a>
+                </article>
+                
+                <article class="event-card animate-slide-up">
+                  <div class="event-date-big">
+                    <div class="event-date-circle">
+                      <span class="event-date-day">22</span>
+                      <span class="event-date-month">Avr</span>
+                    </div>
+                    <div>
+                      <h3 class="event-title">Webinaire financement vert</h3>
+                      <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                        </svg>
+                        En ligne
+                      </div>
+                    </div>
+                  </div>
+                  <p class="event-description">Comment mobiliser les capitaux privés pour financer la transition écologique en Afrique.</p>
+                  <a href="news-events.html" class="btn btn-outline">S'inscrire</a>
+                </article>
               </div>
-              <a href="#" class="btn btn-outline">En savoir plus</a>
             </div>
-          </article>
-
-          <article class="event-card">
-            <div class="event-date">
-              <span class="day">15</span>
-              <span class="month">Avr</span>
-              <span class="year">2025</span>
-            </div>
-            <div class="event-content">
-              <h3>Webinaire : Transition Énergétique en Afrique</h3>
-              <p>Stratégies et défis pour une transition énergétique durable.</p>
-              <div class="event-meta">
-                <span class="location">En ligne</span>
-                <span class="type">Webinaire</span>
-              </div>
-              <a href="#" class="btn btn-outline">S'inscrire</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Actualités récentes -->
-    <section class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Actualités récentes</h2>
-          <p>Les dernières nouvelles et annonces de Menara.</p>
+          </div>
+          
+          <div class="carousel-controls">
+            <button class="carousel-nav prev" aria-label="Événement précédent">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </button>
+            <button class="carousel-nav next" aria-label="Événement suivant">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="carousel-indicators">
+            <button class="carousel-indicator active" aria-label="Slide 1"></button>
+            <button class="carousel-indicator" aria-label="Slide 2"></button>
+          </div>
         </div>
         
-        <div class="news-grid">
-          <article class="news-item">
-            <time datetime="2025-03-15">15 mars 2025</time>
-            <h3>Lancement du nouveau programme de recherche sur la gouvernance</h3>
-            <p>Menara annonce le lancement d'un programme de recherche pluriannuel dédié aux questions de gouvernance et de transparence dans la région.</p>
-            <a href="#" class="read-more">Lire la suite</a>
-          </article>
-
-          <article class="news-item">
-            <time datetime="2025-03-10">10 mars 2025</time>
-            <h3>Nouvelle publication : L'impact du changement climatique sur l'économie</h3>
-            <p>Notre dernier rapport examine les répercussions économiques du changement climatique en Afrique du Nord et au Moyen-Orient.</p>
-            <a href="#" class="read-more">Lire la suite</a>
-          </article>
-
-          <article class="news-item">
-            <time datetime="2025-03-05">5 mars 2025</time>
-            <h3>Menara rejoint le consortium international de recherche</h3>
-            <p>Nous sommes fiers d'annoncer notre adhésion au consortium international pour la recherche en développement économique.</p>
-            <a href="#" class="read-more">Lire la suite</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="section">
-      <div class="container">
-        <div class="newsletter-signup">
-          <h2>Restez informé</h2>
-          <p>Abonnez-vous à notre newsletter pour recevoir nos dernières actualités et invitations aux événements.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Votre adresse email" required>
-            <button type="submit" class="btn btn-primary">S'abonner</button>
-          </form>
+        <div class="section-cta" style="margin-top: 2rem; margin-bottom: 0;">
+          <a href="news-events.html" class="btn btn-primary">Voir tous les événements</a>
         </div>
       </div>
     </section>
   </main>
 
   <!-- Pied de page -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <img class="footer-logo" src="https://media.licdn.com/dms/image/v2/D4E0BAQGoQza8LQnAAA/company-logo_200_200/company-logo_200_200/0/1735085528263/oryx_think_tank_logo?e=2147483647&v=beta&t=YSQoeV-ypd6nrP51hYhzOGHY265NMai849LVG8IScAo" alt="Logo Menara" />
-          <p>Think tank indépendant pour l'Afrique et le Moyen‑Orient</p>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="brand-mini">
+          <img class="brand-logo" src="assets/images/logo.png" alt="" />
+          <span class="brand-text">Menara</span>
         </div>
-        <div class="footer-links">
-          <div class="footer-col">
-            <h4>Navigation</h4>
-            <ul>
-              <li><a href="about.html">À propos</a></li>
-              <li><a href="articles.html">Articles</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Ressources</h4>
-            <ul>
-              <li><a href="news-events.html">Nouvelles</a></li>
-              <li><a href="podcasts.html">Podcasts</a></li>
-              <li><a href="contributions.html">Contributions</a></li>
-            </ul>
-          </div>
-        </div>
+        <p class="footer-blurb">Analyses indépendantes sur les enjeux géopolitiques et économiques en Afrique et au Moyen‑Orient.</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Menara. Tous droits réservés.</p>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2025 Menara. Tous droits réservés.</p>
       </div>
     </div>
   </footer>
 
   <script src="js/carousel.js"></script>
-  <script src="main.js"></script>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.main-nav');
+    const actions = document.querySelector('.header-actions');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+      actions.classList.toggle('menu-open');
+    });
+  </script>
   <script src="js/search.js"></script>
   <script src="js/articles-data.js"></script>
   
-  <!-- Script pour charger les articles dans le dropdown -->
+  <!-- Script pour le dropdown temporaire -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Charger les articles depuis articles-data.js
-      if (typeof window.MENARA_ARTICLES !== 'undefined' && window.MENARA_ARTICLES.length > 0) {
-        const articlesContainer = document.getElementById('articlesDropdownList');
-        if (articlesContainer) {
-          // Trier tous les articles par ordre alphabétique du titre
-          const sortedArticles = [...window.MENARA_ARTICLES].sort((a, b) => {
-            return a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' });
-          });
-          
-          articlesContainer.innerHTML = sortedArticles.map(article => `
-            <a href="article.html?slug=${article.slug}" class="article-dropdown-item">
-              <div class="article-title">${article.title}</div>
-              <div class="article-meta">${article.author} • ${article.date}</div>
-            </a>
-          `).join('');
-        }
+      console.log('✅ Dropdown Publications initialisé - Bande jaune pâle prête');
+      
+      // Log de test pour vérifier que le hover fonctionne
+      const dropdown = document.querySelector('.has-dropdown');
+      if (dropdown) {
+        dropdown.addEventListener('mouseenter', function() {
+          console.log('🔥 Survol Publications - Dropdown affiché');
+        });
+        dropdown.addEventListener('mouseleave', function() {
+          console.log('📤 Fin survol Publications - Dropdown caché');
+        });
       }
     });
   </script>

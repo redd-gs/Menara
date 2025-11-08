@@ -2091,6 +2091,37 @@ body{
   color: var(--accent);
   font-weight: bold;
   font-size: 1.25rem;
+
+/* --- Styles pour l'effet de Parallaxe (Section "Qu'est-ce que Menara") --- */
+
+/* Container de la section Parallaxe pour aligner les deux colonnes (image et texte) */
+.parallax-container {
+    display: flex; 
+    align-items: stretch; 
+}
+
+/* Colonne de gauche : l'élément qui porte l'image et l'effet de parallaxe */
+.parallax-image {
+    /* ------------------------------------------------ */
+    /* PROPRIÉTÉS CLÉS DU PARALLAXE */
+    background-attachment: fixed; /* C'est la propriété CRUCIALE pour l'effet */
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    /* ------------------------------------------------ */
+
+    /* CHEMIN CORRIGÉ (depuis docs/css/ vers docs/assets/images/) */
+    background-image: url('../assets/images/PDG.png');
+    
+    /* Définition de la taille de la colonne (450px de large) */
+    flex: 0 0 450px;
+    position: relative;
+    
+    /* Filtre pour l'effet noir et blanc et l'opacité */
+    filter: grayscale(100%) brightness(50%); 
+    
+    /* Hauteur minimale pour que l'image soit visible */
+    min-height: 500px; 
 }
 
 /* Mission Card */

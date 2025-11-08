@@ -274,6 +274,26 @@
       border-color: rgba(254, 243, 199, 0.5) !important;
       transform: translateY(-1px) !important;
     }
+    
+    /* Effet parallaxe pour l'image PDG */
+    .parallax-container {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .parallax-image {
+      position: absolute;
+      top: -20%;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      opacity: 0.5;
+      filter: grayscale(100%);
+      will-change: transform;
+      transition: transform 0.1s ease-out;
+    }
   </style>
   <!-- Favicons -->
   <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
@@ -335,10 +355,10 @@
 
   <main>
     <!-- Box "Qu'est-ce que Menara" -->
-    <section class="section" style="background-color: #bcccdf; padding: 0; min-height: fit-content;">
+  <section class="section" style="background-color: #bcccdf; padding: 0; min-height: fit-content;">
       <div style="display: flex; align-items: stretch;">
-        <div style="flex: 0 0 450px; margin-left: 0; position: relative;">
-          <img src="assets/images/Screenshot 2025-11-07 at 18.34.31.png" alt="Screenshot Menara" style="width: 100%; height: auto; display: block; opacity: 0.5; filter: grayscale(100%);" />
+          <div class="parallax-container" style="flex: 0 0 450px; margin-left: 0; position: relative;" id="parallax-section">
+            <div style="width: 450px; height: 600px; background-image: url('assets/images/PDG.png'); background-attachment: fixed; background-position: left center; background-size: contain; background-repeat: no-repeat; filter: grayscale(100%) brightness(50%); margin-left: 0;"></div>
           <div style="position: absolute; top: 40%; left: 0; padding-left: 1rem; transform: translateY(-50%); color: #ffffff; font-weight: 600; font-size: 3rem; text-align: left; z-index: 10; font-family: 'Inter', sans-serif;">
             Qu'est-ce que Menara
           </div>
@@ -645,6 +665,29 @@
 
 
   </main>
+<script>
+// Effet parallaxe sur l'image PDG.png
+window.addEventListener('scroll', function() {
+  var img = document.getElementById('parallax-img');
+  if (!img) return;
+  var scrolled = window.scrollY;
+  console.log('ScrollY:', scrolled);
+  img.style.border = '4px solid red';
+  img.style.background = '#ffff00';
+  var offset = scrolled * 0.4;
+    var offset = scrolled * -0.2;
+});
+</script>
+<script>
+// Test visuel immédiat pour vérifier l'exécution du JS
+window.addEventListener('scroll', function() {
+  var box = document.getElementById('parallax-img-box');
+  if (!box) return;
+  var scrolled = window.scrollY;
+  var offset = scrolled * 4;
+  box.style.transform = 'translateY(' + offset + 'px)';
+});
+</script>
 
   <!-- Pied de page -->
   <footer class="site-footer" role="contentinfo">
@@ -703,6 +746,49 @@
             </a>
           `).join('');
         }
+      }
+    });
+  </script>
+  
+  <!-- Script pour l'effet parallaxe -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const parallaxImg = document.getElementById('parallax-img');
+      const parallaxSection = document.getElementById('parallax-section');
+      
+      if (parallaxImg && parallaxSection) {
+        function updateParallax() {
+          const rect = parallaxSection.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          // Calculer la position de la section par rapport à la fenêtre
+          const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+          
+          // Limiter la valeur entre 0 et 1
+          const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+          
+          // Appliquer la transformation parallaxe (mouvement plus lent que le scroll)
+          const parallaxOffset = (0.5 - clampedProgress) * 50; // Formule inversée pour changer le sens
+          
+          parallaxImg.style.transform = `translateY(${parallaxOffset}px)`;
+        }
+        
+        // Écouter le scroll avec throttling pour les performances
+        let ticking = false;
+        function onScroll() {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              updateParallax();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }
+        
+        window.addEventListener('scroll', onScroll);
+        
+        // Initialiser l'effet
+        updateParallax();
       }
     });
   </script>
