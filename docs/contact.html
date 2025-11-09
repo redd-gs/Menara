@@ -84,8 +84,9 @@
         <div style="display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;">
           <!-- Formulaire de contact -->
           <div class="contact-form-wrapper" style="flex: 1; max-width: 600px; min-width: 400px;">
-            <form class="contact-form" action="https://formspree.io/f/menara.thinktank@gmail.com" method="POST" aria-label="Formulaire de contact">
+            <form class="contact-form" action="https://formsubmit.co/ajax/menara.thinktank@gmail.com" method="POST" aria-label="Formulaire de contact">
               <h2 style="text-align: center; margin-bottom: 2rem; margin-top: 0; font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 600; color: #374151;">Envoyez-nous un message</h2>
+              <input type="hidden" name="_captcha" value="false" />
               
               <div class="form-row">
                 <div class="form-field">
@@ -151,12 +152,12 @@
           </div>
           
           <!-- Box Rejoindre la communauté -->
-          <div class="contact-community-card" style="flex: 0 1 520px; max-width: 600px; min-width: 340px; align-self: flex-start;">
-            <h2 style="text-align: center; margin-bottom: 1.25rem; margin-top: 0; font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 600; color: #374151;">Rejoindre la communauté Menara</h2>
+          <div class="contact-card">
+            <h2>Rejoindre la communauté Menara</h2>
             
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 1.25rem;">
+            <div class="contact-card-body">
               <!-- Description -->
-              <p style="color: #4b5563; font-size: 1.2rem; line-height: 1.6; margin: 0; font-family: 'Inter', sans-serif; text-align: center;">
+              <p>
                 Rejoins notre communauté Menara, un espace d'échange et de débats
               </p>
               
@@ -166,10 +167,62 @@
               </div>
               
               <!-- Bouton -->
-              <a href="https://chat.whatsapp.com/HC7aYJUA9w36GMLF4KRjbl" target="_blank" style="display: inline-block; background-color: #0a276a; color: white; padding: 1rem 2rem; font-size: 1.1rem; font-family: 'Inter', sans-serif; font-weight: 600; text-decoration: none; border-radius: 0; transition: background-color 0.3s ease; box-shadow: 0 4px 12px rgba(10, 39, 106, 0.3);">
+              <a href="https://chat.whatsapp.com/HC7aYJUA9w36GMLF4KRjbl" target="_blank" class="contact-card-cta">
                 Rejoindre la communauté
               </a>
             </div>
+          </div>
+
+          <!-- Box Rejoindre l'équipe -->
+          <div class="contact-card">
+            <h2>Rejoindre l'équipe</h2>
+            <p>Partagez votre profil pour participer au développement de Menara.</p>
+            <form class="career-form" action="https://formsubmit.co/ajax/menara.thinktank@gmail.com" method="POST" enctype="multipart/form-data" aria-label="Formulaire de candidature">
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_subject" value="Candidature" />
+
+              <div class="form-field">
+                <label for="candidate-name">Nom et prénom *</label>
+                <input type="text" id="candidate-name" name="candidate_name" required />
+              </div>
+
+              <div class="form-field">
+                <label for="candidate-email">Email *</label>
+                <input type="email" id="candidate-email" name="candidate_email" required />
+              </div>
+
+              <div class="form-field">
+                <label for="candidate-role">Domaine ou rôle visé</label>
+                <input type="text" id="candidate-role" name="candidate_role" placeholder="Ex. Analyses géopolitiques, communication..." />
+              </div>
+
+              <div class="form-field">
+                <label for="candidate-message">Message</label>
+                <textarea id="candidate-message" name="message" rows="5" placeholder="Présentez brièvement votre projet au sein de Menara..."></textarea>
+              </div>
+
+              <div class="form-field file-field">
+                <label for="candidate-cv">CV (PDF ou Word) *</label>
+                <input type="file" id="candidate-cv" name="attachments[]" accept=".pdf,.doc,.docx" required />
+              </div>
+
+              <div class="form-field file-field">
+                <label for="candidate-letter">Lettre de motivation (PDF ou Word)</label>
+                <input type="file" id="candidate-letter" name="attachments[]" accept=".pdf,.doc,.docx" />
+              </div>
+
+              <div id="career-form-status" style="display: none; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;"></div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg" id="career-submit-btn">
+                  <span>Envoyer la candidature</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </form>
+            <p class="career-form-note">Nous revenons vers vous rapidement pour échanger autour de votre profil.</p>
           </div>
         </div>
       </div>
@@ -275,53 +328,117 @@
       const form = document.querySelector('.contact-form');
       const statusDiv = document.getElementById('form-status');
       const submitBtn = document.getElementById('submit-btn');
-      
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Désactiver le bouton pendant l'envoi
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Envoi en cours...</span>';
-        
-        try {
-          const formData = new FormData(form);
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'Accept': 'application/json'
+
+      if (form && statusDiv && submitBtn) {
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          // Désactiver le bouton pendant l'envoi
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>Envoi en cours...</span>';
+
+          try {
+            const formData = new FormData(form);
+            const payload = Object.fromEntries(formData.entries());
+            payload._subject = payload.objet || 'Nouveau message Menara';
+            payload.message = `Sujet sélectionné: ${payload.subject || 'Non précisé'}\n\n${payload.message || ''}`;
+
+            const response = await fetch(form.action, {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+              const result = await response.json();
+              if (!result.success) {
+                throw new Error('Réponse inattendue du service d\'envoi');
+              }
+              // Succès
+              statusDiv.style.display = 'block';
+              statusDiv.style.backgroundColor = '#d4edda';
+              statusDiv.style.color = '#155724';
+              statusDiv.style.border = '1px solid #c3e6cb';
+              statusDiv.innerHTML = '✅ Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.';
+              form.reset();
+            } else {
+              throw new Error('Erreur lors de l\'envoi');
             }
-          });
-          
-          if (response.ok) {
-            // Succès
+          } catch (error) {
+            // Erreur
             statusDiv.style.display = 'block';
-            statusDiv.style.backgroundColor = '#d4edda';
-            statusDiv.style.color = '#155724';
-            statusDiv.style.border = '1px solid #c3e6cb';
-            statusDiv.innerHTML = '✅ Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.';
-            form.reset();
-          } else {
-            throw new Error('Erreur lors de l\'envoi');
+            statusDiv.style.backgroundColor = '#f8d7da';
+            statusDiv.style.color = '#721c24';
+            statusDiv.style.border = '1px solid #f5c6cb';
+            statusDiv.innerHTML = '❌ Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter directement.';
+          } finally {
+            // Réactiver le bouton
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `
+              <span>Envoyer le message</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            `;
           }
-        } catch (error) {
-          // Erreur
-          statusDiv.style.display = 'block';
-          statusDiv.style.backgroundColor = '#f8d7da';
-          statusDiv.style.color = '#721c24';
-          statusDiv.style.border = '1px solid #f5c6cb';
-          statusDiv.innerHTML = '❌ Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter directement.';
-        } finally {
-          // Réactiver le bouton
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = `
-            <span>Envoyer le message</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          `;
-        }
-      });
+        });
+      }
+
+      const careerForm = document.querySelector('.career-form');
+      const careerStatusDiv = document.getElementById('career-form-status');
+      const careerSubmitBtn = document.getElementById('career-submit-btn');
+
+      if (careerForm && careerStatusDiv && careerSubmitBtn) {
+        careerForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          careerSubmitBtn.disabled = true;
+          careerSubmitBtn.innerHTML = '<span>Envoi en cours...</span>';
+
+          try {
+            const formData = new FormData(careerForm);
+            formData.set('_subject', 'Candidature');
+
+            const response = await fetch(careerForm.action, {
+              method: 'POST',
+              body: formData
+            });
+
+            if (response.ok) {
+              const result = await response.json();
+              if (!result.success) {
+                throw new Error('Réponse inattendue du service d\'envoi');
+              }
+
+              careerStatusDiv.style.display = 'block';
+              careerStatusDiv.style.backgroundColor = '#d4edda';
+              careerStatusDiv.style.color = '#155724';
+              careerStatusDiv.style.border = '1px solid #c3e6cb';
+              careerStatusDiv.innerHTML = '✅ Merci ! Votre candidature a bien été transmise.';
+              careerForm.reset();
+            } else {
+              throw new Error('Erreur lors de l\'envoi');
+            }
+          } catch (error) {
+            careerStatusDiv.style.display = 'block';
+            careerStatusDiv.style.backgroundColor = '#f8d7da';
+            careerStatusDiv.style.color = '#721c24';
+            careerStatusDiv.style.border = '1px solid #f5c6cb';
+            careerStatusDiv.innerHTML = '❌ Impossible d\'envoyer votre candidature pour le moment. Merci de réessayer ou de nous écrire directement.';
+          } finally {
+            careerSubmitBtn.disabled = false;
+            careerSubmitBtn.innerHTML = `
+              <span>Envoyer la candidature</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            `;
+          }
+        });
+      }
     });
   </script>
 </body>

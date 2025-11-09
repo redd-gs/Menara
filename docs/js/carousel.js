@@ -329,8 +329,8 @@ const sampleData = {
       id: 1,
       title: "L'impact de la dette souveraine sur la croissance économique",
       excerpt: "Une analyse approfondie des mécanismes de transmission entre endettement public et performance économique dans la région MENA.",
-      category: "debt",
-      categoryLabel: "Dette",
+  category: null,
+  categoryLabel: "",
       author: "Dr. Amina Hassan",
       date: "15 mars 2025",
       featured: true

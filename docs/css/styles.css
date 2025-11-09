@@ -378,7 +378,7 @@ body.landing-highlight .blue-box-section {
 
 /* Section hero de la page À propos */
 .about-hero-heading {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-size: clamp(2.5rem, 4vw, 3.4rem);
   color: #0a276a;
   letter-spacing: 0.015em;
@@ -387,7 +387,7 @@ body.landing-highlight .blue-box-section {
 
 
 .about-hero-text {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
   line-height: 1.8;
   color: #0d1b3f;
@@ -1981,7 +1981,7 @@ body.landing-highlight .blue-box-section {
 }
 
 .contact-section {
-  padding: 5rem 0;
+  padding: 3rem 0 5rem;
 }
 
 .contribution-copy {
@@ -2003,13 +2003,83 @@ body.landing-highlight .blue-box-section {
   margin-top: 1.5rem;
 }
 
-.contact-community-card {
+.contact-card {
   display: flex;
   flex-direction: column;
   background-color: #f8f9fa;
   padding: 2.25rem 2rem;
   border-radius: 8px;
   gap: 1rem;
+  flex: 0 1 520px;
+  max-width: 600px;
+  min-width: 340px;
+  align-self: flex-start;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.contact-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.contact-card-cta {
+  display: inline-block;
+  background-color: #0a276a;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(10, 39, 106, 0.3);
+}
+
+.contact-card-cta:hover {
+  background-color: #081d57;
+}
+
+.contact-card h2 {
+  text-align: center;
+  margin: 0 0 1.25rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.contact-card > p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.contact-card > p + p {
+  margin-top: 1rem;
+}
+
+.career-form {
+  margin-top: 1.5rem;
+}
+
+.career-form .form-field {
+  margin-bottom: 1.25rem;
+}
+
+.career-form .file-field input[type="file"] {
+  padding: 0.75rem 0.5rem;
+}
+
+.career-form-note {
+  font-size: 0.95rem;
+  color: #6b7280;
+  text-align: center;
+  margin: 0.75rem 0 0;
 }
 
 .contact-grid {
@@ -2225,6 +2295,10 @@ body.landing-highlight .blue-box-section {
   
   .contact-form-wrapper {
     padding: 2rem 1.5rem;
+  }
+
+  .contact-card {
+    min-width: 100%;
   }
   
   .form-row {
