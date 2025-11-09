@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Articles — Menara</title>
+  <title>Notes Focus — Menara</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -67,24 +67,21 @@
 
   <section class="hero-page follow-hero">
     <div class="container">
-      <h1>Articles et Publications</h1>
+      <h1>Notes Focus</h1>
     </div>
   </section>
 
   <main class="section">
-    <!-- Articles -->
-    <section id="detailles" class="section" aria-label="Articles">
+    <!-- Notes Focus -->
+    <section id="notes-focus-section" class="section" aria-label="Notes Focus">
       <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;">
-        <h2 style="margin: 0; white-space: nowrap; padding-left: 1rem;">Articles</h2>
+        <h2 style="margin: 0; white-space: nowrap; padding-left: 1rem;">Notes Focus</h2>
         <div style="flex: 1; height: 1px; background-color: #000000; margin-right: 1rem;"></div>
       </div>
       <div class="container">
-        <div class="detailed-articles-grid" data-populate="detailed"></div>
+        <div class="notes-focus-grid"></div>
       </div>
     </section>
-
-      
-    </div>
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -104,8 +101,8 @@
     </div>
   </footer>
 
-  <script src="js/articles-data.js"></script>
-  <script src="js/carousel.js"></script>
+  <script src="js/notes-data.js"></script>
+  <script src="js/notes-focus.js"></script>
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.main-nav');
@@ -118,29 +115,5 @@
     });
   </script>
   <script src="js/search.js"></script>
-  <script src="js/articles-data.js"></script>
-  
-  <!-- Script pour charger les articles dans le dropdown -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Charger les articles depuis articles-data.js
-      if (typeof window.MENARA_ARTICLES !== 'undefined') {
-        const articlesContainer = document.getElementById('articlesDropdownList');
-        if (articlesContainer) {
-          // Trier tous les articles par ordre alphabétique du titre
-          const sortedArticles = [...window.MENARA_ARTICLES].sort((a, b) => {
-            return a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' });
-          });
-          
-          articlesContainer.innerHTML = sortedArticles.map(article => `
-            <a href="article.html?slug=${article.slug}" class="article-dropdown-item">
-              <div class="article-title">${article.title}</div>
-              <div class="article-meta">${article.author} • ${article.date}</div>
-            </a>
-          `).join('');
-        }
-      }
-    });
-  </script>
 </body>
 </html>

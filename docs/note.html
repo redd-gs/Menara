@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Menara — Think tank indépendant</title>
+  <title>Note Focus — Menara</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <!-- Polices orientales et modernes pour un style raffiné -->
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/search.css" />
-  
+  <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
+  <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
+  <link rel="shortcut icon" href="assets/images/logo-onglet.png" type="image/png" />
+  <meta name="theme-color" content="#0a0a0a" />
 </head>
-<body>
-  
+<body data-note-detail>
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil Menara">
@@ -62,79 +65,69 @@
     </div>
   </header>
 
-  <main>
-      </main>
+  <main class="note-detail-main">
+    <section class="note-hero">
+      <div class="container note-hero-inner">
+        <div class="note-hero-media">
+          <img class="note-hero-cover" src="" alt="" />
+        </div>
+        <div class="note-hero-content">
+          <span class="note-hero-label">Note Focus</span>
+          <h1 class="note-hero-title"></h1>
+          <p class="note-hero-description"></p>
+          <p class="note-hero-meta"></p>
+          <div class="note-hero-actions">
+            <a class="note-download-link" href="#" target="_blank" rel="noopener" download>Télécharger le PDF</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-     
-  <main>
-
-    <!-- Événements à venir avec carousel -->
-    <section id="events" class="section" style="margin-top: 3rem;">
+    <section class="note-carousel-section">
       <div class="container">
-        <div class="section-head">
-          <h2>Événements à venir</h2>
+        <div class="note-carousel-header">
+          <h2>Parcourir la note</h2>
+          <p>Feuilletez les pages ci-dessous ou téléchargez le document complet.</p>
         </div>
-        
-        <!-- Carousel des événements -->
-        <div class="carousel-container">
-          <div class="carousel-wrapper">
-            <div class="carousel-slide">
-              <div class="events-grid grid-2">
-                <article class="event-card animate-slide-up">
-                  <div style="display: flex; align-items: center; gap: 1.1rem;">
-                    <img src="assets/images/eurazeo.png" alt="Eurazeo" style="width: 120px; height: 120px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff;" />
-                    <div>
-                      <h3 class="event-title" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; color: #0a276a; font-family: 'Inter', Arial, Helvetica, sans-serif;">14 novembre 2025</h3>
-                      <div style="font-size: 1rem; font-weight: 400; color: #222; line-height: 1.5;">Visite d’Eurazeo avec M. Pinelli, Managing Director, Head of Public Affairs Middle East.</div>
-                    </div>
-                  </div>
-                </article>
-                <article class="event-card animate-slide-up">
-                  <div style="display: flex; align-items: center; gap: 1.1rem;">
-                    <img src="assets/images/afd.png" alt="AFD" style="width: 120px; height: 120px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff;" />
-                    <div>
-                      <h3 class="event-title" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; color: #0a276a; font-family: 'Inter', Arial, Helvetica, sans-serif;">26 novembre 2025</h3>
-                      <div style="font-size: 1rem; font-weight: 400; color: #222; line-height: 1.5;">Rencontre avec Thomas Melonio, Chef économiste et Directeur exécutif de l’Innovation, de la stratégie et de la recherche à l’AFD.</div>
-                    </div>
-                  </div>
-                </article>
-                <article class="event-card animate-slide-up">
-                  <div style="display: flex; align-items: center; gap: 1.1rem;">
-                    <img src="assets/images/ardian.png" alt="Ardian" style="width: 120px; height: 120px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff;" />
-                    <div>
-                      <h3 class="event-title" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; color: #0a276a; font-family: 'Inter', Arial, Helvetica, sans-serif;">3 décembre 2025</h3>
-                      <div style="font-size: 1rem; font-weight: 400; color: #222; line-height: 1.5;">Petit déjeuner chez Ardian avec Yacine Zarrouk, Managing Director depuis 2022, en charge des Relations Investisseurs pour le Moyen-Orient et l’Afrique.</div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
+        <div class="note-carousel-shell">
+          <button class="note-carousel-btn note-carousel-prev" type="button" aria-label="Page précédente" disabled>
+            <span aria-hidden="true">&#10094;</span>
+          </button>
+          <div class="note-carousel-track-wrapper">
+            <div class="note-carousel-loader">Chargement du document...</div>
+            <div class="note-carousel-error" hidden></div>
+            <div class="note-carousel-track"></div>
           </div>
-          
-          <div class="carousel-controls">
-            <button class="carousel-nav prev" aria-label="Événement précédent">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-              </svg>
-            </button>
-            <button class="carousel-nav next" aria-label="Événement suivant">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-              </svg>
-            </button>
-          </div>
-          
-          <div class="carousel-indicators">
-            <button class="carousel-indicator active" aria-label="Slide 1"></button>
-            <button class="carousel-indicator" aria-label="Slide 2"></button>
-          </div>
+          <button class="note-carousel-btn note-carousel-next" type="button" aria-label="Page suivante" disabled>
+            <span aria-hidden="true">&#10095;</span>
+          </button>
         </div>
-        
+        <div class="note-carousel-status">Page 0 / 0</div>
+      </div>
+    </section>
+
+    <section class="note-download-section">
+      <div class="container">
+        <div class="note-download-card">
+          <div>
+            <h3>Besoin d'une copie hors ligne&nbsp;?</h3>
+            <p>Téléchargez la note focus pour la consulter ou la partager facilement.</p>
+          </div>
+          <a class="note-download-link note-download-link-secondary" href="#" target="_blank" rel="noopener" download>Télécharger le PDF</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="note-empty-state" hidden>
+      <div class="container">
+        <div class="note-empty-card">
+          <h2>Note introuvable</h2>
+          <p>Nous n'avons pas pu trouver la note demandée. Retournez à la liste des <a href="notes-focus.html">Notes Focus</a>.</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Pied de page -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-grid">
       <div class="footer-brand">
@@ -152,9 +145,22 @@
     </div>
   </footer>
 
-
+  <script src="js/notes-data.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha512-27c8PjCcEyactxVP7VIDwQAwiz4PV5U6H5c+auAMTH0TWByeSIVxWkCM1oybE9Ek9gMTrbrdcNvDEMGsq6Q9gA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/note-detail.js"></script>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.main-nav');
+    const actions = document.querySelector('.header-actions');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+        actions.classList.toggle('menu-open');
+      });
+    }
+  </script>
   <script src="js/search.js"></script>
-  <script src="js/articles-data.js"></script>
-
 </body>
 </html>

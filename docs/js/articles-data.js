@@ -1,11 +1,3 @@
-// Articles data and simple rendering helpers for Menara (no build step)
-// How to add a new article:
-// 1) Drop a cover image into docs/assets/articles/ (PNG/JPG/SVG)
-// 2) Add an entry to window.MENARA_ARTICLES below with id, slug, title, excerpt, category, author, date, cover, pdf
-// 3) Create a content file docs/articles/<slug>.html with the article HTML body (only the inner content, not a full page)
-// 4) (Optional) Drop a PDF into docs/assets/pdf/ and set the pdf path in the article entry
-// The system will link /article.html?slug=<slug> to render the page.
-
 window.MENARA_ARTICLES = [
   {
     id: 1,
@@ -16,8 +8,8 @@ window.MENARA_ARTICLES = [
     categoryLabel: 'Dette',
     author: 'Yasmine Guemmaz',
     date: 'Mars 2025',
-    cover: 'assets/articles/too-big-to-fail.jpg',
-    pdf: 'assets/pdf/too-big-to-fail.pdf',
+    cover: 'assets/articles/images/too-big-to-fail.jpg',
+    pdf: 'assets/articles/pdf/too-big-to-fail.pdf',
     featured: true
   },
   {
@@ -29,8 +21,8 @@ window.MENARA_ARTICLES = [
     categoryLabel: 'Economie',
     author: 'Yasmine Guemmaz',
     date: 'Avril 2025',
-    cover: 'assets/articles/protectionnisme-afrique.jpg',
-    pdf: 'assets/pdf/protectionnisme-afrique.pdf',
+    cover: 'assets/articles/images/protectionnisme-afrique.jpg',
+    pdf: 'assets/articles/pdf/protectionnisme-afrique.pdf',
     featured: true
   },
   {
@@ -41,9 +33,9 @@ window.MENARA_ARTICLES = [
     category: 'governance',
     categoryLabel: 'Gouvernance',
     author: 'Vincent Plantevin',
-    date: '12 mai 2025',
-    cover: 'assets/articles/france-maroc-algérie.jpg',
-    pdf: 'assets/pdf/france-maroc-algérie.pdf'
+    date: 'Mai 2025',
+    cover: 'assets/articles/images/france-maroc-algérie.jpg',
+    pdf: 'assets/articles/pdf/france-maroc-algérie.pdf'
   },
   {
     id: 4,
@@ -53,9 +45,9 @@ window.MENARA_ARTICLES = [
     category: 'Industrie',
     categoryLabel: 'Industrie',
     author: 'Adnane Belfami',
-    date: '2 Juin 2025',
-    cover: 'assets/articles/raffinerie-dangote.jpg',
-    pdf: 'assets/pdf/raffinerie-dangote.pdf'
+    date: 'Juin 2025',
+    cover: 'assets/articles/images/raffinerie-dangote.jpg',
+    pdf: 'assets/articles/pdf/raffinerie-dangote.pdf'
   },
   {
     id: 5,
@@ -65,9 +57,9 @@ window.MENARA_ARTICLES = [
     category: 'Gouvernance',
     categoryLabel: 'Gouvernance',
     author: 'Yasmine Guemmaz et Vincent Plantevin',
-    date: '20 Juin 2025',
-    cover: 'assets/articles/sidi-ould-tah.jpg',
-    pdf: 'assets/pdf/sidi-ould-tah.pdf'
+    date: 'Juin 2025',
+    cover: 'assets/articles/images/sidi-ould-tah.jpg',
+    pdf: 'assets/articles/pdf/sidi-ould-tah.pdf'
   },
   {
     id: 6,
@@ -77,9 +69,9 @@ window.MENARA_ARTICLES = [
     category: 'Gouvernance',
     categoryLabel: 'Gouvernance',
     author: 'Grégoire Descamps',
-    date: '12 mai 2025',
-    cover: 'assets/articles/reconstruction-syrie.jpg',
-    pdf: 'assets/pdf/reconstruction-syrie.pdf'
+    date: 'Mai 2025',
+    cover: 'assets/articles/images/reconstruction-syrie.jpg',
+    pdf: 'assets/articles/pdf/reconstruction-syrie.pdf'
   },
   {
     id: 7,
@@ -90,8 +82,8 @@ window.MENARA_ARTICLES = [
     categoryLabel: 'Gouvernance',
     author: 'Vincent Plantevin',
     date: 'Juin 2025',
-    cover: 'assets/articles/entretien-daher.png',
-    pdf: 'assets/pdf/entretien-daher.pdf'
+    cover: 'assets/articles/images/entretien-daher.png',
+    pdf: 'assets/articles/pdf/entretien-daher.pdf'
   }
 ];
 

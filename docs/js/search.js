@@ -120,6 +120,48 @@ class SiteSearch {
                 url: "article.html?slug=entretien-daher",
                 type: "article",
                 description: "Interview exclusive"
+            },
+            {
+                title: "Note Focus - Crise du carburant au Mali",
+                url: "note.html?slug=crise-carburant-mali",
+                type: "note",
+                description: "Analyse des tensions d'approvisionnement en carburant au Mali"
+            },
+            {
+                title: "Note Focus - Dette publique et défis au Sénégal",
+                url: "note.html?slug=dette-publique-senegal",
+                type: "note",
+                description: "Point sur la dynamique de la dette sénégalaise"
+            },
+            {
+                title: "Note Focus - Frappe israélienne et tensions à Doha",
+                url: "note.html?slug=frappe-israelienne-doha",
+                type: "note",
+                description: "Décryptage des répercussions régionales de la frappe"
+            },
+            {
+                title: "Note Focus - Guerre civile au Soudan",
+                url: "note.html?slug=guerre-civile-soudan",
+                type: "note",
+                description: "État des lieux du conflit soudanais"
+            },
+            {
+                title: "Note Focus - L'AES se retire de la CPI",
+                url: "note.html?slug=aes-retrait-cpi",
+                type: "note",
+                description: "Analyse des motivations du retrait de l'AES"
+            },
+            {
+                title: "Note Focus - Transition politique à Madagascar",
+                url: "note.html?slug=transition-madagascar",
+                type: "note",
+                description: "Enjeux politiques et économiques de la transition"
+            },
+            {
+                title: "Note Focus - Visite inédite du président Ahmed Al-Shara",
+                url: "note.html?slug=visite-ahmed-al-shara",
+                type: "note",
+                description: "Retour sur la visite et ses retombées diplomatiques"
             }
         ];
     }
@@ -221,13 +263,16 @@ class SiteSearch {
             return;
         }
 
-        const resultsHTML = filteredResults.map(item => `
+        const resultsHTML = filteredResults.map(item => {
+            const typeLabel = item.type === 'article' ? 'Article' : item.type === 'note' ? 'Note Focus' : 'Page';
+            return `
             <a href="${item.url}" class="search-result-item" data-type="${item.type}">
                 <div class="search-result-title">${item.title}</div>
                 <div class="search-result-description">${item.description}</div>
-                <div class="search-result-type">${item.type === 'article' ? 'Article' : 'Page'}</div>
+                <div class="search-result-type">${typeLabel}</div>
             </a>
-        `).join('');
+        `;
+        }).join('');
 
         results.innerHTML = resultsHTML;
     }

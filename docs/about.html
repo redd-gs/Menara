@@ -11,290 +11,6 @@
   <link rel="stylesheet" href="css/carousel.css" />
   <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/search.css" />
-  <style>
-    /* Styles pour la bande de navigation */
-    .nav-button {
-      background-color: white;
-      color: #0f172a;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .nav-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      color: #0a1328;
-      text-decoration: none;
-    }
-    
-    /* Styles pour les boutons bleus - harmonisés avec le header */
-    .blue-button-1, .blue-button-2, .blue-button-3 {
-      font-family: 'Inter', sans-serif !important;
-      font-size: 1.1rem !important;
-      font-weight: 500 !important;
-      padding: 1rem 1.5rem !important;
-      border-radius: 8px !important;
-      min-height: 48px !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      transition: all 0.3s ease !important;
-      text-decoration: none !important;
-      margin-top: 1.5rem;
-    }
-    
-    .blue-button-1 {
-      background: rgba(254, 243, 199, 0.9) !important;
-      color: #000000 !important;
-      border: 1px solid rgba(254, 243, 199, 0.9) !important;
-    }
-    
-    .blue-button-1:hover {
-      background: rgba(254, 243, 199, 1) !important;
-      color: #000000 !important;
-      transform: translateY(-1px) !important;
-      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.4) !important;
-      text-decoration: none !important;
-    }
-    
-    .blue-button-2 {
-      background: rgba(254, 243, 199, 0.9) !important;
-      color: #060505 !important;
-      border: 1px solid rgba(254, 243, 199, 0.9) !important;
-    }
-    
-    .blue-button-2:hover {
-      background: rgba(254, 243, 199, 1) !important;
-      color: #000000 !important;
-      transform: translateY(-1px) !important;
-      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.4) !important;
-      text-decoration: none !important;
-    }
-    
-    .blue-button-3 {
-      background: rgba(254, 243, 199, 0.9) !important;
-      color: #000000 !important;
-      border: 1px solid rgba(254, 243, 199, 0.9) !important;
-    }
-    
-    .blue-button-3:hover {
-      background: rgba(254, 243, 199, 1) !important;
-      color: #000000 !important;
-      transform: translateY(-1px) !important;
-      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.4) !important;
-      text-decoration: none !important;
-    }
-    
-    /* Styles améliorés pour le header et la navigation */
-    .main-nav ul {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem !important;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .main-nav li {
-      position: relative;
-    }
-    
-    .main-nav a {
-      display: flex;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #374151;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid transparent;
-      min-height: 48px;
-      justify-content: center;
-    }
-    
-    .main-nav a:hover {
-      background: rgba(254, 243, 199, 0.3);
-      color: #92400e;
-      border-color: rgba(254, 243, 199, 0.5);
-      transform: translateY(-1px);
-    }
-    
-    /* Styles pour le dropdown des articles */
-    .has-dropdown {
-      position: relative;
-    }
-    
-    .has-dropdown > a {
-      display: flex;
-      align-items: center;
-    }
-    
-    .has-dropdown:hover > a svg {
-      transform: rotate(180deg);
-    }
-    
-    .has-dropdown .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: rgba(254, 243, 199, 0.9);
-      border: 1px solid rgba(254, 243, 199, 0.8);
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      min-width: 380px;
-      max-width: 450px;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-      margin-top: 8px;
-      min-height: 60px;
-    }
-    
-    .has-dropdown:hover .dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    
-    .dropdown-header {
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid #e1e5e9;
-      background: #f8f9fa;
-      border-radius: 8px 8px 0 0;
-    }
-    
-    .dropdown-header span {
-      font-weight: 600;
-      color: #374151;
-      font-size: 0.9rem;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .articles-scroll-container {
-      max-height: 300px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #d1d5db #f9fafb;
-    }
-    
-    .articles-scroll-container::-webkit-scrollbar {
-      width: 6px;
-    }
-    
-    .articles-scroll-container::-webkit-scrollbar-track {
-      background: #f9fafb;
-    }
-    
-    .articles-scroll-container::-webkit-scrollbar-thumb {
-      background-color: #d1d5db;
-      border-radius: 3px;
-    }
-    
-    .article-dropdown-item {
-      display: block;
-      padding: 0.75rem 1.25rem;
-      text-decoration: none;
-      color: #374151;
-      border-bottom: 1px solid #f3f4f6;
-      transition: background-color 0.2s ease;
-    }
-    
-    .article-dropdown-item:hover {
-      background-color: #f9fafb;
-      color: #0a276a;
-    }
-    
-    .article-dropdown-item:last-child {
-      border-bottom: none;
-    }
-    
-    .article-title {
-      font-weight: 500;
-      font-size: 0.875rem;
-      line-height: 1.3;
-      margin-bottom: 0.25rem;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .article-meta {
-      font-size: 0.75rem;
-      color: #6b7280;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .dropdown-footer {
-      padding: 0.75rem 1.25rem;
-      border-top: 1px solid #e1e5e9;
-      background: #f8f9fa;
-      border-radius: 0 0 8px 8px;
-    }
-    
-    .view-all-link {
-      color: #0a276a;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.875rem;
-      font-family: 'Inter', sans-serif;
-      transition: color 0.2s ease;
-    }
-    
-    .view-all-link:hover {
-      color: #1e40af;
-    }
-    
-    /* Styles pour le bouton "Nous écrire" dans le header */
-    .header-actions .btn-primary {
-      font-family: 'Inter', sans-serif !important;
-      font-size: 1.1rem !important;
-      font-weight: 500 !important;
-      padding: 1rem 1.5rem !important;
-      border-radius: 8px !important;
-      min-height: 48px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      transition: all 0.3s ease !important;
-      background: rgba(255, 255, 255, 0.1) !important;
-      border: 1px solid rgba(10, 39, 106, 0.3) !important;
-      color: #374151 !important;
-    }
-    
-    .header-actions .btn-primary:hover {
-      background: rgba(254, 243, 199, 0.3) !important;
-      color: #92400e !important;
-      border-color: rgba(254, 243, 199, 0.5) !important;
-      transform: translateY(-1px) !important;
-    }
-    
-    /* Effet parallaxe pour l'image PDG */
-    .parallax-container {
-      position: relative;
-      height: 100%;
-      overflow: hidden;
-    }
-    
-    .parallax-image {
-      position: absolute;
-      top: -20%;
-      left: 0;
-      width: 100%;
-      height: 120%;
-      object-fit: cover;
-      opacity: 0.5;
-      filter: grayscale(100%);
-      will-change: transform;
-      transition: transform 0.1s ease-out;
-    }
-  </style>
   <!-- Favicons -->
   <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
   <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
@@ -318,12 +34,9 @@
                 <path d="M7 10l5 5 5-5z"/>
               </svg>
             </a>
-            <div class="dropdown articles-dropdown" role="menu" aria-label="Articles disponibles">
-              <div class="dropdown-content">
-                <p style="color: #92400e; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500; margin: 0; padding: 1.5rem 2rem; text-align: center;">
-                  Liens de publications à venir...
-                </p>
-              </div>
+            <div class="dropdown publications-dropdown" role="menu" aria-label="Menu Publications">
+              <a href="articles.html" class="publications-dropdown-item">Articles</a>
+              <a href="notes-focus.html" class="publications-dropdown-item">Notes Focus</a>
             </div>
           </li>
           <li><a href="news-events.html">Événements</a></li>
@@ -457,7 +170,7 @@
               <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
                 <p style="text-align: center; margin:0;">Nos articles sont des analyses détaillées qui visent à comprendre les fondamentaux et proposer des opportunités et des recommandations</p>
                 <div style="width:100%; display:flex; justify-content:center; margin-top:2rem;">
-                  <a href="Publications.html" class="blue-btn-dark" style="background:#2563eb;color:#fff;display:inline-block;max-width:260px;padding:1rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:500;min-height:48px;border:none;text-align:center;text-decoration:none;">Voir nos articles</a>
+                  <a href="articles.html" class="blue-btn-dark" style="background:#2563eb;color:#fff;display:inline-block;max-width:260px;padding:1rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:500;min-height:48px;border:none;text-align:center;text-decoration:none;">Voir nos articles</a>
                 </div>
               </div>
               <div style="text-align: center; align-self: flex-end;">
@@ -475,7 +188,7 @@
               <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
                 <p style="text-align: center; margin:0;">Des synthèses courtes et réactives pour décrypter l'actualité et les développements récents en Afrique et au Moyen-Orient.</p>
                 <div style="width:100%; display:flex; justify-content:center; margin-top:2rem;">
-                  <a href="Publications.html" class="blue-btn-medium" style="background:#3b82f6;color:#fff;display:inline-block;max-width:260px;padding:1rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:500;min-height:48px;border:none;text-align:center;text-decoration:none;">Voir nos notes</a>
+                  <a href="notes-focus.html" class="blue-btn-medium" style="background:#3b82f6;color:#fff;display:inline-block;max-width:260px;padding:1rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:500;min-height:48px;border:none;text-align:center;text-decoration:none;">Voir nos notes</a>
                 </div>
               </div>
               <div style="text-align: center; align-self: flex-end;">
@@ -491,7 +204,7 @@
               <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
                 <p style="text-align: center; margin:0;">Nous organisons des rencontres avec des professionnels, des praticiens, des chercheurs et des penseurs, pour favoriser l'échange et le débat.</p>
                 <div style="width:100%; display:flex; justify-content:center; margin-top:2rem;">
-                  <a href="Événements.html" class="blue-btn-light" style="background:#93c5fd;color:#fff;display:inline-block;max-width:260px;padding:1rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:500;min-height:48px;border:none;text-align:center;text-decoration:none;">Voir nos événements</a>
+                  <a href="news-events.html" class="blue-btn-medium" style="background:#93c5fd;color:#fff;display:inline-block;max-width:260px;padding:1rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:500;min-height:48px;border:none;text-align:center;text-decoration:none;">Voir nos événements</a>
                 </div>
               </div>
               <div style="text-align: center; align-self: flex-end;">

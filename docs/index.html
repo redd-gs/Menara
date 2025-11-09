@@ -12,247 +12,6 @@
   <link rel="stylesheet" href="css/search.css" />
   <script src="js/article-scroll.js"></script>
   
-  <style>
-    /* Styles améliorés pour le header et la navigation */
-    .main-nav ul {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem !important;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .main-nav li {
-      position: relative;
-    }
-    
-    .main-nav a {
-      display: flex;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #374151;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid transparent;
-      min-height: 48px;
-      justify-content: center;
-    }
-    
-    .main-nav a:hover {
-      background: rgba(254, 243, 199, 0.3);
-      color: #92400e;
-      border-color: rgba(254, 243, 199, 0.5);
-      transform: translateY(-1px);
-    }
-    
-    /* Styles pour le dropdown des articles */
-    .has-dropdown {
-      position: relative;
-    }
-    
-    .has-dropdown > a {
-      display: flex;
-      align-items: center;
-    }
-    
-    .has-dropdown:hover > a svg {
-      transform: rotate(180deg);
-    }
-    
-    .has-dropdown .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: rgba(254, 243, 199, 0.95);
-      border: 1px solid rgba(254, 243, 199, 1);
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      min-width: 300px;
-      max-width: 400px;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-      margin-top: 8px;
-    }    .has-dropdown:hover .dropdown {
-      opacity: 1 !important;
-      visibility: visible !important;
-      transform: translateY(0) !important;
-    }
-    
-    .dropdown-header {
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid #e1e5e9;
-      background: #f8f9fa;
-      border-radius: 8px 8px 0 0;
-    }
-    
-    .dropdown-header span {
-      font-weight: 600;
-      color: #374151;
-      font-size: 0.9rem;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .articles-scroll-container {
-      max-height: 400px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #d1d5db #f9fafb;
-    }
-    
-    .articles-scroll-container::-webkit-scrollbar {
-      width: 6px;
-    }
-    
-    .articles-scroll-container::-webkit-scrollbar-track {
-      background: #f9fafb;
-    }
-    
-    .articles-scroll-container::-webkit-scrollbar-thumb {
-      background-color: #d1d5db;
-      border-radius: 3px;
-    }
-    
-    .article-dropdown-item {
-      display: block;
-      padding: 0.75rem 1.25rem;
-      text-decoration: none;
-      color: #374151;
-      border-bottom: 1px solid #f3f4f6;
-      transition: background-color 0.2s ease;
-    }
-    
-    .article-dropdown-item:hover {
-      background-color: #f9fafb;
-      color: #0a276a;
-    }
-    
-    .article-dropdown-item:last-child {
-      border-bottom: none;
-    }
-    
-    .article-title {
-      font-weight: 500;
-      font-size: 0.875rem;
-      line-height: 1.3;
-      margin-bottom: 0.25rem;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .article-meta {
-      font-size: 0.75rem;
-      color: #6b7280;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .dropdown-footer {
-      padding: 0.75rem 1.25rem;
-      border-top: 1px solid #e1e5e9;
-      background: #f8f9fa;
-      border-radius: 0 0 8px 8px;
-    }
-    
-    .view-all-link {
-      color: #0a276a;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.875rem;
-      font-family: 'Inter', sans-serif;
-      transition: color 0.2s ease;
-    }
-    
-    .view-all-link:hover {
-      color: #1e40af;
-    }
-    
-    /* Styles pour le bouton "Nous écrire" dans le header */
-    .header-actions .btn-primary {
-      font-family: 'Inter', sans-serif !important;
-      font-size: 1.1rem !important;
-      font-weight: 500 !important;
-      padding: 1rem 1.5rem !important;
-      border-radius: 8px !important;
-      min-height: 48px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      transition: all 0.3s ease !important;
-      background: rgba(255, 255, 255, 0.1) !important;
-      border: 1px solid rgba(10, 39, 106, 0.3) !important;
-      color: #374151 !important;
-    }
-    
-    .header-actions .btn-primary:hover {
-      background: rgba(254, 243, 199, 0.3) !important;
-      color: #92400e !important;
-      border-color: rgba(254, 243, 199, 0.5) !important;
-      transform: translateY(-1px) !important;
-    }
-    
-    /* Styles pour harmoniser tous les boutons de la page avec le header */
-    .btn {
-      font-family: 'Inter', sans-serif !important;
-      font-size: 1.1rem !important;
-      font-weight: 500 !important;
-      padding: 1rem 1.5rem !important;
-      border-radius: 8px !important;
-      min-height: 48px !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      transition: all 0.3s ease !important;
-      text-decoration: none !important;
-    }
-    
-    /* Boutons primaires */
-    .btn-primary {
-      background: rgba(254, 243, 199, 0.9) !important;
-      color: #000000 !important;
-      border: 1px solid rgba(254, 243, 199, 0.9) !important;
-    }
-    
-    .btn-primary:hover {
-      background: rgba(254, 243, 199, 1) !important;
-      color: #000000 !important;
-      transform: translateY(-1px) !important;
-      box-shadow: 0 4px 12px rgba(254, 243, 199, 0.4) !important;
-    }
-    
-    /* Boutons outline */
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.1) !important;
-      color: #374151 !important;
-      border: 1px solid rgba(10, 39, 106, 0.3) !important;
-    }
-    
-    .btn-outline:hover {
-      background: rgba(254, 243, 199, 0.3) !important;
-      color: #92400e !important;
-      border-color: rgba(254, 243, 199, 0.5) !important;
-      transform: translateY(-1px) !important;
-    }
-    
-    /* Police Inter pour la section événements */
-    #events {
-      font-family: 'Inter', sans-serif !important;
-    }
-    
-    #events * {
-      font-family: 'Inter', sans-serif !important;
-    }
-    
-    #events h2, #events h3, #events p, #events span, #events div {
-      font-family: 'Inter', sans-serif !important;
-    }
-  </style>
   <!-- Favicons -->
   <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
   <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
@@ -277,13 +36,9 @@
                 <path d="M7 10l5 5 5-5z"/>
               </svg>
             </a>
-            <div class="dropdown articles-dropdown" role="menu" aria-label="Articles disponibles">
-              <div class="dropdown-content">
-                <p style="color: #92400e; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0; padding: 2rem; text-align: center; line-height: 1.6;">
-                  🔗 Bande jaune pâle<br>
-                  <span style="font-size: 0.9rem; font-weight: 500;">Les liens des publications seront ajoutés ici</span>
-                </p>
-              </div>
+            <div class="dropdown publications-dropdown" role="menu" aria-label="Menu Publications">
+              <a href="articles.html" class="publications-dropdown-item">Articles</a>
+              <a href="notes-focus.html" class="publications-dropdown-item">Notes Focus</a>
             </div>
           </li>
           <li><a href="news-events.html">Événements</a></li>
@@ -334,7 +89,7 @@
           <!-- ...articles... -->
           <article class="featured-article-card" style="background: #fff; color: #0a276a; border-radius: 16px; box-shadow: 0 4px 24px rgba(10,39,106,0.08); position: relative; z-index: 3; left: 0; top: -70px; margin-right: -40px; min-width: 370px; max-width: 370px; min-height: 470px; max-height: 470px;">
             <a href="article.html?slug=reconstruction-syrie" class="article-image-link">
-              <img src="assets/articles/reconstruction-syrie.jpg" alt="La Syrie, sur le chemin de la reconstruction ?" class="article-image">
+              <img src="assets/articles/images/reconstruction-syrie.jpg" alt="La Syrie, sur le chemin de la reconstruction ?" class="article-image">
             </a>
             <div class="article-content">
               <div class="article-meta-top">
@@ -345,10 +100,20 @@
               </h3>
               <p class="article-author" style="font-size: 0.95rem; margin-bottom: 0;">Grégoire Descamps</p>
             </div>
+            <!-- Tooltip -->
+            <div class="article-tooltip" style="top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);">
+              <img src="assets/articles/images/reconstruction-syrie.jpg" alt="La Syrie, sur le chemin de la reconstruction ?" class="article-tooltip-image">
+              <div class="article-tooltip-title">La Syrie, sur le chemin de la reconstruction ?</div>
+              <div class="article-tooltip-excerpt">Analyse des enjeux économiques et politiques de la reconstruction en Syrie après des années de conflit.</div>
+              <div class="article-tooltip-meta">
+                <span class="article-tooltip-author">Grégoire Descamps</span>
+                <span class="article-tooltip-date">Mai 2025</span>
+              </div>
+            </div>
           </article>
           <article class="featured-article-card" style="background: #fff; color: #0a276a; border-radius: 16px; box-shadow: 0 4px 24px rgba(10,39,106,0.08); position: relative; z-index: 2; left: -40px; top: -70px; margin-right: -40px; min-width: 270px; max-width: 270px; min-height: 470px; max-height: 470px;">
             <a href="article.html?slug=too-big-to-fail" class="article-image-link">
-              <img src="assets/articles/too-big-to-fail.jpg" alt="L'Egypte, que reste-t-il du too big to fail ?" class="article-image">
+              <img src="assets/articles/images/too-big-to-fail.jpg" alt="L'Egypte, que reste-t-il du too big to fail ?" class="article-image">
             </a>
             <div class="article-content">
               <div class="article-meta-top">
@@ -359,10 +124,20 @@
               </h3>
               <p class="article-author" style="font-size: 0.95rem; margin-bottom: 0;">Yasmine Guemmaz</p>
             </div>
+            <!-- Tooltip -->
+            <div class="article-tooltip" style="top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);">
+              <img src="assets/articles/images/too-big-to-fail.jpg" alt="L'Egypte, que reste-t-il du too big to fail ?" class="article-tooltip-image">
+              <div class="article-tooltip-title">L'Égypte, que reste-t-il du "too big to fail" ?</div>
+              <div class="article-tooltip-excerpt">Transmission entre endettement public et performance économique dans la région MENA.</div>
+              <div class="article-tooltip-meta">
+                <span class="article-tooltip-author">Yasmine Guemmaz</span>
+                <span class="article-tooltip-date">Mars 2025</span>
+              </div>
+            </div>
           </article>
           <article class="featured-article-card" style="background: #fff; color: #0a276a; border-radius: 16px; box-shadow: 0 4px 24px rgba(10,39,106,0.08); position: relative; z-index: 1; left: -80px; top: -70px; min-width: 270px; max-width: 270px; min-height: 470px; max-height: 470px;">
             <a href="article.html?slug=entretien-daher" class="article-image-link">
-              <img src="assets/articles/entretien-daher.png" alt="Entretien avec Daher : enjeux et perspectives pour l'Afrique" class="article-image article-image-adjust">
+              <img src="assets/articles/images/entretien-daher.png" alt="Entretien avec Daher : enjeux et perspectives pour l'Afrique" class="article-image article-image-adjust">
             </a>
             <div class="article-content">
               <div class="article-meta-top">
@@ -371,6 +146,16 @@
               <h3 class="article-title" style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">
                 <a href="article.html?slug=entretien-daher">Entretien avec Joseph Daher: La reconstruction syrienne</a>
               </h3>
+            </div>
+            <!-- Tooltip -->
+            <div class="article-tooltip" style="top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);">
+              <img src="assets/articles/images/entretien-daher.png" alt="Entretien avec Daher" class="article-tooltip-image">
+              <div class="article-tooltip-title">Entretien avec Joseph Daher: La reconstruction syrienne</div>
+              <div class="article-tooltip-excerpt">Un entretien approfondi sur les enjeux de la reconstruction en Syrie et les perspectives d'avenir.</div>
+              <div class="article-tooltip-meta">
+                <span class="article-tooltip-author">Joseph Daher</span>
+                <span class="article-tooltip-date">Juin 2025</span>
+              </div>
             </div>
           </article>
         </div>

@@ -7,124 +7,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
-  <style>
-    /* Reduce size for bold inline 'titles' used within articles and remove extra spacing */
-    /* Target article body and executive-summary only to avoid changing global <strong> everywhere */
-    #article-body strong,
-    .executive-summary strong,
-    .document-summary-toc strong,
-    .document-content strong {
-      font-size: 0.95rem; /* slightly smaller than body text */
-      font-weight: 700;
-      line-height: 1.2;
-      display: inline; /* ensure it stays inline */
-    }
-
-    /* Remove extra margin when a <strong> is immediately followed by a paragraph by forcing the paragraph to appear inline after a colon */
-    /* Visual tweaks: paragraphs following a bold inline title will not get extra top margin */
-    #article-body p,
-    .executive-summary p {
-      margin-top: 0.35rem;
-    }
-
-    /* Fond uni pour toute la page */
-    body {
-      background: var(--color-bg) !important;
-    }
-    
-    .hero-page,
-    .section,
-    .section.alt {
-      background: var(--color-bg) !important;
-    }
-    
-    /* Styles améliorés pour le header et la navigation */
-    .main-nav ul {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem !important;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .main-nav li {
-      position: relative;
-    }
-    
-    .main-nav a {
-      display: flex;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #374151;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid transparent;
-      min-height: 48px;
-      justify-content: center;
-    }
-    
-    .main-nav a:hover {
-      background: rgba(254, 243, 199, 0.3);
-      color: #92400e;
-      border-color: rgba(254, 243, 199, 0.5);
-      transform: translateY(-1px);
-    }
-    
-    /* Styles pour le bouton "Nous écrire" dans le header */
-    .header-actions .btn-primary {
-      font-family: 'Inter', sans-serif !important;
-      font-size: 1.1rem !important;
-      font-weight: 500 !important;
-      padding: 1rem 1.5rem !important;
-      border-radius: 8px !important;
-      min-height: 48px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      transition: all 0.3s ease !important;
-      background: rgba(255, 255, 255, 0.1) !important;
-      border: 1px solid rgba(10, 39, 106, 0.3) !important;
-      color: #374151 !important;
-    }
-    
-    .header-actions .btn-primary:hover {
-      background: rgba(254, 243, 199, 0.3) !important;
-      color: #92400e !important;
-      border-color: rgba(254, 243, 199, 0.5) !important;
-      transform: translateY(-1px) !important;
-    }
-  </style>
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/search.css" />
   <!-- Favicons -->
-  <link rel="icon" href="assets/images/logo.png" type="image/png" sizes="any" />
-  <link rel="apple-touch-icon" href="assets/images/logo.png" />
-  <link rel="shortcut icon" href="assets/images/logo.png" type="image/png" />
+  <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
+  <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
+  <link rel="shortcut icon" href="assets/images/logo-onglet.png" type="image/png" />
   <meta name="theme-color" content="#0a0a0a" />
 </head>
-<body>
+<body data-article-detail>
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil Menara">
-  <img class="brand-logo" src="assets/images/logo.png" alt="Logo Menara" />
+  <img class="brand-logo" src="assets/images/logo-onglet.png" alt="Logo Menara" />
         <span class="brand-text">Menara</span>
       </a>
       <nav class="main-nav" role="navigation" aria-label="Navigation principale">
         <ul>
           <li><a href="about.html">À propos</a></li>
           <li class="has-dropdown is-active">
-            <a href="articles.html">Articles</a>
+            <a href="articles.html">Publications</a>
             <div class="dropdown" role="menu" aria-label="Catégories d’articles">
-              <a href="articles.html#detailles">Articles détaillés</a>
-              <a href="articles.html#carrousels">Carrousels</a>
+              <a href="articles.html">Articles</a>
+              <a href="notes-focus.html">Notes Focus</a>
             </div>
           </li>
-          <li><a href="about.html">À propos</a></li>
-          <li><a href="articles.html">Publications</a></li>
           <li><a href="news-events.html">Événements</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -150,19 +57,29 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero-page" id="article-hero" style="padding-bottom: 20px;">
-      <div class="container hero-content">
-        <h1 id="article-title" style="font-size: 2rem;">Titre de l'article</h1>
-        <p id="article-meta" class="hero-subtitle">Auteur — Date — Catégorie</p>
+  <main class="article-detail-main">
+    <section class="article-hero">
+      <div class="container article-hero-inner">
+        <div class="article-hero-media" hidden>
+          <img class="article-hero-cover" src="" alt="" />
+        </div>
+        <div class="article-hero-content">
+          <span class="article-hero-label">Article</span>
+          <h1 class="article-hero-title">Titre de l'article</h1>
+          <p class="article-hero-description" hidden></p>
+          <p class="article-hero-meta" hidden></p>
+          <div class="article-hero-actions" hidden>
+            <a class="article-download-link article-download-link-secondary" href="#" download>Télécharger l'article</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section" style="padding-top: 0;">
+    <section class="article-content-section">
       <div class="container">
-        <figure id="article-cover" style="margin:0 0 0 0; text-align:center"></figure>
-        <div id="article-pdf"></div>
-        <article id="article-body" class="content-block"></article>
+        <div class="article-content-card">
+          <article id="article-body" class="content-block"></article>
+        </div>
       </div>
     </section>
   </main>
@@ -171,7 +88,7 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <div class="brand-mini">
-          <img class="brand-logo" src="assets/images/logo.png" alt="" />
+          <img class="brand-logo" src="assets/images/logo-onglet.png" alt="" />
           <span class="brand-text">Menara</span>
         </div>
         <p class="footer-blurb">Analyses indépendantes sur les enjeux géopolitiques et économiques en Afrique et au Moyen‑Orient.</p>
@@ -186,72 +103,145 @@
 
   <script src="js/articles-data.js"></script>
   <script>
-    // Basic router: load by slug param
-    function getParam(name){ return new URLSearchParams(window.location.search).get(name); }
-
-    function render(){
-      const slug = getParam('file') || getParam('slug');
-      const list = window.MENARA_ARTICLES || [];
-      const art = list.find(a => a.slug === slug) || list[0];
-      if (!art) return;
-      document.title = art.title + ' — Menara';
-      document.getElementById('article-title').textContent = art.title;
-      const meta = [art.author, art.date].filter(Boolean).join(' — ');
-      document.getElementById('article-meta').textContent = meta;
-
-      const cover = document.getElementById('article-cover');
-      if (art.cover){
-        cover.innerHTML = `<img src="${art.cover}" alt="${art.title}" style="max-width:100%; border-radius:0; box-shadow: var(--shadow-lg);"/>`;
-      }
-
-      // PDF card (download only)
-      const pdfMount = document.getElementById('article-pdf');
-      if (art.pdf){
-        const fileName = art.pdf.split('/').pop();
-        pdfMount.innerHTML = `
-          <div class="pdf-card">
-            <div class="pdf-content">
-              <h3>Version complète</h3>
-              <div class="pdf-actions">
-                <a class="btn btn-primary" href="${art.pdf}" download>Télécharger l'article</a>
-              </div>
-            </div>
-          </div>`;
-      }
-
-            // Load body from partial file docs/articles/<slug>.html
-      fetch(`articles/${art.slug}.html`).then(r=> r.ok ? r.text() : Promise.resolve('<p>Contenu à venir…</p>')).then(html=>{
-        document.getElementById('article-body').innerHTML = html;
-        
-        // Add scroll animation
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-            }
-          });
-        }, observerOptions);
-        
-        // Observe all paragraphs, headings, and sections
-        const elements = document.querySelectorAll('#article-body p, #article-body h2, #article-body h3, #article-body ul, #article-body ol, #article-body li, #article-body .executive-summary, #article-body div, #article-body img');
-        elements.forEach(el => {
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(30px)';
-          el.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
-          observer.observe(el);
-        });
-      }).catch(()=>{
-        document.getElementById('article-body').innerHTML = '<p>Contenu à venir…</p>';
-      });
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render); else render();
+    function render() {
+      const slug = getParam('file') || getParam('slug');
+      const list = Array.isArray(window.MENARA_ARTICLES) ? window.MENARA_ARTICLES : [];
+      const art = list.find((item) => item.slug === slug) || list[0];
+      if (!art) {
+        return;
+      }
+
+      document.title = `${art.title} — Menara`;
+
+      const titleEl = document.querySelector('.article-hero-title');
+      if (titleEl) {
+        titleEl.textContent = art.title;
+      }
+
+      const labelEl = document.querySelector('.article-hero-label');
+      if (labelEl) {
+        labelEl.textContent = art.categoryLabel || 'Article';
+      }
+
+      const descriptionEl = document.querySelector('.article-hero-description');
+      if (descriptionEl) {
+        if (art.excerpt) {
+          descriptionEl.textContent = art.excerpt;
+          descriptionEl.hidden = false;
+        } else {
+          descriptionEl.hidden = true;
+        }
+      }
+
+      const metaEl = document.querySelector('.article-hero-meta');
+      if (metaEl) {
+        const metaParts = [art.author, art.date, art.categoryLabel || art.category].filter(Boolean);
+        if (metaParts.length) {
+          metaEl.innerHTML = metaParts.map((part) => `<span>${part}</span>`).join('');
+          metaEl.hidden = false;
+        } else {
+          metaEl.hidden = true;
+        }
+      }
+
+      const mediaWrapper = document.querySelector('.article-hero-media');
+      const coverImg = document.querySelector('.article-hero-cover');
+      if (mediaWrapper && coverImg) {
+        if (art.cover) {
+          coverImg.src = art.cover;
+          coverImg.alt = art.title;
+          coverImg.loading = 'lazy';
+          mediaWrapper.hidden = false;
+        } else {
+          coverImg.removeAttribute('src');
+          coverImg.alt = '';
+          mediaWrapper.hidden = true;
+        }
+      }
+
+      const downloadWrapper = document.querySelector('.article-hero-actions');
+      const downloadLink = document.querySelector('.article-download-link');
+      if (downloadWrapper && downloadLink) {
+        if (art.pdf) {
+          downloadLink.href = art.pdf;
+          downloadLink.setAttribute('aria-label', `Télécharger l'article ${art.title}`);
+          downloadWrapper.hidden = false;
+        } else {
+          downloadLink.removeAttribute('href');
+          downloadLink.removeAttribute('aria-label');
+          downloadWrapper.hidden = true;
+        }
+      }
+
+      const bodyEl = document.getElementById('article-body');
+      if (!bodyEl) {
+        return;
+      }
+      bodyEl.innerHTML = '<p>Chargement du contenu…</p>';
+
+  const articlePath = `articles/${encodeURIComponent(art.slug)}.html`;
+
+  fetch(articlePath)
+        .then((response) => (response.ok ? response.text() : Promise.resolve('<p>Contenu à venir…</p>')))
+        .then((html) => {
+          bodyEl.innerHTML = html;
+
+          const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+              }
+            });
+          }, observerOptions);
+
+          const elements = bodyEl.querySelectorAll('p, h2, h3, h4, ul, ol, li, .executive-summary, div, img, blockquote, table, section');
+          elements.forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+            observer.observe(el);
+            
+            // Fallback: forcer l'affichage après un délai si l'observer ne fonctionne pas
+            setTimeout(() => {
+              el.style.opacity = '1';
+              el.style.transform = 'translateY(0)';
+            }, 100 + (index * 50));
+          });
+        })
+        .catch(() => {
+          bodyEl.innerHTML = '<p>Contenu à venir…</p>';
+        });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', render);
+    } else {
+      render();
+    }
   </script>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.main-nav');
+    const actions = document.querySelector('.header-actions');
+    if (toggle && nav && actions) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+        actions.classList.toggle('menu-open');
+      });
+    }
+  </script>
+  <script src="js/search.js"></script>
 </body>
 </html>
