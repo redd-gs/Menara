@@ -1,3 +1,54 @@
+/* Animation pour la carte Égypte */
+.egypte-card-animated {
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+  transform: translateY(-60px);
+}
+/* Effet de chevauchement visible au scroll horizontal */
+/* Animation d'apparition pour les boxes Nos formats */
+.fade-in-box {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.fade-in-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+/* Boutons bleus pour Nos formats */
+.blue-btn-dark {
+  background: #2563eb !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  padding: 1rem 1.5rem !important;
+  min-height: 48px !important;
+  border: none !important;
+}
+.blue-btn-medium {
+  background: #3b82f6 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  padding: 1rem 1.5rem !important;
+  min-height: 48px !important;
+  border: none !important;
+}
+.blue-btn-light {
+  background: #93c5fd !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  padding: 1rem 1.5rem !important;
+  min-height: 48px !important;
+  border: none !important;
+}
 /* Thème Menara : inspiré du Finance for Development Lab
    - Palette sable/jaune avec accents noirs, style oriental
 */
