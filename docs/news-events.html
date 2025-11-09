@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Menara — Think tank indépendant</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <!-- Polices orientales et modernes pour un style raffiné -->
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/carousel.css" />
   <link rel="stylesheet" href="css/search.css" />
+  <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
+  <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
+  <link rel="shortcut icon" href="assets/images/logo-onglet.png" type="image/png" />
+  <meta name="theme-color" content="#0a0a0a" />
   
 </head>
 <body>
-  
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil Menara">
@@ -62,74 +63,38 @@
     </div>
   </header>
 
-  <main>
-      </main>
-
-     
-  <main>
-
-    <!-- Événements à venir avec carousel -->
-    <section id="events" class="section" style="margin-top: 3rem;">
+    <section class="hero-page hero-page--fade-blue follow-hero">
       <div class="container">
-        <div class="section-head">
-          <h2>Événements à venir</h2>
-        </div>
-        
-        <!-- Carousel des événements -->
-        <div class="carousel-container">
-          <div class="carousel-wrapper">
-            <div class="carousel-slide">
-              <div class="events-grid grid-2">
-                <article class="event-card animate-slide-up">
-                  <div style="display: flex; align-items: center; gap: 1.1rem;">
-                    <img src="assets/images/eurazeo.png" alt="Eurazeo" style="width: 120px; height: 120px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff;" />
-                    <div>
-                      <h3 class="event-title" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; color: #0a276a; font-family: 'Inter', Arial, Helvetica, sans-serif;">14 novembre 2025</h3>
-                      <div style="font-size: 1rem; font-weight: 400; color: #222; line-height: 1.5;">Visite d’Eurazeo avec M. Pinelli, Managing Director, Head of Public Affairs Middle East.</div>
-                    </div>
-                  </div>
-                </article>
-                <article class="event-card animate-slide-up">
-                  <div style="display: flex; align-items: center; gap: 1.1rem;">
-                    <img src="assets/images/afd.png" alt="AFD" style="width: 120px; height: 120px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff;" />
-                    <div>
-                      <h3 class="event-title" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; color: #0a276a; font-family: 'Inter', Arial, Helvetica, sans-serif;">26 novembre 2025</h3>
-                      <div style="font-size: 1rem; font-weight: 400; color: #222; line-height: 1.5;">Rencontre avec Thomas Melonio, Chef économiste et Directeur exécutif de l’Innovation, de la stratégie et de la recherche à l’AFD.</div>
-                    </div>
-                  </div>
-                </article>
-                <article class="event-card animate-slide-up">
-                  <div style="display: flex; align-items: center; gap: 1.1rem;">
-                    <img src="assets/images/ardian.png" alt="Ardian" style="width: 120px; height: 120px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff;" />
-                    <div>
-                      <h3 class="event-title" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; color: #0a276a; font-family: 'Inter', Arial, Helvetica, sans-serif;">3 décembre 2025</h3>
-                      <div style="font-size: 1rem; font-weight: 400; color: #222; line-height: 1.5;">Petit déjeuner chez Ardian avec Yacine Zarrouk, Managing Director depuis 2022, en charge des Relations Investisseurs pour le Moyen-Orient et l’Afrique.</div>
-                    </div>
-                  </div>
-                </article>
-              </div>
+        <h1>Événements à venir</h1>
+      </div>
+    </section>
+
+  <main>
+      <section id="events" class="section section-soft-blue" style="margin-top: 1.75rem; margin-bottom: 4rem;">
+      <div class="container">
+        <div class="events-grid grid-2" style="gap: 32px; margin-top: 1.25rem;">
+          <article class="event-card animate-slide-up" style="padding: 2rem; display: flex; align-items: center; gap: 1.5rem;">
+            <img src="assets/images/eurazeo.png" alt="Eurazeo" style="width: 120px; height: 120px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff;" />
+            <div>
+              <h3 class="event-title" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; color: #0a276a; font-family: 'Inter', Arial, Helvetica, sans-serif;">14 novembre 2025</h3>
+              <div style="font-size: 1rem; font-weight: 400; color: #222; line-height: 1.5;">Visite d’Eurazeo avec M. Pinelli, Managing Director, Head of Public Affairs Middle East.</div>
             </div>
-          </div>
-          
-          <div class="carousel-controls">
-            <button class="carousel-nav prev" aria-label="Événement précédent">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-              </svg>
-            </button>
-            <button class="carousel-nav next" aria-label="Événement suivant">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-              </svg>
-            </button>
-          </div>
-          
-          <div class="carousel-indicators">
-            <button class="carousel-indicator active" aria-label="Slide 1"></button>
-            <button class="carousel-indicator" aria-label="Slide 2"></button>
-          </div>
+          </article>
+          <article class="event-card animate-slide-up" style="padding: 2rem; display: flex; align-items: center; gap: 1.5rem;">
+            <img src="assets/images/afd.png" alt="AFD" style="width: 120px; height: 120px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff;" />
+            <div>
+              <h3 class="event-title" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; color: #0a276a; font-family: 'Inter', Arial, Helvetica, sans-serif;">26 novembre 2025</h3>
+              <div style="font-size: 1rem; font-weight: 400; color: #222; line-height: 1.5;">Rencontre avec Thomas Melonio, Chef économiste et Directeur exécutif de l’Innovation, de la stratégie et de la recherche à l’AFD.</div>
+            </div>
+          </article>
+          <article class="event-card animate-slide-up" style="padding: 2rem; display: flex; align-items: center; gap: 1.5rem;">
+            <img src="assets/images/ardian.png" alt="Ardian" style="width: 120px; height: 120px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff;" />
+            <div>
+              <h3 class="event-title" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; color: #0a276a; font-family: 'Inter', Arial, Helvetica, sans-serif;">3 décembre 2025</h3>
+              <div style="font-size: 1rem; font-weight: 400; color: #222; line-height: 1.5;">Petit déjeuner chez Ardian avec Yacine Zarrouk, Managing Director depuis 2022, en charge des Relations Investisseurs pour le Moyen-Orient et l’Afrique.</div>
+            </div>
+          </article>
         </div>
-        
       </div>
     </section>
   </main>
@@ -139,7 +104,7 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <div class="brand-mini">
-          <img class="brand-logo" src="assets/images/logo.png" alt="" />
+          <img class="brand-logo" src="assets/images/logo-onglet.png" alt="" />
           <span class="brand-text">Menara</span>
         </div>
         <p class="footer-blurb">Analyses indépendantes sur les enjeux géopolitiques et économiques en Afrique et au Moyen‑Orient.</p>

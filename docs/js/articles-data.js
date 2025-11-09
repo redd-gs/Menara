@@ -94,16 +94,23 @@ window.MENARA_ARTICLES = [
   function cardHTML(a){
     const img = a.cover || (window.ImageGenerator ? ImageGenerator.getArticleImage(a.category, a.title) : '');
     const link = `article.html?slug=${encodeURIComponent(a.slug)}`;
+    const excerpt = a.excerpt ? `<p class="article-card-excerpt">${a.excerpt}</p>` : '';
+    const metaItems = [
+      a.author ? `<span class="article-card-author">${a.author}</span>` : '',
+      a.date ? `<span class="article-card-date">${a.date}</span>` : ''
+    ].filter(Boolean).join('');
+    const meta = metaItems ? `<div class="article-card-meta">${metaItems}</div>` : '';
     return `
       <article class="article-card">
-        <a href="${link}" aria-label="Lire: ${a.title}">
+        <a class="article-card-link" href="${link}" aria-label="Lire l'article : ${a.title}">
           <div class="article-card-image">
             <img src="${img}" alt="${a.title}" loading="lazy" />
           </div>
-          <div class="article-card-content">
+          <div class="article-card-body">
             <h3 class="article-card-title">${a.title}</h3>
-            <p class="article-card-excerpt">${a.excerpt || ''}</p>
-            <div class="article-card-meta"><span>${a.date||''}</span><span>${a.author||''}</span></div>
+            ${excerpt}
+            <span class="article-card-cta">Voir l'article</span>
+            ${meta}
           </div>
         </a>
       </article>`;

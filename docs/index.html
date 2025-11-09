@@ -18,7 +18,7 @@
   <link rel="shortcut icon" href="assets/images/logo-onglet.png" type="image/png" />
   <meta name="theme-color" content="#0a0a0a" />
 </head>
-<body>
+<body class="landing-highlight">
   <!-- En-tête -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
@@ -165,27 +165,39 @@
   </section>
   <section class="grey-box-section" style="background: #f5f5f5; color: #222; padding: 8rem 0 8rem 0; margin-bottom: 2.5rem; border-radius: 0px; box-shadow: 0 4px 24px rgba(10,39,106,0.08); min-height: 600px;">
     <div class="container" style="display: flex; flex-direction: row; align-items: stretch; justify-content: center; gap: 0; max-width: 1200px; margin: 0 auto; position: relative;">
-      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 2rem 3rem;">
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 2rem 2.25rem 2rem 1.25rem;">
   <div style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 700; color: #000000; margin-bottom: 1.5rem;"><strong>Menara a pour objectif de créer un espace d'analyse, d'échange et de rencontres sur la thématique du développement économique en Afrique et au Moyen-Orient.</strong></div>
   <div style="width: 100%; margin-bottom: 2.2rem;">
     <div style="padding: 0.7rem 0;">
       <span style="font-size: 1.13rem; font-weight: 600; color: #222;">Analyser</span><br>
       <span style="font-size: 1rem; color: #444;">Voir nos publications et nos notes focus.</span>
+      <a class="quick-action-link" href="articles.html">
+        <span>Accéder aux publications</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
     <div style="border-bottom: 1px solid #111; margin: 0.2rem 0 0.2rem 0;"></div>
     <div style="padding: 0.7rem 0;">
       <span style="font-size: 1.13rem; font-weight: 600; color: #222;">Rencontrer</span><br>
       <span style="font-size: 1rem; color: #444;">Participer à nos événements avec des professionnels, chercheurs et praticiens.</span>
+      <a class="quick-action-link" href="news-events.html">
+        <span>Voir nos événements</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
     <div style="border-bottom: 1px solid #111; margin: 0.2rem 0 0.2rem 0;"></div>
     <div style="padding: 0.7rem 0;">
       <span style="font-size: 1.13rem; font-weight: 600; color: #222;">Échanger</span><br>
       <span style="font-size: 1rem; color: #444;">Rejoindre la communauté Menara.</span>
+      <a class="quick-action-link" href="contact.html">
+        <span>Rejoindre la communauté</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
       </div>
   <div style="width: 1px; background: #d1d5db; margin: 0 0.5rem; min-height: 420px; align-self: center;"></div>
-  <div style="flex: 0 0 28%; max-width: 340px; background: none; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; padding: 2rem 2.5rem 2rem 0;">
+  <div style="flex: 0 0 34%; max-width: 400px; background: none; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; padding: 2.5rem 3rem 2.5rem 1.5rem;">
         <h2 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 800; color: #222; margin-bottom: 2.2rem; letter-spacing: 1px;">NOS PROCHAINS ÉVÉNEMENTS</h2>
         <div style="display: flex; flex-direction: column; gap: 2rem;">
           <div style="display: flex; flex-direction: row; gap: 1.1rem; align-items: flex-start;">
@@ -267,6 +279,71 @@
         dropdown.addEventListener('mouseleave', function() {
           console.log('📤 Fin survol Publications - Dropdown caché');
         });
+      }
+
+      const body = document.body;
+      if (body.classList.contains('landing-highlight')) {
+        const greySection = document.querySelector('.grey-box-section');
+        const header = document.querySelector('.site-header');
+        const scrollKeys = new Set(["PageDown", "ArrowDown", "ArrowUp", "End", "Home", " ", "Spacebar"]);
+        let highlightRemoved = false;
+        let removalThreshold = 120;
+
+        function recalcThreshold() {
+          if (greySection) {
+            const headerHeight = header ? header.offsetHeight : 0;
+            removalThreshold = Math.max(0, greySection.offsetTop - headerHeight - 40);
+          } else {
+            removalThreshold = 120;
+          }
+        }
+
+        function shouldRemove() {
+          return window.scrollY >= removalThreshold;
+        }
+
+        function handleScroll() {
+          if (shouldRemove()) {
+            removeLandingHighlight();
+          }
+        }
+
+        function handleResize() {
+          if (highlightRemoved) {
+            return;
+          }
+          recalcThreshold();
+          if (shouldRemove()) {
+            removeLandingHighlight();
+          }
+        }
+
+        function handleKeydown(event) {
+          if (scrollKeys.has(event.key) && shouldRemove()) {
+            removeLandingHighlight();
+          }
+        }
+
+        function removeLandingHighlight() {
+          if (highlightRemoved) {
+            return;
+          }
+          highlightRemoved = true;
+          body.classList.remove('landing-highlight');
+          window.removeEventListener('scroll', handleScroll);
+          window.removeEventListener('resize', handleResize);
+          window.removeEventListener('keydown', handleKeydown);
+        }
+
+        recalcThreshold();
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('keydown', handleKeydown);
+
+        if (shouldRemove()) {
+          removeLandingHighlight();
+        }
       }
     });
   </script>

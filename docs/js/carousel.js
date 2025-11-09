@@ -248,20 +248,25 @@ class ContentGenerator {
   static createArticleCard(article) {
     const imageUrl = article.cover || ImageGenerator.getArticleImage(article.category, article.title);
     const href = article.slug ? `article.html?slug=${encodeURIComponent(article.slug)}` : '#';
+    const category = article.categoryLabel ? `<div class="article-card-category">${article.categoryLabel}</div>` : '';
+    const excerpt = article.excerpt ? `<p class="article-card-excerpt">${article.excerpt}</p>` : '';
+    const metaItems = [
+      article.author ? `<span class="article-card-author">${article.author}</span>` : '',
+      article.date ? `<span class="article-card-date">${article.date}</span>` : ''
+    ].filter(Boolean).join('');
+    const meta = metaItems ? `<div class="article-card-meta">${metaItems}</div>` : '';
     return `
       <article class="article-card animate-slide-up" data-category="${article.category}">
-        <a href="${href}" aria-label="Lire: ${article.title}">
+        <a class="article-card-link" href="${href}" aria-label="Lire l'article : ${article.title}">
           <div class="article-card-image">
             <img src="${imageUrl}" alt="${article.title}" loading="lazy">
-            <div class="article-card-category">${article.categoryLabel}</div>
+            ${category}
           </div>
-          <div class="article-card-content">
+          <div class="article-card-body">
             <h3 class="article-card-title">${article.title}</h3>
-            <p class="article-card-excerpt">${article.excerpt}</p>
-            <div class="article-card-meta">
-              <span class="article-card-date">${article.date}</span>
-              <span class="article-card-author">${article.author}</span>
-            </div>
+            ${excerpt}
+            <span class="article-card-cta">Voir l'article</span>
+            ${meta}
           </div>
         </a>
       </article>
