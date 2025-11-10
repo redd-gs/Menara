@@ -102,17 +102,7 @@
 
   <script src="js/notes-data.js"></script>
   <script src="js/notes-focus.js"></script>
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.main-nav');
-    const actions = document.querySelector('.header-actions');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-      actions.classList.toggle('menu-open');
-    });
-  </script>
+  <script src="main.js"></script>
   <script src="js/search.js"></script>
 </body>
 </html>

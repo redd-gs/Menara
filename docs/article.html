@@ -229,19 +229,7 @@
       render();
     }
   </script>
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.main-nav');
-    const actions = document.querySelector('.header-actions');
-    if (toggle && nav && actions) {
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        nav.classList.toggle('open');
-        actions.classList.toggle('menu-open');
-      });
-    }
-  </script>
+  <script src="main.js"></script>
   <script src="js/search.js"></script>
 </body>
 </html>

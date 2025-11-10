@@ -148,19 +148,7 @@
   <script src="js/notes-data.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha512-27c8PjCcEyactxVP7VIDwQAwiz4PV5U6H5c+auAMTH0TWByeSIVxWkCM1oybE9Ek9gMTrbrdcNvDEMGsq6Q9gA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/note-detail.js"></script>
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.main-nav');
-    const actions = document.querySelector('.header-actions');
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        nav.classList.toggle('open');
-        actions.classList.toggle('menu-open');
-      });
-    }
-  </script>
+  <script src="main.js"></script>
   <script src="js/search.js"></script>
 </body>
 </html>

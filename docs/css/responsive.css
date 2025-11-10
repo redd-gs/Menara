@@ -31,19 +31,6 @@
   .podcast-card {
     margin-bottom: 1rem;
   }
-  
-  /* Navigation compacte sur mobile */
-  .main-nav ul {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 0.5rem;
-  }
-  
-  .main-nav ul li a {
-    white-space: nowrap;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-  }
 }
 
 /* Tablettes */

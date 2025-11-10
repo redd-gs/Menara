@@ -2,30 +2,120 @@
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
-// --------- Menu mobile
+// --------- Menu mobile et dropdowns accessibles
 const toggle = $('.nav-toggle');
 const nav = $('.main-nav');
 const actions = $('.header-actions');
+const dropdownParents = $$('.has-dropdown');
+const mobileQuery = window.matchMedia('(max-width: 1024px)');
 
-if (toggle && nav && actions) {
+const isMobileNav = () => mobileQuery.matches;
+
+const resetDropdown = (dropdown) => {
+  dropdown.classList.remove('dropdown-open');
+  const trigger = $('a', dropdown);
+  if (trigger) {
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+};
+
+const closeDropdowns = () => {
+  dropdownParents.forEach(resetDropdown);
+};
+
+const closeNav = (focusToggle = false) => {
+  if (!nav) return;
+  nav.classList.remove('open');
+  actions?.classList.remove('menu-open');
+  toggle?.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('nav-open');
+  closeDropdowns();
+  if (focusToggle && toggle) {
+    toggle.focus();
+  }
+};
+
+if (toggle && nav) {
   toggle.addEventListener('click', () => {
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!expanded));
-    nav.classList.toggle('open');
-    actions.classList.toggle('menu-open');
+    const nextState = !expanded;
+    toggle.setAttribute('aria-expanded', String(nextState));
+    nav.classList.toggle('open', nextState);
+    actions?.classList.toggle('menu-open', nextState);
+    document.body.classList.toggle('nav-open', nextState);
+    if (!nextState) {
+      closeDropdowns();
+    }
   });
 
-  // Fermer le menu après un clic sur un lien (mobile)
-  $$('.main-nav a').forEach(a => {
-    a.addEventListener('click', () => {
-      if (nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        actions.classList.remove('menu-open');
-        toggle.setAttribute('aria-expanded', 'false');
+  document.addEventListener('click', (event) => {
+    if (!isMobileNav() || !nav.classList.contains('open')) return;
+    const target = event.target;
+    if (toggle.contains(target)) return;
+    if (nav.contains(target)) return;
+    closeNav();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    if (nav.classList.contains('open')) {
+      closeNav(true);
+      return;
+    }
+    let handled = false;
+    dropdownParents.forEach(dropdown => {
+      if (dropdown.classList.contains('dropdown-open')) {
+        resetDropdown(dropdown);
+        if (!handled) {
+          const trigger = $('a', dropdown);
+          trigger?.focus();
+          handled = true;
+        }
+      }
+    });
+  });
+
+  const handleBreakpointChange = () => {
+    if (!isMobileNav()) {
+      closeNav();
+    }
+  };
+
+  if (typeof mobileQuery.addEventListener === 'function') {
+    mobileQuery.addEventListener('change', handleBreakpointChange);
+  } else if (typeof mobileQuery.addListener === 'function') {
+    mobileQuery.addListener(handleBreakpointChange);
+  }
+}
+
+if (nav) {
+  $$('a', nav).forEach(link => {
+    link.addEventListener('click', () => {
+      if (isMobileNav()) {
+        closeNav();
       }
     });
   });
 }
+
+dropdownParents.forEach(dropdown => {
+  const trigger = $('a', dropdown);
+  if (!trigger) return;
+  trigger.setAttribute('aria-haspopup', 'true');
+  trigger.setAttribute('aria-expanded', 'false');
+
+  trigger.addEventListener('click', (event) => {
+    if (!isMobileNav()) return;
+    event.preventDefault();
+    const isOpen = dropdown.classList.toggle('dropdown-open');
+    trigger.setAttribute('aria-expanded', String(isOpen));
+    dropdownParents.forEach(other => {
+      if (other !== dropdown) {
+        resetDropdown(other);
+      }
+    });
+  });
+});
 
 // --------- Mettre en évidence l'onglet actif selon la page
 (() => {
