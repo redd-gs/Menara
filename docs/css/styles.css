@@ -614,10 +614,10 @@ body.landing-highlight .blue-box-section {
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(-10px);
-  background: rgba(254, 243, 199, 0.98);
-  border: 2px solid rgba(146, 64, 14, 0.3);
+  background: #fffdf0;
+  border: 1px solid rgba(250, 204, 21, 0.25);
   border-radius: 8px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
   min-width: 220px;
   max-width: 220px;
   z-index: 999999;
@@ -672,7 +672,7 @@ body.landing-highlight .blue-box-section {
   font-size: 1rem;
   font-weight: 500;
   transition: background-color 0.2s ease, color 0.2s ease;
-  border-bottom: 1px solid rgba(254, 243, 199, 0.5);
+  border-bottom: 1px solid rgba(253, 230, 138, 0.35);
 }
 
 .publications-dropdown-item:last-child {
@@ -685,7 +685,7 @@ body.landing-highlight .blue-box-section {
 }
 
 .publications-dropdown-item:hover {
-  background-color: rgba(254, 243, 199, 1);
+  background-color: #fff7d1;
   color: #92400e;
 }
 
@@ -1387,6 +1387,46 @@ body.landing-highlight .blue-box-section {
   border-color: rgba(10, 39, 106, 0.18);
   transform: translateY(-6px);
   box-shadow: 0 18px 40px rgba(10, 39, 106, 0.14);
+}
+
+.event-description {
+  display: block;
+}
+
+.event-description p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #222;
+  line-height: 1.55;
+  flex: 1 1 220px;
+}
+
+.event-linkedin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-left: 0.55rem;
+  border-radius: 999px;
+  background: #0a66c2;
+  color: #ffffff;
+  text-decoration: none;
+  vertical-align: middle;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-linkedin-btn:hover {
+  background: #004182;
+  box-shadow: 0 6px 16px rgba(10, 102, 194, 0.3);
+  transform: translateY(-1px);
+}
+
+.event-linkedin-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
 }
 
 .event-date {
@@ -3060,15 +3100,16 @@ body.landing-highlight .blue-box-section {
 }
 
 .executive-summary {
-  background-color: rgba(133, 193, 233, 0.15);
-  padding: 1.5rem;
-  border-radius: 0;
+  background-color: #fff7d1;
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  border-radius: 12px;
+  padding: 1.75rem;
   margin: 2rem 0;
 }
-
 .executive-summary h3 {
-  color: #003d7a;
+  color: #8a4b0b;
   margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 .content-block p[style*="color: #85c1e9"] {
