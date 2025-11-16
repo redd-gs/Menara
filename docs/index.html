@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
   <link rel="stylesheet" href="css/search.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/responsive-mobile.css" />
+  <link rel="stylesheet" href="css/responsive-desktop.css" />
   <script src="js/article-scroll.js"></script>
   
   <!-- Favicons -->
@@ -85,60 +86,78 @@
           </div>
         </div>
       </div>
-      <div class="articles-col" style="flex: 0 0 60%; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; position: relative;">
-        <!-- Première ligne : 2 articles côte à côte -->
-        <div style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px;">
-          <article class="featured-article-card" style="background: #fff; color: #0a276a; border-radius: 12px; box-shadow: 0 4px 20px rgba(10,39,106,0.08); width: 280px; height: 360px; display: flex; flex-direction: column;">
-            <a href="article.html?slug=reconstruction-syrie" class="article-image-link" style="height: 180px; overflow: hidden; border-radius: 12px 12px 0 0;">
-              <img src="assets/articles/images/reconstruction-syrie.jpg" alt="La Syrie, sur le chemin de la reconstruction ?" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="articles-col" style="flex: 0 0 60%; display: flex; flex-direction: row; gap: 24px; align-items: flex-start; position: relative;">
+        <div class="overlap-articles-grid" style="display: flex; flex-direction: row; align-items: flex-start; justify-content: flex-start; gap: 0; width: 100%; position: relative;">
+          <article class="featured-article-card" style="background: #fff; color: #0a276a; border-radius: 16px; box-shadow: 0 4px 24px rgba(10,39,106,0.08); position: relative; z-index: 3; left: 0; top: -70px; margin-right: -40px; min-width: 370px; max-width: 370px; min-height: 470px; max-height: 470px;">
+            <a href="article.html?slug=reconstruction-syrie" class="article-image-link">
+              <img src="assets/articles/images/reconstruction-syrie.jpg" alt="La Syrie, sur le chemin de la reconstruction ?" class="article-image">
             </a>
-            <div class="article-content" style="padding: 1rem; flex: 1; display: flex; flex-direction: column;">
+            <div class="article-content">
               <div class="article-meta-top">
-                <span class="article-date" style="font-size: 0.85rem;">Mai 2025</span>
+                <span class="article-date">Mai 2025</span>
               </div>
-              <h3 class="article-title" style="font-size: 0.95rem; font-weight: 600; margin: 0.5rem 0;">
+              <h3 class="article-title" style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">
                 <a href="article.html?slug=reconstruction-syrie">La Syrie, sur le chemin de la reconstruction ?</a>
               </h3>
-              <p class="article-author" style="font-size: 0.85rem; margin: 0;">Grégoire Descamps</p>
+              <p class="article-author" style="font-size: 0.95rem; margin-bottom: 0;">Grégoire Descamps</p>
+            </div>
+            <div class="article-tooltip" style="top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);">
+              <img src="assets/articles/images/reconstruction-syrie.jpg" alt="La Syrie, sur le chemin de la reconstruction ?" class="article-tooltip-image">
+              <div class="article-tooltip-title">La Syrie, sur le chemin de la reconstruction ?</div>
+              <div class="article-tooltip-excerpt">Analyse des enjeux économiques et politiques de la reconstruction en Syrie après des années de conflit.</div>
+              <div class="article-tooltip-meta">
+                <span class="article-tooltip-author">Grégoire Descamps</span>
+                <span class="article-tooltip-date">Mai 2025</span>
+              </div>
             </div>
           </article>
-          
-          <article class="featured-article-card" style="background: #fff; color: #0a276a; border-radius: 12px; box-shadow: 0 4px 20px rgba(10,39,106,0.08); width: 280px; height: 360px; display: flex; flex-direction: column;">
-            <a href="article.html?slug=too-big-to-fail" class="article-image-link" style="height: 180px; overflow: hidden; border-radius: 12px 12px 0 0;">
-              <img src="assets/articles/images/too-big-to-fail.jpg" alt="L'Egypte, que reste-t-il du too big to fail ?" style="width: 100%; height: 100%; object-fit: cover;">
+          <article class="featured-article-card" style="background: #fff; color: #0a276a; border-radius: 16px; box-shadow: 0 4px 24px rgba(10,39,106,0.08); position: relative; z-index: 2; left: -40px; top: -70px; margin-right: -40px; min-width: 270px; max-width: 270px; min-height: 470px; max-height: 470px;">
+            <a href="article.html?slug=too-big-to-fail" class="article-image-link">
+              <img src="assets/articles/images/too-big-to-fail.jpg" alt="L'Egypte, que reste-t-il du too big to fail ?" class="article-image">
             </a>
-            <div class="article-content" style="padding: 1rem; flex: 1; display: flex; flex-direction: column;">
+            <div class="article-content">
               <div class="article-meta-top">
-                <span class="article-date" style="font-size: 0.85rem;">Mars 2025</span>
+                <span class="article-date">Mars 2025</span>
               </div>
-              <h3 class="article-title" style="font-size: 0.95rem; font-weight: 600; margin: 0.5rem 0;">
+              <h3 class="article-title" style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">
                 <a href="article.html?slug=too-big-to-fail">L'Égypte, que reste-t-il du "too big to fail" ?</a>
               </h3>
-              <p class="article-author" style="font-size: 0.85rem; margin: 0;">Yasmine Guemmaz</p>
+              <p class="article-author" style="font-size: 0.95rem; margin-bottom: 0;">Yasmine Guemmaz</p>
+            </div>
+            <div class="article-tooltip" style="top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);">
+              <img src="assets/articles/images/too-big-to-fail.jpg" alt="L'Egypte, que reste-t-il du too big to fail ?" class="article-tooltip-image">
+              <div class="article-tooltip-title">L'Égypte, que reste-t-il du "too big to fail" ?</div>
+              <div class="article-tooltip-excerpt">Transmission entre endettement public et performance économique dans la région MENA.</div>
+              <div class="article-tooltip-meta">
+                <span class="article-tooltip-author">Yasmine Guemmaz</span>
+                <span class="article-tooltip-date">Mars 2025</span>
+              </div>
             </div>
           </article>
-        </div>
-        
-        <!-- Deuxième ligne : 3ème article + bouton côte à côte -->
-        <div style="display: flex; flex-direction: row; align-items: center; gap: 20px;">
-          <article class="featured-article-card" style="background: #fff; color: #0a276a; border-radius: 12px; box-shadow: 0 4px 20px rgba(10,39,106,0.08); width: 280px; height: 360px; display: flex; flex-direction: column;">
-            <a href="article.html?slug=entretien-daher" class="article-image-link" style="height: 180px; overflow: hidden; border-radius: 12px 12px 0 0;">
-              <img src="assets/articles/images/entretien-daher.png" alt="Entretien avec Daher" style="width: 100%; height: 100%; object-fit: cover;">
+          <article class="featured-article-card" style="background: #fff; color: #0a276a; border-radius: 16px; box-shadow: 0 4px 24px rgba(10,39,106,0.08); position: relative; z-index: 1; left: -80px; top: -70px; min-width: 270px; max-width: 270px; min-height: 470px; max-height: 470px;">
+            <a href="article.html?slug=entretien-daher" class="article-image-link">
+              <img src="assets/articles/images/entretien-daher.png" alt="Entretien avec Daher : enjeux et perspectives pour l'Afrique" class="article-image article-image-adjust">
             </a>
-            <div class="article-content" style="padding: 1rem; flex: 1; display: flex; flex-direction: column;">
+            <div class="article-content">
               <div class="article-meta-top">
-                <span class="article-date" style="font-size: 0.85rem;">Juin 2025</span>
+                <span class="article-date">Juin 2025</span>
               </div>
-              <h3 class="article-title" style="font-size: 0.95rem; font-weight: 600; margin: 0.5rem 0;">
+              <h3 class="article-title" style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">
                 <a href="article.html?slug=entretien-daher">Entretien avec Joseph Daher: La reconstruction syrienne</a>
               </h3>
             </div>
+            <div class="article-tooltip" style="top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);">
+              <img src="assets/articles/images/entretien-daher.png" alt="Entretien avec Daher" class="article-tooltip-image">
+              <div class="article-tooltip-title">Entretien avec Joseph Daher: La reconstruction syrienne</div>
+              <div class="article-tooltip-excerpt">Un entretien approfondi sur les enjeux de la reconstruction en Syrie et les perspectives d'avenir.</div>
+              <div class="article-tooltip-meta">
+                <span class="article-tooltip-author">Joseph Daher</span>
+                <span class="article-tooltip-date">Juin 2025</span>
+              </div>
+            </div>
           </article>
-          
-          <a href="articles.html" style="color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; padding: 1.5rem 2rem; text-decoration: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; white-space: nowrap;">
-            Voir toutes les publications <span style="font-size: 1.1rem; font-weight: 700;">&#8594;</span>
-          </a>
         </div>
+        <a href="articles.html" style="position: absolute; right: 0; bottom: 0; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; padding: 1.5rem 2.5rem; text-decoration: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">Voir toutes les publications <span style="font-size: 1.1rem; font-weight: 700;">&#8594;</span></a>
       </div>
     </div>
   </section>
