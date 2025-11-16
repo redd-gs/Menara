@@ -7,12 +7,12 @@ const toggle = $('.nav-toggle');
 const nav = $('.main-nav');
 const actions = $('.header-actions');
 const dropdownParents = $$('.has-dropdown');
-const mobileQuery = window.matchMedia('(max-width: 1024px)');
+const mobileQuery = window.matchMedia('(max-width: 768px)');
 
 const isMobileNav = () => mobileQuery.matches;
 
 const resetDropdown = (dropdown) => {
-  dropdown.classList.remove('dropdown-open');
+  dropdown.classList.remove('dropdown-open', 'mobile-dropdown-open');
   const trigger = $('a', dropdown);
   if (trigger) {
     trigger.setAttribute('aria-expanded', 'false');
@@ -25,7 +25,7 @@ const closeDropdowns = () => {
 
 const closeNav = (focusToggle = false) => {
   if (!nav) return;
-  nav.classList.remove('open');
+  nav.classList.remove('open', 'mobile-open');
   actions?.classList.remove('menu-open');
   toggle?.setAttribute('aria-expanded', 'false');
   document.body.classList.remove('nav-open');
@@ -35,11 +35,15 @@ const closeNav = (focusToggle = false) => {
   }
 };
 
+// Gestion du menu hamburger (MOBILE)
 if (toggle && nav) {
-  toggle.addEventListener('click', () => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     const nextState = !expanded;
     toggle.setAttribute('aria-expanded', String(nextState));
+    nav.classList.toggle('mobile-open', nextState);
     nav.classList.toggle('open', nextState);
     actions?.classList.toggle('menu-open', nextState);
     document.body.classList.toggle('nav-open', nextState);
@@ -88,32 +92,70 @@ if (toggle && nav) {
   }
 }
 
+// Fermer le menu mobile après clic sur un lien (sauf dropdowns)
 if (nav) {
   $$('a', nav).forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (event) => {
       if (isMobileNav()) {
+        // Ne pas fermer si c'est un lien de dropdown parent (qui a aria-haspopup)
+        if (link.getAttribute('aria-haspopup') === 'true') {
+          return; // Laisser le dropdown s'ouvrir
+        }
+        // Sinon fermer le menu
         closeNav();
       }
     });
   });
 }
 
+// Gestion des dropdowns (DESKTOP hover + MOBILE click)
 dropdownParents.forEach(dropdown => {
   const trigger = $('a', dropdown);
   if (!trigger) return;
+  
   trigger.setAttribute('aria-haspopup', 'true');
   trigger.setAttribute('aria-expanded', 'false');
 
+  // Sur MOBILE : clic pour ouvrir/fermer
   trigger.addEventListener('click', (event) => {
-    if (!isMobileNav()) return;
+    if (!isMobileNav()) return; // Sur desktop, laisser le hover CSS fonctionner
     event.preventDefault();
-    const isOpen = dropdown.classList.toggle('dropdown-open');
-    trigger.setAttribute('aria-expanded', String(isOpen));
+    event.stopPropagation();
+    
+    const isOpen = dropdown.classList.contains('mobile-dropdown-open');
+    
+    console.log('📱 Clic sur dropdown mobile', {
+      isOpen,
+      dropdown: dropdown.className,
+      isMobile: isMobileNav()
+    });
+    
     dropdownParents.forEach(other => {
       if (other !== dropdown) {
         resetDropdown(other);
       }
     });
+    
+    dropdown.classList.toggle('mobile-dropdown-open', !isOpen);
+    trigger.setAttribute('aria-expanded', String(!isOpen));
+    
+    console.log('📱 Après toggle:', {
+      hasClass: dropdown.classList.contains('mobile-dropdown-open'),
+      allClasses: dropdown.className
+    });
+  });
+  
+  // Sur DESKTOP : hover géré par CSS, mais on met à jour aria-expanded
+  dropdown.addEventListener('mouseenter', () => {
+    if (isMobileNav()) return;
+    dropdown.classList.add('dropdown-open');
+    trigger.setAttribute('aria-expanded', 'true');
+  });
+  
+  dropdown.addEventListener('mouseleave', () => {
+    if (isMobileNav()) return;
+    dropdown.classList.remove('dropdown-open');
+    trigger.setAttribute('aria-expanded', 'false');
   });
 });
 

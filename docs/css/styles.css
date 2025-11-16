@@ -4253,7 +4253,12 @@ body.landing-highlight .blue-box-section {
   border-color: #FF0000; /* YouTube Red */
 }
 
+/* =============================================
+   MEDIA QUERIES MOBILE - STYLES GLOBAUX
+   ============================================= */
+
 @media (max-width: 768px) {
+  /* Plateforme de podcasts - responsive */
   .platforms-grid {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 1rem;
@@ -4266,6 +4271,112 @@ body.landing-highlight .blue-box-section {
   .platform-link img {
     width: 40px;
     height: 40px;
+  }
+  
+  /* Typographie mobile */
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  h3 {
+    font-size: 1.4rem !important;
+  }
+  
+  h4 {
+    font-size: 1.2rem !important;
+  }
+  
+  p {
+    font-size: 1rem !important;
+  }
+  
+  /* Boutons mobiles - taille tactile */
+  .btn {
+    min-height: 48px;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+  
+  /* Images responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Tables responsive */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Espacements mobiles */
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .section {
+    padding: 2rem 0;
+  }
+  
+  /* Navigation sticky moins haute sur mobile */
+  :root {
+    --header-height: 64px;
+  }
+  
+  /* Réduire les espacements entre sections */
+  .hero + .section,
+  .section + .section {
+    margin-top: 0;
+  }
+}
+
+/* Petits téléphones (max-width: 480px) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .section-title-chip {
+    font-size: 1.25rem !important;
+    padding: 0.6rem 1.25rem;
+  }
+}
+
+/* Tablettes en portrait (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+  
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .main-nav ul {
+    gap: 1.5rem;
+  }
+  
+  .main-nav a {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
   }
 }
 }
