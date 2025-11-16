@@ -474,29 +474,6 @@ window.addEventListener('scroll', function() {
   <script src="js/search.js"></script>
   <script src="js/articles-data.js"></script>
   
-  <!-- Script pour charger les articles dans le dropdown -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Charger les articles depuis articles-data.js
-      if (typeof window.MENARA_ARTICLES !== 'undefined') {
-        const articlesContainer = document.getElementById('articlesDropdownList');
-        if (articlesContainer) {
-          // Trier tous les articles par ordre alphabétique du titre
-          const sortedArticles = [...window.MENARA_ARTICLES].sort((a, b) => {
-            return a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' });
-          });
-          
-          articlesContainer.innerHTML = sortedArticles.map(article => `
-            <a href="article.html?slug=${article.slug}" class="article-dropdown-item">
-              <div class="article-title">${article.title}</div>
-              <div class="article-meta">${article.author} • ${article.date}</div>
-            </a>
-          `).join('');
-        }
-      }
-    });
-  </script>
-  
   <!-- Script pour l'effet parallaxe -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {

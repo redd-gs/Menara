@@ -117,6 +117,76 @@ dropdownParents.forEach(dropdown => {
   });
 });
 
+// --------- Contenu dynamique du dropdown Publications
+const DROPDOWN_FALLBACK_ARTICLES = [
+  {
+    title: "L'Egypte, que reste-t-il du \"too big to fail\" ?",
+    slug: 'too-big-to-fail',
+    author: 'Yasmine Guemmaz',
+    date: 'Mars 2025'
+  },
+  {
+    title: 'Retour du protectionnisme : quelles perspectives pour l\'Afrique ?',
+    slug: 'protectionnisme-afrique',
+    author: 'Yasmine Guemmaz',
+    date: 'Avril 2025'
+  },
+  {
+    title: 'France-Maroc-Algérie, une histoire d’alliances et de rivalités',
+    slug: 'france-maroc-algerie',
+    author: 'Vincent Plantevin',
+    date: 'Mai 2025'
+  },
+  {
+    title: 'Raffinerie Dangote : un catalyseur d\'industrialisation au coeur des défis nigérians',
+    slug: 'raffinerie-dangote',
+    author: 'Adnane Belfami',
+    date: 'Juin 2025'
+  },
+  {
+    title: 'La Syrie, sur le chemin de la reconstruction ?',
+    slug: 'reconstruction-syrie',
+    author: 'Grégoire Descamps',
+    date: 'Mai 2025'
+  },
+  {
+    title: 'Entretien avec Joseph Daher: La reconstruction syrienne',
+    slug: 'entretien-daher',
+    author: 'Vincent Plantevin',
+    date: 'Juin 2025'
+  }
+];
+
+const renderArticlesDropdown = (payload) => {
+  const container = document.getElementById('articlesDropdownList');
+  if (!container) {
+    return;
+  }
+
+  const candidates = Array.isArray(payload) && payload.length
+    ? payload
+    : (Array.isArray(window.MENARA_ARTICLES) && window.MENARA_ARTICLES.length
+      ? window.MENARA_ARTICLES
+      : DROPDOWN_FALLBACK_ARTICLES);
+
+  const items = candidates.slice(0, 6).map((article) => {
+    const metaParts = [article.author, article.date].filter(Boolean).join(' • ');
+    return `
+      <a href="article.html?slug=${article.slug}" class="article-dropdown-item">
+        <div class="article-title">${article.title}</div>
+        <div class="article-meta">${metaParts}</div>
+      </a>
+    `;
+  }).join('');
+
+  container.innerHTML = items;
+};
+
+document.addEventListener('DOMContentLoaded', () => renderArticlesDropdown());
+window.addEventListener('menara:articles-ready', (event) => {
+  renderArticlesDropdown(event.detail);
+});
+
 // --------- Mettre en évidence l'onglet actif selon la page
 (() => {
   const path = location.pathname.split('/').pop() || 'index.html';
