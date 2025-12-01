@@ -80,7 +80,7 @@ window.MENARA_ARTICLES = [
     excerpt: '',
     category: 'Gouvernance',
     categoryLabel: 'Gouvernance',
-    author: 'Vincent Plantevin',
+    author: 'Vincent Plantevin et Grégoire Descamps',
     date: 'Juin 2025',
     cover: 'assets/articles/images/entretien-daher.png',
     pdf: 'assets/articles/pdf/entretien-daher.pdf'
@@ -98,6 +98,24 @@ window.MENARA_ARTICLES = [
     pdf: 'assets/articles/pdf/afrique-inde.pdf'
   }
 ];
+
+const monthMap = {
+  'Janvier': 0, 'Février': 1, 'Mars': 2, 'Avril': 3, 'Mai': 4, 'Juin': 5,
+  'Juillet': 6, 'Août': 7, 'Septembre': 8, 'Octobre': 9, 'Novembre': 10, 'Décembre': 11
+};
+
+function parseDate(dateStr) {
+  if (!dateStr) return 0;
+  const parts = dateStr.split(' ');
+  if (parts.length !== 2) return 0;
+  const month = monthMap[parts[0]];
+  const year = parseInt(parts[1], 10);
+  if (isNaN(month) || isNaN(year)) return 0;
+  return new Date(year, month).getTime();
+}
+
+// Sort articles by date descending (newest first)
+window.MENARA_ARTICLES.sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
 (function(){
   function byDataset(selector, value){
@@ -141,7 +159,68 @@ window.MENARA_ARTICLES = [
       const items = chunks[idx] || [];
       grid.innerHTML = items.map(cardHTML).join('');
     });
+    
+    updateHomePageArticles();
   }
+
+  function updateHomePageArticles() {
+    const grid = document.querySelector('.overlap-articles-grid');
+    if (!grid) return;
+    
+    const cards = grid.querySelectorAll('.featured-article-card');
+    if (cards.length < 3) return;
+    
+    // MENARA_ARTICLES is already sorted by date descending
+    const topArticles = window.MENARA_ARTICLES.slice(0, 3);
+    
+    topArticles.forEach((article, index) => {
+      const card = cards[index];
+      if (!card) return;
+      
+      // Update links
+      const links = card.querySelectorAll('a');
+      links.forEach(link => link.href = `article.html?slug=${encodeURIComponent(article.slug)}`);
+      
+      // Update main image
+      const img = card.querySelector('.article-image');
+      if (img) {
+        img.src = article.cover;
+        img.alt = article.title;
+      }
+      
+      // Update date
+      const dateEl = card.querySelector('.article-date');
+      if (dateEl) dateEl.textContent = article.date;
+      
+      // Update title
+      const titleEl = card.querySelector('.article-title a');
+      if (titleEl) titleEl.textContent = article.title;
+      
+      // Update author
+      const authorEl = card.querySelector('.article-author');
+      if (authorEl) authorEl.textContent = article.author;
+      
+      // Update tooltip
+      const tooltipImg = card.querySelector('.article-tooltip-image');
+      if (tooltipImg) {
+        tooltipImg.src = article.cover;
+        tooltipImg.alt = article.title;
+      }
+      
+      const tooltipTitle = card.querySelector('.article-tooltip-title');
+      if (tooltipTitle) tooltipTitle.textContent = article.title;
+      
+      const tooltipExcerpt = card.querySelector('.article-tooltip-excerpt');
+      if (tooltipExcerpt) tooltipExcerpt.textContent = article.excerpt || '';
+      
+      const tooltipAuthor = card.querySelector('.article-tooltip-author');
+      if (tooltipAuthor) tooltipAuthor.textContent = article.author;
+      
+      const tooltipDate = card.querySelector('.article-tooltip-date');
+      if (tooltipDate) tooltipDate.textContent = article.date;
+    });
+  }
+
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', populate); else populate();
 })();
 

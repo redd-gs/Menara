@@ -3,11 +3,29 @@ const encodePathSegments = (path = '') => path
   .map((segment) => encodeURIComponent(segment))
   .join('/');
 
+const monthMap = {
+  'Janvier': 0, 'Février': 1, 'Mars': 2, 'Avril': 3, 'Mai': 4, 'Juin': 5,
+  'Juillet': 6, 'Août': 7, 'Septembre': 8, 'Octobre': 9, 'Novembre': 10, 'Décembre': 11
+};
+
+function parseDate(dateStr) {
+  if (!dateStr) return 0;
+  const parts = dateStr.split(' ');
+  if (parts.length !== 2) return 0;
+  const month = monthMap[parts[0]];
+  const year = parseInt(parts[1], 10);
+  if (isNaN(month) || isNaN(year)) return 0;
+  return new Date(year, month).getTime();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.notes-focus-grid');
   if (!grid || !Array.isArray(window.notesFocusData)) {
     return;
   }
+
+  // Sort notes by date descending
+  window.notesFocusData.sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
   grid.innerHTML = '';
 

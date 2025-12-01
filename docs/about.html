@@ -3,16 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>À propos — Menara</title>
+  <title>À propos - Menara</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Polices orientales et modernes pour un style raffiné -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=EB+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carousel.css" />
+  <link rel="stylesheet" href="css/search.css" />
   <link rel="stylesheet" href="css/responsive-mobile.css" />
   <link rel="stylesheet" href="css/responsive-desktop.css" />
-  <link rel="stylesheet" href="css/search.css" />
   
+  <!-- Favicons -->
+  <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
+  <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
+  <link rel="shortcut icon" href="assets/images/logo-onglet.png" type="image/png" />
+  <meta name="theme-color" content="#0a0a0a" />
+
   <style>
     @keyframes bounce {
       0%, 100% {
@@ -22,20 +28,76 @@
         transform: translateY(-10px);
       }
     }
-    
+
     /* Effet smooth scroll */
     html {
       scroll-behavior: smooth;
     }
+
+    /* Styles pour la modale de biographie */
+    .bio-modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1000; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0,0,0,0.4); 
+        backdrop-filter: blur(5px);
+    }
+
+    .bio-modal-content {
+        background-color: #fefefe;
+        margin: 10% auto; 
+        padding: 2rem;
+        border: 1px solid #888;
+        width: 80%; 
+        max-width: 600px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: relative;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .bio-close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        right: 1rem;
+        top: 0.5rem;
+    }
+
+    .bio-close:hover,
+    .bio-close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .bio-text {
+        margin-top: 1rem;
+        line-height: 1.6;
+        color: #333;
+        white-space: pre-wrap;
+    }
+    
+    .team-member-img {
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .team-member-img:hover {
+        transform: scale(1.05);
+    }
   </style>
-  
-  <!-- Favicons -->
-  <link rel="icon" href="assets/images/logo-onglet.png" type="image/png" sizes="any" />
-  <link rel="apple-touch-icon" href="assets/images/logo-onglet.png" />
-  <link rel="shortcut icon" href="assets/images/logo-onglet.png" type="image/png" />
-  <meta name="theme-color" content="#0a0a0a" />
 </head>
 <body>
+  <!-- En-tête -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil Menara">
@@ -44,7 +106,7 @@
       </a>
       <nav class="main-nav" role="navigation" aria-label="Navigation principale">
         <ul>
-          <li><a href="about.html">À propos</a></li>
+          <li><a href="about.html" class="active">À propos</a></li>
           <li class="has-dropdown">
             <a href="articles.html">
               Publications
@@ -63,16 +125,16 @@
       </nav>
       <div class="header-actions">
         <div class="social-icons">
-          <a href="https://www.instagram.com/menaralab/" target="_blank" aria-label="Instagram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/company/menaraa/?viewAsMember=true" target="_blank" aria-label="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
+            <a href="https://www.instagram.com/menaralab/" target="_blank" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/company/menaraa/?viewAsMember=true" target="_blank" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
         </div>
         <a class="btn btn-primary" href="contact.html">Nous écrire</a>
         <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -84,11 +146,13 @@
     </div>
   </header>
 
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
   <main>
     <!-- Hero avec phare en plein écran -->
     <section id="lighthouse-hero" style="position: relative; height: 100vh; overflow: hidden; background-color: #0a0a0a;">
       <div id="lighthouse-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('assets/images/PDG.png'); background-position: center; background-size: contain; background-repeat: no-repeat; filter: grayscale(100%) brightness(40%); transition: opacity 0.8s ease, transform 0.8s ease;"></div>
-      
       <!-- Texte qui apparaît en overlay sur le phare -->
       <div id="lighthouse-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 10; opacity: 1; transition: opacity 0.8s ease;">
         <h1 style="font-size: 4rem; font-family: 'EB Garamond', serif; font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 12px rgba(0,0,0,0.8);">Menara</h1>
@@ -120,23 +184,11 @@
     <!-- Bande de navigation -->
     <section style="background-color: #0a276a; padding: 1.5rem 0;">
       <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 2rem;">
-        <a href="#demarche" class="nav-button">
-          Notre démarche
-        </a>
-        <a href="#formats" class="nav-button">
-          Nos formats
-        </a>
-        <a href="#equipe" class="nav-button">
-          Notre équipe
-        </a>
-        <a href="#communaute" class="nav-button" style="background-color: white; color: #000000; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid white;">
-          Nous rejoindre
-        </a>
+        <a href="#demarche" class="nav-button">Notre démarche</a>
+        <a href="#formats" class="nav-button">Nos formats</a>
+        <a href="#equipe" class="nav-button">Notre équipe</a>
+        <a href="#communaute" class="nav-button" style="background-color: white; color: #000000; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid white;">Nous rejoindre</a>
       </div>
-    </section>
-
-    <!-- Qui nous sommes / Approche -->
-          </div>
     </section>
 
     <!-- Notre démarche -->
@@ -146,7 +198,7 @@
         <div style="flex: 1; height: 1px; background-color: #000000; margin-right: 1rem;"></div>
       </div>
       <div class="container">
-        
+
         <!-- Démarche 1 -->
         <div style="display: flex; align-items: center; margin-bottom: 3rem; gap: 2rem;">
           <div style="background-color: #10095c; color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 600; flex-shrink: 0;">
@@ -157,7 +209,7 @@
             <p style="color: #333; font-size: 1.1rem; line-height: 1.6; margin: 0; font-family: 'Inter', sans-serif;">Notre objectif est de mettre en lumière les dynamiques, l'actualité et les tensions dans les régions d'Afrique et Moyen-Orient.</p>
           </div>
         </div>
-        
+
         <!-- Démarche 2 -->
         <div style="display: flex; align-items: center; margin-bottom: 3rem; gap: 2rem;">
           <div style="background-color: #10095c; color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 600; flex-shrink: 0;">
@@ -168,7 +220,7 @@
             <p style="color: #333; font-size: 1.1rem; line-height: 1.6; margin: 0; font-family: 'Inter', sans-serif;">Notre méthode est d'utiliser l'analyse économique et financière et les mettre en lien avec les dynamiques culturelles, historiques et géographiques dans ces pays.</p>
           </div>
         </div>
-        
+
         <!-- Démarche 3 -->
         <div style="display: flex; align-items: center; margin-bottom: 3rem; gap: 2rem;">
           <div style="background-color: #10095c; color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 600; flex-shrink: 0;">
@@ -190,7 +242,7 @@
         <div style="flex: 1; height: 1px; background-color: #000000; margin-right: 1rem;"></div>
       </div>
       <div class="container">
-  <div class="expertise-grid" style="display: flex; flex-direction: row; gap: 2rem; justify-content: center;">
+        <div class="expertise-grid" style="display: flex; flex-direction: row; gap: 2rem; justify-content: center;">
           <div class="expertise-card">
             <div class="fade-in-box" style="background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
               <h3 style="font-size: 1.8rem; text-align: center; color: #000000; margin-bottom: 1.5rem; margin-top: 0; align-self: center;">Articles</h3>
@@ -198,13 +250,6 @@
                 <p style="text-align: center; margin:0;">Nos articles sont des analyses détaillées qui visent à comprendre les fondamentaux et proposer des opportunités et des recommandations</p>
                 <div style="width:100%; display:flex; justify-content:center; margin-top:2rem;">
                   <a href="articles.html" class="blue-btn-dark" style="background:#2563eb;color:#fff;display:inline-block;max-width:260px;padding:1rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:500;min-height:48px;border:none;text-align:center;text-decoration:none;">Voir nos articles</a>
-                </div>
-              </div>
-              <div style="text-align: center; align-self: flex-end;">
-                <div style="width:100%; display:flex; justify-content:center;">
-                  <div style="width:100%; display:flex; justify-content:center;">
-                  
-                  </div>
                 </div>
               </div>
             </div>
@@ -218,11 +263,6 @@
                   <a href="notes-focus.html" class="blue-btn-medium" style="background:#3b82f6;color:#fff;display:inline-block;max-width:260px;padding:1rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:500;min-height:48px;border:none;text-align:center;text-decoration:none;">Voir nos notes</a>
                 </div>
               </div>
-              <div style="text-align: center; align-self: flex-end;">
-                <div style="width:100%; display:flex; justify-content:center;">
-                  
-                </div>
-              </div>
             </div>
           </div>
           <div class="expertise-card">
@@ -234,11 +274,6 @@
                   <a href="news-events.html" class="blue-btn-medium" style="background:#93c5fd;color:#fff;display:inline-block;max-width:260px;padding:1rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:500;min-height:48px;border:none;text-align:center;text-decoration:none;">Voir nos événements</a>
                 </div>
               </div>
-              <div style="text-align: center; align-self: flex-end;">
-                <div style="width:100%; display:flex; justify-content:center;">
-                  
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -247,19 +282,20 @@
 
     <!-- Notre Équipe -->
     <section id="equipe" class="section team-section" style="margin-top: 8rem; background-color: #f8f9fa; padding: 4rem 0;">
-      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;">
-        <h2 style="margin: 0; white-space: nowrap; padding-left: 1rem;">Notre équipe</h2>
-        <div style="flex: 1; height: 1px; background-color: #000000; margin-right: 1rem;"></div>
-      </div>
       <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Notre équipe</h2>
+            <div class="section-line"></div>
+        </div>
 
         <!-- Co‑fondateurs -->
         <div style="margin-bottom: 4rem;">
           <h3 style="font-size: 1.5rem; color: #4b5563; margin-bottom: 2rem; font-family: 'Inter', sans-serif; text-transform: uppercase; font-weight: 600;">Co‑fondateurs</h3>
           
           <div style="display: flex; flex-wrap: wrap; gap: 3rem;">
+            <!-- Adnane -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Adnane.jpeg" alt="Adnane Belfatmi" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Adnane.jpeg" alt="Adnane Belfatmi" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Adnane Belfatmi</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Co-fondateur</p>
@@ -270,9 +306,9 @@
                 </a>
               </div>
             </div>
-            
+            <!-- Yasmine -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Yasmine.jpeg" alt="Yasmine Guemmaz" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Yasmine.jpeg" alt="Yasmine Guemmaz" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Yasmine Guemmaz</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Co-fondatrice</p>
@@ -286,8 +322,9 @@
           </div>
           
           <div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 3rem;">
+            <!-- Vincent -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Vincent.jpeg" alt="Vincent Plantevin" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Vincent.jpeg" alt="Vincent Plantevin" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Vincent Plantevin</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Co-fondateur</p>
@@ -298,9 +335,9 @@
                 </a>
               </div>
             </div>
-            
+            <!-- Grégoire -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Grégoire.jpeg" alt="Grégoire Descamps" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Grégoire.jpeg" alt="Grégoire Descamps" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Grégoire Descamps</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Co-fondateur</p>
@@ -319,8 +356,9 @@
           <h3 style="font-size: 1.5rem; color: #4b5563; margin-bottom: 2rem; font-family: 'Inter', sans-serif; text-transform: uppercase; font-weight: 600;">Contributeurs</h3>
           
           <div style="display: flex; flex-wrap: wrap; gap: 3rem;">
+            <!-- Raiana -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Raiana.jpeg" alt="Raiana Doltabaeva" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Raiana.jpeg" alt="Raiana Doltabaeva" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Raiana Doltabaeva</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Autrice</p>
@@ -331,9 +369,9 @@
                 </a>
               </div>
             </div>
-            
+            <!-- Marc-Antoine -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Marc-Antoine.jpeg" alt="Marc-Antoine Estaben" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Marc-Antoine.jpeg" alt="Marc-Antoine Estaben" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Marc-Antoine Estaben</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
@@ -347,21 +385,22 @@
           </div>
           
           <div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 3rem;">
+            <!-- Alexandre -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Alexandre.jpeg" alt="Alexandre Gars" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Alexandre.jpeg" alt="Alexandre Gars" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Alexandre Gars</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
                 <a href="https://www.linkedin.com/in/alexandre-gars-76b815151/" target="_blank" style="display: inline-block;">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                 </a>
               </div>
             </div>
-            
+            <!-- Idris -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Idris.jpeg" alt="Idris Hamdani" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Idris.jpeg" alt="Idris Hamdani" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Idris Hamdani</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
@@ -375,8 +414,9 @@
           </div>
           
           <div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 3rem;">
+            <!-- Amine -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Amine.jpeg" alt="Amine Wadhi" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Amine.jpeg" alt="Amine Wadhi" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Amine Wadhi</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
@@ -387,13 +427,26 @@
                 </a>
               </div>
             </div>
-            
+            <!-- Romain -->
             <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
-              <img src="assets/images/Romain.jpeg" alt="Romain Pretto" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <img class="team-member-img" src="assets/images/Romain.jpeg" alt="Romain Pretto" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
               <div style="flex: 1;">
                 <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Romain Pretto</h4>
                 <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
                 <a href="https://www.linkedin.com/in/romain-pretto-236163294/" target="_blank" style="display: inline-block;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <!-- Octave -->
+            <div style="flex: 1; min-width: 400px; display: flex; align-items: flex-start; gap: 1.5rem;">
+              <img class="team-member-img" src="assets/images/placeholder.svg" alt="Octave Derouin" style="width: 150px; height: 150px; object-fit: cover; filter: grayscale(100%); border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.15); flex-shrink: 0;">
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.3rem; color: #000000; margin-bottom: 0.3rem; font-family: 'Inter', sans-serif; font-weight: 600;">Octave Derouin</h4>
+                <p style="color: #4b5563; font-size: 1rem; margin-bottom: 1rem; font-family: 'Inter', sans-serif; font-weight: 500;">Auteur</p>
+                <a href="https://www.linkedin.com/in/octave-derouin-648308256/" target="_blank" style="display: inline-block;">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="#666666">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
@@ -412,18 +465,18 @@
         <div style="flex: 1; height: 1px; background-color: #000000; margin-right: 1rem;"></div>
       </div>
       <div class="container">
-        
+
         <div style="max-width: 600px; margin: 0 auto; text-align: center;">
           <!-- Description -->
           <p style="color: #4b5563; font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem; font-family: 'Inter', sans-serif;">
             Rejoins notre communauté Menara, un espace d'échange et de débats
           </p>
-          
+
           <!-- QR Code WhatsApp -->
           <div style="margin-bottom: 2rem; text-align: center;">
             <img src="assets/images/Screenshot 2025-11-07 at 22.08.05.png" alt="QR Code WhatsApp Menara" style="width: 160px; height: 160px; margin: 0 auto; display: block; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); object-fit: contain; object-position: 60% center; padding: 10px; background-color: white;">
           </div>
-          
+
           <!-- Bouton -->
           <a href="https://chat.whatsapp.com/HC7aYJUA9w36GMLF4KRjbl" target="_blank" style="display: inline-block; background-color: #0a276a; color: white; padding: 1rem 2rem; font-size: 1.1rem; font-family: 'Inter', sans-serif; font-weight: 600; text-decoration: none; border-radius: 0; transition: background-color 0.3s ease; box-shadow: 0 4px 12px rgba(10, 39, 106, 0.3);">
             Rejoindre la communauté
@@ -432,50 +485,7 @@
       </div>
     </section>
 
-
   </main>
-<script>
-// Effet parallaxe sur l'image PDG.png
-window.addEventListener('scroll', function() {
-  var img = document.getElementById('parallax-img');
-  if (!img) return;
-  var scrolled = window.scrollY;
-  console.log('ScrollY:', scrolled);
-  img.style.border = '4px solid red';
-  img.style.background = '#ffff00';
-  var offset = scrolled * 0.4;
-    var offset = scrolled * -0.2;
-});
-</script>
-<script>
-// Animation d'apparition des boxes Nos formats
-document.addEventListener('DOMContentLoaded', function() {
-  const boxes = document.querySelectorAll('.fade-in-box');
-  function showBoxesOnScroll() {
-    const trigger = document.getElementById('formats');
-    if (!trigger) return;
-    const rect = trigger.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      boxes.forEach((box, i) => {
-        setTimeout(() => box.classList.add('visible'), i * 250);
-      });
-      window.removeEventListener('scroll', showBoxesOnScroll);
-    }
-  }
-  window.addEventListener('scroll', showBoxesOnScroll);
-  showBoxesOnScroll();
-});
-</script>
-<script>
-// Test visuel immédiat pour vérifier l'exécution du JS
-window.addEventListener('scroll', function() {
-  var box = document.getElementById('parallax-img-box');
-  if (!box) return;
-  var scrolled = window.scrollY;
-  var offset = scrolled * 4;
-  box.style.transform = 'translateY(' + offset + 'px)';
-});
-</script>
 
   <!-- Pied de page -->
   <footer class="site-footer" role="contentinfo">
@@ -487,9 +497,6 @@ window.addEventListener('scroll', function() {
         </div>
         <p class="footer-blurb">Analyses indépendantes sur les enjeux géopolitiques et économiques en Afrique et au Moyen‑Orient.</p>
       </div>
-
-
-
     </div>
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
@@ -502,7 +509,8 @@ window.addEventListener('scroll', function() {
   <script src="main.js"></script>
   <script src="js/search.js"></script>
   <script src="js/articles-data.js"></script>
-  
+  <script src="js/team-data.js"></script>
+
   <!-- Script pour l'effet phare avec fade (mobile uniquement) -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -510,12 +518,12 @@ window.addEventListener('scroll', function() {
       const lighthouseImage = document.getElementById('lighthouse-image');
       const lighthouseOverlay = document.getElementById('lighthouse-overlay');
       const aboutContent = document.getElementById('about-content');
-      
+
       // Vérifier si on est sur mobile/tablette (max-width: 1024px)
       function isMobile() {
         return window.innerWidth <= 1024;
       }
-      
+
       // Effet de scroll pour faire disparaître le phare et apparaître le contenu (mobile uniquement)
       function handleScrollEffect() {
         // Ne rien faire sur desktop
@@ -524,19 +532,19 @@ window.addEventListener('scroll', function() {
           aboutContent.style.transform = 'translateY(0)';
           return;
         }
-        
+
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
         const triggerPoint = windowHeight * 0.3; // Commence l'effet après 30% de scroll
-        
+
         if (scrollY > triggerPoint) {
           const progress = Math.min((scrollY - triggerPoint) / (windowHeight * 0.5), 1);
-          
+
           // Fade out du phare et de l'overlay
           if (lighthouseImage) lighthouseImage.style.opacity = 1 - progress;
           if (lighthouseImage) lighthouseImage.style.transform = `scale(${1 + progress * 0.2})`;
           if (lighthouseOverlay) lighthouseOverlay.style.opacity = 1 - progress;
-          
+
           // Fade in du contenu
           aboutContent.style.opacity = progress;
           aboutContent.style.transform = `translateY(${50 * (1 - progress)}px)`;
@@ -549,7 +557,7 @@ window.addEventListener('scroll', function() {
           aboutContent.style.transform = 'translateY(50px)';
         }
       }
-      
+
       // Écouter le scroll
       let ticking = false;
       window.addEventListener('scroll', function() {
@@ -561,36 +569,35 @@ window.addEventListener('scroll', function() {
           ticking = true;
         }
       });
-      
+
       // Écouter le resize pour réinitialiser si on change de taille d'écran
       window.addEventListener('resize', function() {
         handleScrollEffect();
       });
-      
+
       // Effet initial
       handleScrollEffect();
-      
+
       // Ancien script parallax
       const parallaxImg = document.getElementById('parallax-img');
       const parallaxSection = document.getElementById('parallax-section');
-      
+
       if (parallaxImg && parallaxSection) {
         function updateParallax() {
           const rect = parallaxSection.getBoundingClientRect();
           const windowHeight = window.innerHeight;
-          
+
           // Calculer la position de la section par rapport à la fenêtre
           const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
-          
+
           // Limiter la valeur entre 0 et 1
           const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-          
+
           // Appliquer la transformation parallaxe (mouvement plus lent que le scroll)
           const parallaxOffset = (0.5 - clampedProgress) * 50; // Formule inversée pour changer le sens
-          
           parallaxImg.style.transform = `translateY(${parallaxOffset}px)`;
         }
-        
+
         // Écouter le scroll avec throttling pour les performances
         let ticking = false;
         function onScroll() {
@@ -602,11 +609,87 @@ window.addEventListener('scroll', function() {
             ticking = true;
           }
         }
-        
+
         window.addEventListener('scroll', onScroll);
-        
+
         // Initialiser l'effet
         updateParallax();
+      }
+    });
+  </script>
+  
+  <script>
+    // Animation d'apparition des boxes Nos formats
+    document.addEventListener('DOMContentLoaded', function() {
+      const boxes = document.querySelectorAll('.fade-in-box');
+      function showBoxesOnScroll() {
+        const trigger = document.getElementById('formats');
+        if (!trigger) return;
+        const rect = trigger.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          boxes.forEach((box, i) => {
+            setTimeout(() => box.classList.add('visible'), i * 250);
+          });
+          window.removeEventListener('scroll', showBoxesOnScroll);
+        }
+      }
+      window.addEventListener('scroll', showBoxesOnScroll);
+      showBoxesOnScroll();
+    });
+  </script>
+
+  <!-- Modal Structure -->
+  <div id="bioModal" class="bio-modal">
+    <div class="bio-modal-content">
+      <span class="bio-close">&times;</span>
+      <div class="bio-header" style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+        <img id="bioImage" src="" alt="" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <div>
+            <h3 id="bioName" style="margin: 0 0 0.5rem 0; font-family: 'Inter', sans-serif; font-size: 1.5rem;"></h3>
+            <p id="bioRole" style="margin: 0; color: #666; font-family: 'Inter', sans-serif; font-weight: 500;"></p>
+        </div>
+      </div>
+      <div id="bioText" class="bio-text"></div>
+    </div>
+  </div>
+
+  <script>
+    // Modal Logic
+    document.addEventListener('DOMContentLoaded', function() {
+      var modal = document.getElementById("bioModal");
+      var bioText = document.getElementById("bioText");
+      var bioImage = document.getElementById("bioImage");
+      var bioName = document.getElementById("bioName");
+      var bioRole = document.getElementById("bioRole");
+      var span = document.getElementsByClassName("bio-close")[0];
+      var imgs = document.getElementsByClassName("team-member-img");
+
+      for (var i = 0; i < imgs.length; i++) {
+        imgs[i].addEventListener('click', function() {
+          var name = this.getAttribute('alt');
+          var src = this.getAttribute('src');
+          // Récupérer le rôle (c'est le paragraphe <p> dans la div qui suit l'image)
+          var role = this.nextElementSibling.querySelector('p').innerText;
+
+          var bio = (typeof teamData !== 'undefined' && teamData[name]) ? teamData[name] : "Biographie à venir...";
+          
+          bioText.innerHTML = bio;
+          bioImage.src = src;
+          bioName.innerText = name;
+          bioRole.innerText = role;
+          
+          modal.style.display = "block";
+        });
+      }
+
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
       }
     });
   </script>

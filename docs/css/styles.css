@@ -1048,7 +1048,7 @@ body.landing-highlight .blue-box-section {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   gap: clamp(2rem, 4vw, 4rem);
-  align-items: stretch;
+  align-items: start;
 }
 
 .mission-events__mission,
@@ -1812,6 +1812,33 @@ body.landing-highlight .blue-box-section {
 }
 
 .event-linkedin-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.event-register-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-left: 0.55rem;
+  border-radius: 999px;
+  background: #7248B9;
+  color: #ffffff;
+  text-decoration: none;
+  vertical-align: middle;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-register-btn:hover {
+  background: #5b3a94;
+  box-shadow: 0 6px 16px rgba(114, 72, 185, 0.3);
+  transform: translateY(-1px);
+}
+
+.event-register-btn svg {
   width: 14px;
   height: 14px;
   fill: currentColor;
