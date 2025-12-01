@@ -387,4 +387,40 @@
     width: 100%;
     max-width: 300px;
   }
+
+  /* ===== PAGE À PROPOS - ÉQUIPE & DÉMARCHE ===== */
+  
+  /* Cartes équipe - Stack vertical sur mobile */
+  .team-member-card {
+    flex-direction: column !important;
+    min-width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 1rem !important;
+  }
+  
+  .team-member-card img {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .team-member-card > div {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  /* Cartes démarche - Stack vertical sur mobile */
+  .step-card {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .step-card > div:first-child {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .step-card > div:last-child {
+    width: 100% !important;
+  }
 }
